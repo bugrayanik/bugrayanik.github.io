@@ -1,0 +1,1978 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23111'/%3E%3C/svg%3E">
+<title>JobFold Prototyp 2027</title>
+<meta name="description" content="Klickbarer Prototyp der JobFold-Oberfläche 2027. Alle Firmen, Personen, Objekte und Beträge sind Muster.">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<script src="embed.js"></script>
+<link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+</head>
+<body data-surface="office">
+
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch-g" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-fill" width="1.6" height="4"/></pattern>
+    <mask id="m-check"><rect width="24" height="24" fill="#fff"/><path d="M7.4 12.4l3.1 3.1 6.1-6.6" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></mask>
+  </defs>
+  <symbol id="g-logo" viewBox="0 0 24 24"><path d="M2.5 18.5l5-13 4.5 13 4.5-13 5 13"/><path d="M7.5 5.5v2.5M16.5 5.5v2.5"/></symbol>
+  <symbol id="g-today" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="12" cy="14.6" r="2.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-plan" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M9.2 9.5V20M14.8 9.5V20M3.5 14.7h17"/></symbol>
+  <symbol id="g-jobs" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 10h7M8.5 13.5h7M8.5 17h4"/></symbol>
+  <symbol id="g-inbox" viewBox="0 0 24 24"><path d="M3.5 13.5l2.5-8h12l2.5 8V19a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></symbol>
+  <symbol id="g-money" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.2 8.7a4.1 4.1 0 1 0 0 6.6M7.6 10.9h6M7.6 13.4h5"/></symbol>
+  <symbol id="g-report" viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 14l2 2 4-4.5"/></symbol>
+  <symbol id="g-building" viewBox="0 0 24 24"><path d="M5 21V4.5h9V21M14 9.5h5V21M3 21h18M8 8h3M8 11.5h3M8 15h3"/></symbol>
+  <symbol id="g-tag" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3-8.7 8.7z"/><circle cx="8" cy="8" r="1.5"/></symbol>
+  <symbol id="g-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8.5 16.5v-4M12.5 16.5V8M16.5 16.5v-6"/></symbol>
+  <symbol id="g-settings" viewBox="0 0 24 24"><path d="M4 7h9M18 7h2M4 17h3M11 17h9"/><circle cx="15.5" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/></symbol>
+  <symbol id="g-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
+  <symbol id="g-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5h4"/></symbol>
+  <symbol id="g-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.3 2.2c-.6.3-1 .8-1 1.4v.6"/><circle cx="12" cy="16.9" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="g-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="g-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="g-prev" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="g-next" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+  <symbol id="g-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-camera" viewBox="0 0 24 24"><path d="M3.5 8h3.2l1.6-2.5h7.4L17.3 8h3.2v11h-17z"/><circle cx="12" cy="13.2" r="3.4"/></symbol>
+  <symbol id="g-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+  <symbol id="g-note" viewBox="0 0 24 24"><path d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5z"/><path d="M13.5 7l3 3"/></symbol>
+  <symbol id="g-finish" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.7 2.7L16 9.5"/></symbol>
+  <symbol id="g-sync" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.4-9A6 6 0 0 1 18 10.5a4 4 0 0 1-.5 8z"/><path d="M9.5 14l2 2 3.5-3.5"/></symbol>
+  <symbol id="g-device" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10.5 18h3"/></symbol>
+  <symbol id="g-saved" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10.5 18h3"/><circle cx="12" cy="10.5" r="2.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-pair" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8" height="12" rx="1"/><rect x="13.5" y="6" width="8" height="12" rx="1"/><path d="M10.5 12h3"/></symbol>
+  <symbol id="g-value" viewBox="0 0 24 24"><path d="M9.5 4l-2 16M16.5 4l-2 16M5 9h15M4 15h15"/></symbol>
+  <symbol id="g-chat" viewBox="0 0 24 24"><path d="M4.5 19.5l1.2-3.6A7.5 7.5 0 1 1 8.4 18.6z"/></symbol>
+  <symbol id="g-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4 6.5l8 6 8-6"/></symbol>
+  <symbol id="g-voice" viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 10.5v3"/></symbol>
+  <symbol id="g-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="g-photo" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-4.5 3.5 3 3-2.5 4.5 4"/></symbol>
+  <symbol id="g-upload" viewBox="0 0 24 24"><path d="M12 16V4.5M7.5 9L12 4.5 16.5 9M4.5 19.5h15"/></symbol>
+  <symbol id="g-download" viewBox="0 0 24 24"><path d="M12 4.5V16M7.5 11.5L12 16l4.5-4.5M4.5 19.5h15"/></symbol>
+  <symbol id="g-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="g-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="g-door" viewBox="0 0 24 24"><path d="M6 21V3.5h11V21M3.5 21h17"/><path d="M13.5 12.5v1.2"/></symbol>
+  <symbol id="g-file" viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19"/></symbol>
+  <symbol id="g-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  <symbol id="g-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="3.5"/><path d="M11.5 12H20M17 12v3M20 12v2"/></symbol>
+  <symbol id="g-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3 10h18M6.5 15h4"/></symbol>
+  <symbol id="g-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h2.5v2.5H14zM17.5 17.5H20V20h-2.5zM14 19h2M19 14v2"/></symbol>
+  <symbol id="g-alert" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 9.5v4.5"/><circle cx="12" cy="17" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="g-move" viewBox="0 0 24 24"><path d="M12 3.5v17M8 7.5l4-4 4 4M8 16.5l4 4 4-4"/></symbol>
+  <symbol id="g-frame" viewBox="0 0 24 24"><path d="M8 4H4.5v16H8M16 4h3.5v16H16"/><path d="M9.5 9h5M9.5 12h5M9.5 15h3"/></symbol>
+  <symbol id="g-seal" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M7.5 11.5l2.6 2.6 4.4-4.8"/><path d="M14.5 17.5h3v-3h-3z"/></symbol>
+  <symbol id="g-forward" viewBox="0 0 24 24"><path d="M14 5l6 6-6 6"/><path d="M20 11H9.5A5.5 5.5 0 0 0 4 16.5V19"/></symbol>
+  <!-- status glyphs (DESIGN.md §10.4) -->
+  <symbol id="st-done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor" stroke="none" mask="url(#m-check)"/></symbol>
+  <symbol id="st-open" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/></symbol>
+  <symbol id="st-noev" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="url(#hatch-g)" stroke-width="2"/></symbol>
+  <symbol id="st-na" viewBox="0 0 24 24"><path d="M6 12h12" stroke-width="2.5"/></symbol>
+  <symbol id="st-notpossible" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M6.5 17.5l11-11" stroke-width="2"/></symbol>
+  <symbol id="st-extra" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3-8.7 8.7z" stroke-width="2"/><circle cx="8" cy="8" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="st-approved" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="1" stroke-width="1.6"/><rect x="5" y="8" width="14" height="8" stroke-width="1.6"/><path d="M8.5 12.2l2 1.9 4-4.2" stroke-width="1.8"/></symbol>
+  <symbol id="st-wait" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="st-lost" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3-8.7 8.7z" stroke-width="2"/><path d="M4 20L20 4" stroke-width="2"/></symbol>
+  <symbol id="st-goodwill" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3-8.7 8.7z" stroke-width="2"/><circle cx="12.5" cy="12" r="3.2" stroke-width="1.8"/></symbol>
+  <symbol id="st-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke-width="2"/></symbol>
+</svg>
+
+<nav class="proto" aria-label="Prototyp-Navigation">
+  <span class="proto-name">JobFold Prototyp</span>
+  <div class="proto-links">
+    <a href="#timeline" data-go="timeline">7.1 Verlauf</a>
+    <a href="#visit" data-go="visit">7.2 Einsatz</a>
+    <a href="#change" data-go="change">7.3 Nachtrag</a>
+    <a href="#approve" data-go="approve">7.4 Freigabe</a>
+    <a href="#report" data-go="report">7.5 Bericht</a>
+    <a href="#finder" data-go="finder">7.6 Geldfinder</a>
+    <a href="#today" data-go="today">7.7 Heute und Plan</a>
+    <a href="#team" data-go="team">7.9 Team</a>
+    <a href="#billing" data-go="billing">7.10 Tarif</a>
+    <a href="#command" data-go="command">7.11 Befehle</a>
+    <a href="#onboarding" data-go="onboarding">7.12 Erster Start</a>
+    <a href="#closeout" data-go="closeout">7.15 Feierabend</a>
+    <a href="#frame" data-go="frame">7.17 Rahmen</a>
+    <a href="#bundle" data-go="bundle">7.18 Sammelfreigabe</a>
+    <a href="#seal" data-go="seal">7.19 Siegel</a>
+    <a href="#letter" data-go="letter">7.20 Geldbrief</a>
+    <a href="#inbox" data-go="inbox">7.8 Anfragen</a>
+    <a href="#prices" data-go="prices">F-09 Preisbuch</a>
+    <a href="#insights" data-go="insights">8.17 Auswertungen</a>
+    <a href="#portal" data-go="portal">7.13 Portal</a>
+    <a href="#notice" data-go="notice">7.16 Aushang</a>
+    <a href="#admin" data-go="admin">7.14 Admin</a>
+  </div>
+  <button type="button" class="proto-btn" id="themeToggle" aria-pressed="false">Dunkel</button>
+  <button type="button" class="proto-btn" id="outdoorToggle" aria-pressed="false">Draußen</button>
+</nav>
+
+<!-- ================= OFFICE SHELL ================= -->
+<div class="shell">
+  <aside class="side" aria-label="Hauptnavigation">
+    <a class="brand" href="#today"><svg class="i brand-mark" aria-hidden="true"><use href="#g-logo"/></svg><span>JobFold</span></a>
+    <nav class="side-nav" aria-label="Bereiche">
+      <a href="#today" data-nav="today"><svg class="i" aria-hidden="true"><use href="#g-today"/></svg>Heute</a>
+      <a href="#today" data-nav="plan"><svg class="i" aria-hidden="true"><use href="#g-plan"/></svg>Plan</a>
+      <a href="#timeline" data-nav="jobs"><svg class="i" aria-hidden="true"><use href="#g-jobs"/></svg>Aufträge</a>
+      <a href="#inbox" data-nav="inbox"><svg class="i" aria-hidden="true"><use href="#g-inbox"/></svg>Anfragen<span class="count">5</span></a>
+      <a href="#letter" data-nav="money"><svg class="i" aria-hidden="true"><use href="#g-money"/></svg>Geld</a>
+      <a href="#report" data-nav="reports"><svg class="i" aria-hidden="true"><use href="#g-report"/></svg>Berichte</a>
+      <a href="#frame" data-nav="customers"><svg class="i" aria-hidden="true"><use href="#g-building"/></svg>Kunden und Objekte</a>
+      <a href="#prices" data-nav="prices"><svg class="i" aria-hidden="true"><use href="#g-tag"/></svg>Preisbuch</a>
+      <a href="#insights" data-nav="insights"><svg class="i" aria-hidden="true"><use href="#g-chart"/></svg>Auswertungen</a>
+      <a href="#team" data-nav="settings"><svg class="i" aria-hidden="true"><use href="#g-settings"/></svg>Einstellungen</a>
+    </nav>
+    <div class="side-foot">
+      <p class="checks-state"><span class="dot-state" aria-hidden="true"></span>Prüfungen: Jev</p>
+      <p>Tarif Team, 2 Büro, 8 Einsatz</p>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <a class="brand brand-compact" href="#today"><svg class="i brand-mark" aria-hidden="true"><use href="#g-logo"/></svg><span>JobFold</span></a>
+      <button type="button" class="ws" data-missing="Betrieb wechseln">Muster Gebäudeservice</button>
+      <button type="button" class="cmd-field" data-open-cmd aria-label="Suchen oder Befehl, Strg K">
+        <svg class="i i-16" aria-hidden="true"><use href="#g-search"/></svg><span>Suchen oder Befehl</span><kbd>Strg K</kbd>
+      </button>
+      <span class="sync-pill is-ok">Alles synchronisiert<svg class="i i-16" aria-hidden="true"><use href="#g-sync"/></svg></span>
+      <button type="button" class="icon-btn" aria-label="Benachrichtigungen, 2 neu" data-missing="Benachrichtigungen"><svg class="i" aria-hidden="true"><use href="#g-bell"/></svg><span class="dot" aria-hidden="true"></span></button>
+      <button type="button" class="icon-btn hide-sm" aria-label="Hilfe" data-missing="Hilfe"><svg class="i" aria-hidden="true"><use href="#g-help"/></svg></button>
+      <span class="avatar" role="img" aria-label="Sabine Muster, Inhaberin">SM</span>
+    </header>
+
+    <!-- ============ 7.1 MONEY TIMELINE ============ -->
+    <section class="screen" id="s-timeline" data-screen="timeline" aria-labelledby="tlTitle">
+      <div class="job-layout">
+        <aside class="job-list" aria-label="Aufträge">
+          <h2 class="label">Aufträge</h2>
+          <label class="search"><svg class="i i-16" aria-hidden="true"><use href="#g-search"/></svg><span class="visually-hidden">Aufträge durchsuchen</span><input type="search" placeholder="Objekt, Kunde, Nummer"></label>
+          <div class="filter-row" role="group" aria-label="Filter">
+            <button type="button" class="fchip" aria-pressed="true">Alle 38</button>
+            <button type="button" class="fchip" aria-pressed="false">Heute 14</button>
+            <button type="button" class="fchip" aria-pressed="false">Extra offen 4</button>
+          </div>
+          <ul class="jobs">
+            <li><a class="job is-current" href="#timeline" aria-current="page"><span class="job-name">Lindenstraße 14</span><span class="job-type">Treppenhausreinigung, wöchentlich Di</span><span class="job-meta"><span class="mini c-open">1 Extra offen</span><span>heute erledigt</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Hofweg 3</span><span class="job-type">Unterhaltsreinigung, Mo Mi Fr</span><span class="job-meta"><span class="mini c-open">1 Extra offen</span><span>heute 13:00</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Parkstraße 8</span><span class="job-type">Hausmeisterdienst, wöchentlich</span><span class="job-meta"><span class="mini c-stop">1 Reklamation</span><span class="mini c-open">1 Extra offen</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Birkenweg 21</span><span class="job-type">Glasreinigung, 2 × jährlich</span><span class="job-meta"><span>heute erledigt</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Schulstraße 5</span><span class="job-type">Grünpflege, monatlich</span><span class="job-meta"><span class="mini c-open">1 Extra offen</span><span>läuft</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Am Anger 2</span><span class="job-type">Winterdienst, ab 01.11.</span><span class="job-meta"><span>heute 13:30</span></span></a></li>
+            <li><a class="job" href="#timeline"><span class="job-name">Gartenweg 9</span><span class="job-type">Büroreinigung, täglich</span><span class="job-meta"><span>heute erledigt</span></span></a></li>
+          </ul>
+        </aside>
+
+        <div class="job-main">
+          <nav class="crumbs" aria-label="Pfad"><a href="#timeline">Aufträge</a><span aria-hidden="true">/</span><span aria-current="page">Lindenstraße 14</span></nav>
+          <header class="job-head">
+            <div class="job-title">
+              <h1 class="display" id="tlTitle">Treppenhausreinigung Lindenstraße 14</h1>
+              <p class="job-sub">Hausverwaltung Beispiel GmbH, Objekt Lindenstraße 14, Musterstadt</p>
+              <div class="flags">
+                <span class="state-chip c-run"><svg class="i i-16" aria-hidden="true"><use href="#st-wait"/></svg>Läuft, wöchentlich dienstags</span>
+                <span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>Umfang bestätigt, Version 2</span>
+                <span class="sync-pill is-ok">Synchronisiert 11:28<svg class="i i-16" aria-hidden="true"><use href="#g-sync"/></svg></span>
+              </div>
+            </div>
+            <div class="head-actions">
+              <a class="btn btn-secondary" href="#visit"><svg class="i" aria-hidden="true"><use href="#g-door"/></svg>Einsatz starten</a>
+              <a class="btn btn-primary" href="#change">Nachtrag erstellen<kbd>N</kbd></a>
+            </div>
+          </header>
+
+          <div class="tabs" role="tablist" aria-label="Auftrag">
+            <button type="button" role="tab" class="tab" aria-selected="true">Verlauf</button>
+            <button type="button" role="tab" class="tab" aria-selected="false" data-missing="Umfang">Umfang</button>
+            <button type="button" role="tab" class="tab" aria-selected="false" data-missing="Einsätze">Einsätze<span class="tab-count">31</span></button>
+            <button type="button" role="tab" class="tab" aria-selected="false" data-missing="Nachträge">Nachträge<span class="tab-count">4</span></button>
+            <button type="button" role="tab" class="tab" aria-selected="false" data-missing="Berichte">Berichte</button>
+            <button type="button" role="tab" class="tab" aria-selected="false" data-missing="Details">Details</button>
+          </div>
+
+          <section class="money" aria-labelledby="moneyH">
+            <div class="money-head">
+              <h2 class="label" id="moneyH">Geld auf diesem Auftrag</h2>
+              <span class="money-note">Beträge netto, seit 03.03.2026</span>
+              <button type="button" class="link-btn" id="moneyInfoBtn" aria-expanded="false" aria-controls="moneyInfo"><svg class="i i-16" aria-hidden="true"><use href="#g-info"/></svg>So wird gezählt</button>
+            </div>
+            <div class="popover" id="moneyInfo" hidden>
+              <dl>
+                <dt>Vereinbart</dt><dd>Wert des bestätigten Leistungsumfangs je Einsatz.</dd>
+                <dt>Extra freigegeben</dt><dd>Freigegebene Nachträge der Klassen A bis D, nach Klasse aufgeteilt.</dd>
+                <dt>Extra offen</dt><dd>Gesendet, nicht beantwortet, nicht abgelaufen.</dd>
+                <dt>Extra verloren</dt><dd>Abgelehnt, abgelaufen oder ohne Freigabe ausgeführt.</dd>
+              </dl>
+              <p>JobFold rechnet jede Zahl aus den Einträgen im Verlauf. Tippe eine Zahl an, um ihre Einträge zu sehen.</p>
+            </div>
+            <div class="money-grid" role="group" aria-label="Verlauf nach Betrag filtern">
+              <button type="button" class="fig" data-filter="agreed" aria-pressed="false">
+                <span class="fig-label">Vereinbart</span>
+                <span class="fig-value">180,00 €</span>
+                <span class="fig-sub">je Einsatz; 31 Einsätze, 5.580,00 €</span>
+              </button>
+              <button type="button" class="fig fig-ok" data-filter="approved" aria-pressed="false">
+                <span class="fig-label"><svg class="i i-16" aria-hidden="true"><use href="#st-approved"/></svg>Extra freigegeben</span>
+                <span class="fig-value">245,50 €</span>
+                <span class="fig-sub">Klasse A 160,00 €, Klasse C 85,50 €</span>
+                <span class="fig-bar" aria-hidden="true"><span class="w-69"></span></span>
+              </button>
+              <button type="button" class="fig fig-open" data-filter="open" aria-pressed="false">
+                <span class="fig-label"><svg class="i i-16" aria-hidden="true"><use href="#st-wait"/></svg>Extra offen</span>
+                <span class="fig-value">67,50 €</span>
+                <span class="fig-sub">1 Nachtrag, gesendet heute 09:05</span>
+                <span class="fig-bar" aria-hidden="true"><span class="w-19"></span></span>
+              </button>
+              <button type="button" class="fig fig-lost" data-filter="lost" aria-pressed="false">
+                <span class="fig-label"><svg class="i i-16" aria-hidden="true"><use href="#st-lost"/></svg>Extra verloren</span>
+                <span class="fig-value">45,00 €</span>
+                <span class="fig-sub">1 Nachtrag abgelaufen</span>
+                <span class="fig-bar" aria-hidden="true"><span class="w-13"></span></span>
+              </button>
+            </div>
+            <p class="goodwill"><svg class="i i-16" aria-hidden="true"><use href="#st-goodwill"/></svg>Kulanz: 1 Leistung ohne Berechnung, Wert 18,00 € (Briefkastenschild ersetzt, 15.09.)</p>
+            <p class="goodwill"><svg class="i i-16" aria-hidden="true"><use href="#g-frame"/></svg>Freigaberahmen R-2026-004: 400,00 € im Monat, im Oktober noch 400,00 € frei. <a href="#frame">Rahmen ansehen</a></p>
+          </section>
+
+          <section class="tl" aria-labelledby="tlH">
+            <div class="tl-head">
+              <h2 class="label" id="tlH">Verlauf</h2>
+              <span class="tl-state" id="tlState" aria-live="polite">Alle Einträge</span>
+              <button type="button" class="link-btn" id="tlClear" hidden>Filter aufheben</button>
+            </div>
+            <ol class="rail" id="rail">
+              <li class="tick-day is-now"><span class="day">Heute, Di 29.09.</span><span class="now-tag">jetzt 11:30</span></li>
+              <li class="tl-item is-selected" data-src="co31" data-money="open" tabindex="0">
+                <span class="tl-time">09:05</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i gl-open" aria-hidden="true"><use href="#st-extra"/></svg><strong>Nachtrag NT-2026-0031</strong><span class="state-chip c-open"><svg class="i i-16" aria-hidden="true"><use href="#st-wait"/></svg>offen seit 09:05</span></div>
+                  <p>Kellerfenster innen und außen putzen, 6 Stück, Sa 10.10.2026</p>
+                  <div class="tl-foot">
+                    <span class="price-chip"><span class="pc-amt">+67,50 €</span><span class="pc-word">netto</span></span>
+                    <span class="muted">80,33 € brutto, Freigabelink an Frau Beispiel, gültig bis 13.10.</span>
+                    <a href="#approve">Kundenansicht</a>
+                  </div>
+                </div>
+              </li>
+              <li class="tl-item" data-src="voice31" data-money="open" tabindex="0">
+                <span class="tl-time">08:31</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-voice"/></svg><strong>Sprachnotiz, Anna K.</strong><span class="muted">0:14, Text auf dem Handy erkannt</span></div>
+                  <blockquote>„Frau Beispiel fragt, ob wir am Samstag auch die sechs Kellerfenster putzen können, innen und außen.“</blockquote>
+                  <div class="tl-foot"><span class="radar-chip is-settled"><span class="rc-mark" aria-hidden="true"></span>Zusatzwunsch: Kellerfenster putzen</span><span class="muted">bepreist in NT-2026-0031</span></div>
+                </div>
+              </li>
+              <li class="tl-item" data-src="photos29" tabindex="0">
+                <span class="tl-time">08:20</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-photo"/></svg><strong>6 Fotos</strong><span class="muted">Eingangstür und Kellergang vorher und nachher, Kellerfenster</span></div>
+                  <div class="photo-strip">
+                    <span class="ph ph-1"><span>vorher</span></span><span class="ph ph-2"><span>nachher</span></span><span class="ph ph-3"><span>vorher</span></span><span class="ph ph-4"><span>nachher</span></span><span class="ph ph-5"><span>Kellerfenster</span></span><span class="ph ph-6"><span>Kellerfenster</span></span>
+                  </div>
+                </div>
+              </li>
+              <li class="tl-item" data-src="visit29" data-money="agreed" tabindex="0">
+                <span class="tl-time">08:14</span>
+                <div class="tl-body tl-visit">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-clock"/></svg><strong>Einsatz 08:14–08:41</strong><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>8 von 8 belegt</span></div>
+                  <p class="muted">Anna K., 6 Fotos, 1 Sprachnotiz, Vollständigkeitsprüfung vor dem Gehen bestanden</p>
+                </div>
+              </li>
+
+              <li class="tick-day"><span class="day">Di 22.09.</span></li>
+              <li class="tl-item" data-src="wa22" tabindex="0">
+                <span class="tl-time">10:12</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-chat"/></svg><strong>WhatsApp, Frau Beispiel</strong></div>
+                  <blockquote>„Danke, das Treppenhaus sieht wieder gut aus.“</blockquote>
+                </div>
+              </li>
+              <li class="tl-item" data-src="visit22" data-money="agreed" tabindex="0">
+                <span class="tl-time">08:10</span>
+                <div class="tl-body tl-visit">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-clock"/></svg><strong>Einsatz 08:10–08:39</strong><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>8 von 8 belegt</span></div>
+                  <p class="muted">Anna K., 2 Fotos, 1 Mangel gemeldet: Handlauf 2. OG lose</p>
+                </div>
+              </li>
+
+              <li class="tick-day"><span class="day">Do 17.09.</span></li>
+              <li class="tl-item" data-src="stamp27" data-money="approved" tabindex="0">
+                <span class="tl-time">17:48</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i gl-ok" aria-hidden="true"><use href="#st-extra"/></svg><strong>Nachtrag NT-2026-0027</strong></div>
+                  <p>Sonderreinigung nach Umzug, 3. OG</p>
+                  <div class="tl-foot">
+                    <span class="stamp">Freigegeben<small>Klasse C, 17:48</small></span>
+                    <span class="price-chip"><span class="pc-amt">+85,50 €</span><span class="pc-word">netto</span></span>
+                    <span class="muted">Antwort per WhatsApp: „Ja, machen Sie das bitte nach dem Umzug.“</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="tick-day"><span class="day">Di 15.09.</span></li>
+              <li class="tl-item" data-src="goodwill15" tabindex="0">
+                <span class="tl-time">08:52</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#st-goodwill"/></svg><strong>Kulanz, Jana P.</strong></div>
+                  <p>Briefkastenschild ersetzt, ohne Berechnung, Wert 18,00 €</p>
+                </div>
+              </li>
+              <li class="tl-item" data-src="visit15" data-money="agreed" tabindex="0">
+                <span class="tl-time">08:20</span>
+                <div class="tl-body tl-visit">
+                  <div class="tl-top"><svg class="i" aria-hidden="true"><use href="#g-clock"/></svg><strong>Einsatz 08:20–08:47</strong><span class="state-chip c-unknown"><svg class="i i-16" aria-hidden="true"><use href="#st-noev"/></svg>7 von 8 belegt</span></div>
+                  <p class="muted">Jana P., Kein Nachweis: Kellergang fegen, Foto fehlt</p>
+                </div>
+              </li>
+
+              <li class="tick-day"><span class="day">Sa 12.09.</span></li>
+              <li class="tl-item" data-src="lost19" data-money="lost" tabindex="0">
+                <span class="tl-time">23:59</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i gl-stop" aria-hidden="true"><use href="#st-lost"/></svg><strong>Nachtrag NT-2026-0019</strong></div>
+                  <p>Graffiti am Hoftor entfernen</p>
+                  <div class="tl-foot">
+                    <span class="stamp is-stop">Abgelaufen<small>ohne Antwort, 14 Tage</small></span>
+                    <span class="price-chip is-lost"><span class="pc-amt">45,00 €</span><span class="pc-word">verloren</span></span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="tick-day"><span class="day">Di 08.09.</span></li>
+              <li class="tl-item" data-src="stamp24" data-money="approved" tabindex="0">
+                <span class="tl-time">14:02</span>
+                <div class="tl-body">
+                  <div class="tl-top"><svg class="i gl-ok" aria-hidden="true"><use href="#st-extra"/></svg><strong>Nachtrag NT-2026-0024</strong></div>
+                  <p>Sperrmüll im Hof abtransportieren</p>
+                  <div class="tl-foot">
+                    <span class="stamp">Freigegeben<small>Klasse A, 14:02</small></span>
+                    <span class="price-chip"><span class="pc-amt">+160,00 €</span><span class="pc-word">netto</span></span>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </section>
+          <a class="btn btn-primary sticky-action" href="#change">Nachtrag erstellen</a>
+        </div>
+
+        <aside class="drawer" id="drawer" aria-labelledby="dwTitle">
+          <div class="drawer-head">
+            <h2 class="label" id="dwTitle">Quelle</h2>
+            <button type="button" class="icon-btn drawer-close" id="drawerClose" aria-label="Quelle schließen"><svg class="i" aria-hidden="true"><use href="#g-close"/></svg></button>
+          </div>
+          <p class="dw-kind" id="dwKind">Nachtrag NT-2026-0031</p>
+          <p class="dw-when" id="dwWhen">Heute, 09:05, gesendet von Tim Berger</p>
+          <div class="dw-src" id="dwSrc"></div>
+          <dl class="facts" id="dwFacts"></dl>
+          <p class="dw-link" id="dwLink"></p>
+          <details class="tech">
+            <summary>Technische Angaben</summary>
+            <dl class="facts" id="dwTech"></dl>
+          </details>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ 7.3 RADAR CHIP TO PRICED CHANGE ORDER ============ -->
+    <section class="screen" id="s-change" data-screen="change" aria-labelledby="coTitle">
+      <div class="page">
+        <nav class="crumbs" aria-label="Pfad"><a href="#timeline">Aufträge</a><span aria-hidden="true">/</span><a href="#timeline">Lindenstraße 14</a><span aria-hidden="true">/</span><span aria-current="page">Neuer Nachtrag</span></nav>
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="coTitle">Nachtrag: Kellerfenster putzen</h1>
+            <p class="job-sub">Hausverwaltung Beispiel GmbH, Lindenstraße 14, <span id="coState">Entwurf, noch nicht gesendet</span></p>
+          </div>
+          <div class="seg" role="radiogroup" aria-label="Vertragsart">
+            <button type="button" role="radio" aria-checked="true" data-contract="service">Dienstleistung</button>
+            <button type="button" role="radio" aria-checked="false" data-contract="vob">Bauvertrag VOB/B</button>
+          </div>
+        </header>
+        <div class="notice" id="vobNotice" hidden>
+          <svg class="i" aria-hidden="true"><use href="#g-alert"/></svg>
+          <div><strong>VOB/B: Mehrkosten vor Ausführung anzeigen.</strong> Nach § 2 Abs. 6 VOB/B muss die Anzeige beim Auftraggeber sein, bevor die Arbeit beginnt. Frist nach § 650b BGB: 30 Tage ab der Anfrage vom 29.09.2026.</div>
+          <button type="button" class="btn btn-secondary" data-toast="Vorschau der Mehrkostenanzeige geöffnet. Gesendet wird erst mit deinem Klick.">Anzeige senden</button>
+        </div>
+
+        <div class="co-layout">
+          <section class="co-col co-source" aria-labelledby="srcH">
+            <h2 class="label" id="srcH">Anfrage</h2>
+            <p class="src-meta"><svg class="i i-16" aria-hidden="true"><use href="#g-voice"/></svg>Sprachnotiz von Anna K. im Einsatz, heute 08:31</p>
+            <blockquote class="src-quote">„Frau Beispiel fragt, ob wir am Samstag auch die sechs Kellerfenster putzen können, innen und außen.“</blockquote>
+            <div class="rule-block">
+              <h3 class="label-sm">Im Umfang?</h3>
+              <p class="scope-no"><svg class="i gl-stop" aria-hidden="true"><use href="#st-notpossible"/></svg><strong>Kellerfenster: nicht enthalten</strong></p>
+              <p class="muted">Leistungsumfang Version 2, bestätigt am 02.03.2026: „Fenster nur im Treppenhaus, 1. bis 3. OG, innen.“</p>
+            </div>
+            <div class="rule-block">
+              <h3 class="label-sm">Vorschlag <span class="band b-check">Prüfen</span></h3>
+              <p>Position <strong>Fensterreinigung innen und außen</strong> aus deinem Preisbuch. Menge aus dem Text: „sechs“ ergibt 6 Stück.</p>
+              <p>„Samstag“: Der nächste Samstag ist der 03.10.2026, ein Feiertag. Vorgeschlagen ist Sa 10.10.2026.</p>
+              <p class="muted">Prüfe Position, Menge und Termin. Beträge und Zuschläge rechnet JobFold, nicht das Modell.</p>
+            </div>
+          </section>
+
+          <section class="co-col co-lines" aria-labelledby="linesH">
+            <div class="sec-head"><h2 class="label" id="linesH">Positionen</h2><span class="muted">Preisbuch, Stand 01.09.2026</span></div>
+            <div class="table-scroll">
+              <table class="lines">
+                <thead><tr><th scope="col">Leistung</th><th scope="col" class="num">Menge</th><th scope="col" class="num">Einzelpreis</th><th scope="col" class="num">Netto</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Fensterreinigung innen und außen</strong><span class="sub">FR-02, Version 3, Stück, MwSt. 19 %</span></td>
+                    <td class="num">
+                      <div class="stepper" id="stepper">
+                        <button type="button" data-step="-1" aria-label="Menge verringern"><svg class="i" aria-hidden="true"><use href="#g-minus"/></svg></button>
+                        <output id="qty" aria-live="polite">6</output>
+                        <button type="button" data-step="1" aria-label="Menge erhöhen"><svg class="i" aria-hidden="true"><use href="#g-plus"/></svg></button>
+                      </div>
+                      <button type="button" class="link-btn small" id="qtyUnknown" aria-pressed="false">Menge unbekannt</button>
+                    </td>
+                    <td class="num mono">9,00 €</td>
+                    <td class="num mono" id="l1net">54,00 €</td>
+                  </tr>
+                  <tr class="surcharge" id="line2">
+                    <td><strong id="l2name">Zuschlag Samstag +25 %</strong><span class="sub" id="l2why">Regel „Samstag“, berechnet aus dem Termin Sa 10.10.2026</span></td>
+                    <td class="num">–</td>
+                    <td class="num mono" id="l2base">25 % von 54,00 €</td>
+                    <td class="num mono" id="l2net">13,50 €</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-ghost" data-missing="Position hinzufügen"><svg class="i" aria-hidden="true"><use href="#g-plus"/></svg>Position hinzufügen</button>
+            <div class="form-grid">
+              <label class="field"><span>Ausführung</span>
+                <select id="coDate">
+                  <option value="h">Sa 03.10.2026, Feiertag</option>
+                  <option value="s" selected>Sa 10.10.2026</option>
+                  <option value="w">Mo 12.10.2026</option>
+                </select>
+              </label>
+              <label class="field"><span>Gültig</span>
+                <select id="coValid">
+                  <option value="14" selected>14 Tage, bis 13.10.2026</option>
+                  <option value="7">7 Tage, bis 06.10.2026</option>
+                  <option value="30">30 Tage, bis 29.10.2026</option>
+                </select>
+              </label>
+            </div>
+            <label class="field"><span>Text für Frau Beispiel</span>
+              <textarea id="coText" rows="3">Wie heute besprochen reinigen wir am Samstag die sechs Kellerfenster innen und außen. Bitte geben Sie den Nachtrag frei.</textarea>
+            </label>
+          </section>
+
+          <aside class="co-col co-side" aria-labelledby="sumH">
+            <h2 class="label" id="sumH">Summe</h2>
+            <dl class="totals" id="totals">
+              <div><dt>Netto</dt><dd id="tNet">67,50 €</dd></div>
+              <div><dt>MwSt. 19 %</dt><dd id="tVat">12,83 €</dd></div>
+              <div class="t-gross"><dt>Brutto</dt><dd id="tGross">80,33 €</dd></div>
+            </dl>
+            <p class="calc-note" id="calcNote">MwSt. je Position gerundet: 10,26 € und 2,57 €</p>
+            <p class="frame-chip" id="frameChip"><svg class="i i-16" aria-hidden="true"><use href="#g-frame"/></svg><span id="frameChipText">Im Rahmen, noch 332,50 € im Oktober</span></p>
+            <fieldset class="method">
+              <legend class="label-sm">Freigabe</legend>
+              <label class="radio-row" id="rowFrame"><input type="radio" name="coMethod" value="F" checked><span>Im Rahmen ausführen<small id="frameSmall">Freigaberahmen R-2026-004, Klasse A</small></span></label>
+              <label class="radio-row"><input type="radio" name="coMethod" value="A"><span>Freigabelink mit Unterschrift<small>E-Mail-Code an Frau Beispiel, ergibt Klasse A</small></span></label>
+              <label class="radio-row"><input type="radio" name="coMethod" value="C"><span>Antwort per Chat<small>Antwort wird als Quelle gespeichert, Klasse C</small></span></label>
+              <label class="radio-row"><input type="radio" name="coMethod" value="D"><span>Telefonisch oder vor Ort erfassen<small>Wer, wann, wie, Klasse D</small></span></label>
+            </fieldset>
+            <div class="msg-preview" id="msgPreview" hidden>
+              <p class="label-sm is-sentence">Nachricht per E-Mail an f.beispiel@beispiel-verwaltung.example</p>
+              <p id="msgText">Nachtrag von Muster Gebäudeservice: Kellerfenster putzen, 80,33 € brutto. Hier prüfen und freigeben: jobfold.eu/r/…</p>
+            </div>
+            <div class="msg-preview" id="frameNote">
+              <p class="label-sm is-sentence">Was passiert</p>
+              <p>Der Betrag wird im Rahmen gebucht. Frau Beispiel sieht die Buchung auf ihrer Rahmen-Seite und im Monatsnachweis. Es wird keine Nachricht gesendet.</p>
+            </div>
+            <button type="button" class="btn btn-primary btn-block btn-xl" id="sendCo"><span id="sendLabel">Im Rahmen ausführen</span><span class="btn-amt" id="sendAmt">80,33 €</span></button>
+            <p class="send-block" id="sendBlock" hidden><svg class="i i-16" aria-hidden="true"><use href="#st-noev"/></svg>Menge fehlt. Ein Nachtrag mit fehlender Menge kann nicht gesendet werden.</p>
+            <p class="kbd-hint"><kbd>Strg</kbd><kbd>Enter</kbd> sendet wie der Knopf</p>
+            <div class="btn-row">
+              <button type="button" class="btn btn-secondary" data-toast="Als Entwurf gespeichert. Nichts wurde gesendet.">Als Entwurf</button>
+              <button type="button" class="btn btn-secondary" data-toast="Als Kulanz erfasst: Wert 67,50 €. Kein Nachtrag, keine Rechnung.">Kulanz</button>
+              <details class="menu">
+                <summary class="btn btn-secondary">Kein Extra</summary>
+                <div class="menu-list" role="group" aria-label="Grund">
+                  <button type="button" data-toast="Markiert als „im Umfang“. Die Entscheidung zählt für den Trust Meter.">im Umfang</button>
+                  <button type="button" data-toast="Markiert als Reklamation. Reklamationen bekommen nie einen Preis.">Reklamation</button>
+                  <button type="button" data-toast="Markiert als „nur Frage“. Antwort-Entwurf liegt im Posteingang.">nur Frage</button>
+                </div>
+              </details>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.5 PROOF-OF-SERVICE REPORT ============ -->
+    <section class="screen" id="s-report" data-screen="report" aria-labelledby="repTitle">
+      <div class="page">
+        <nav class="crumbs" aria-label="Pfad"><a href="#report">Berichte</a><span aria-hidden="true">/</span><span aria-current="page">Lindenstraße 14</span></nav>
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="repTitle">Leistungsnachweis September 2026</h1>
+            <p class="job-sub">Treppenhausreinigung Lindenstraße 14, 01.09. bis 29.09.2026, Entwurf</p>
+          </div>
+        </header>
+        <div class="rep-bar">
+          <ol class="stepper-row" aria-label="Schritte">
+            <li><button type="button" class="step" data-step="1" aria-current="step"><span class="step-n">1</span>Prüfen</button></li>
+            <li><button type="button" class="step" data-step="2"><span class="step-n">2</span>Vorschau</button></li>
+            <li><button type="button" class="step" data-step="3"><span class="step-n">3</span>Senden</button></li>
+          </ol>
+          <ul class="counts" aria-label="Inhalt des Berichts">
+            <li><strong>5</strong>Einsätze</li><li><strong>40</strong>Punkte</li><li><strong>18</strong>Fotos</li><li><strong>1</strong>Mangel</li><li><strong>2</strong>Extras</li>
+          </ul>
+        </div>
+        <div class="rep-layout" id="repLayout" data-step="1">
+          <aside class="rep-sections" aria-labelledby="secH">
+            <h2 class="label" id="secH">Inhalt</h2>
+            <ul class="sec-list">
+              <li><span class="sec-name">Einsätze<small>5 Einsätze, Zeiten per Tippen</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="visits" aria-label="Einsätze im Bericht"></button></li>
+              <li class="is-warn"><span class="sec-name">Checklisten<small><span class="unknown">1 Kein Nachweis</span> 39 von 40 belegt</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="checks" aria-label="Checklisten im Bericht"></button></li>
+              <li><span class="sec-name">Fotos<small>18 ausgewählt, 3 prüfen</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="photos" aria-label="Fotos im Bericht"></button></li>
+              <li><span class="sec-name">Mängel<small>1 gemeldet</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="defects" aria-label="Mängel im Bericht"></button></li>
+              <li><span class="sec-name">Zusätzliche Leistungen<small>2 freigegeben, mit Klasse</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="extras" aria-label="Zusätzliche Leistungen im Bericht"></button></li>
+              <li><span class="sec-name">Kulanz<small>1 Leistung ohne Berechnung</small></span><button type="button" class="switch" role="switch" aria-checked="true" data-sec="goodwill" aria-label="Kulanz im Bericht"></button></li>
+              <li><span class="sec-name">Notizen<small>0 von 4 ausgewählt</small></span><button type="button" class="switch" role="switch" aria-checked="false" data-sec="notes" aria-label="Notizen im Bericht"></button></li>
+              <li><span class="sec-name">Zusammenfassung<small>Aus den Zahlen des Berichts gebaut, von dir bearbeitbar</small></span><button type="button" class="switch" role="switch" aria-checked="false" data-sec="summary" aria-label="Zusammenfassung im Bericht"></button></li>
+            </ul>
+          </aside>
+
+          <div class="rep-preview" aria-label="Vorschau, Seite 1 von 2">
+            <article class="a4">
+              <header class="a4-head">
+                <span class="a4-logo" aria-hidden="true">MG</span>
+                <div><p class="a4-co">Muster Gebäudeservice GmbH</p><p class="a4-small">Musterweg 5, Musterstadt</p></div>
+                <div class="a4-title"><p>Leistungsnachweis</p><p class="a4-small">September 2026</p></div>
+              </header>
+              <table class="a4-meta">
+                <tr><th scope="row">Objekt</th><td>Lindenstraße 14, Musterstadt</td></tr>
+                <tr><th scope="row">Auftraggeber</th><td>Hausverwaltung Beispiel GmbH</td></tr>
+                <tr><th scope="row">Leistung</th><td>Treppenhausreinigung, wöchentlich dienstags, Leistungsumfang Version 2</td></tr>
+                <tr><th scope="row">Zeitraum</th><td>01.09. bis 29.09.2026</td></tr>
+              </table>
+              <p class="a4-summary" data-part="summary" hidden>Im September fanden alle fünf Einsätze wie vereinbart statt. Am 15.09. fehlt der Fotonachweis für den Kellergang. Zwei zusätzliche Leistungen wurden freigegeben und ausgeführt.</p>
+              <h3 class="a4-h" data-part="visits">Einsätze</h3>
+              <table class="a4-table" data-part="visits">
+                <thead><tr><th scope="col">Datum</th><th scope="col">Zeit</th><th scope="col">Team</th><th scope="col" class="num">Punkte</th><th scope="col" class="num">Fotos</th></tr></thead>
+                <tbody>
+                  <tr data-rsrc="v01"><td>Di 01.09.</td><td>08:12–08:40</td><td>Anna K.</td><td class="num">8 von 8</td><td class="num">3</td></tr>
+                  <tr data-rsrc="v08"><td>Di 08.09.</td><td>08:15–08:44</td><td>Anna K.</td><td class="num">8 von 8</td><td class="num">4</td></tr>
+                  <tr data-rsrc="v15" class="a4-noev is-picked"><td>Di 15.09.</td><td>08:20–08:47</td><td>Jana P.</td><td class="num">7 von 8</td><td class="num">3</td></tr>
+                  <tr class="a4-noev-note" data-part="checks"><td colspan="5">Kein Nachweis: Kellergang fegen, Foto fehlt</td></tr>
+                  <tr data-rsrc="v22"><td>Di 22.09.</td><td>08:10–08:39</td><td>Anna K.</td><td class="num">8 von 8</td><td class="num">2</td></tr>
+                  <tr data-rsrc="v29"><td>Di 29.09.</td><td>08:14–08:41</td><td>Anna K.</td><td class="num">8 von 8</td><td class="num">6</td></tr>
+                </tbody>
+              </table>
+              <h3 class="a4-h" data-part="photos">Fotos</h3>
+              <div class="a4-photos" data-part="photos">
+                <figure><span class="ph ph-1"></span><figcaption>Eingang vorher, 29.09.</figcaption></figure>
+                <figure><span class="ph ph-2"></span><figcaption>Eingang nachher, 29.09.</figcaption></figure>
+                <figure><span class="ph ph-3"></span><figcaption>Kellergang vorher, 29.09.</figcaption></figure>
+                <figure><span class="ph ph-4"></span><figcaption>Kellergang nachher, 29.09.</figcaption></figure>
+              </div>
+              <h3 class="a4-h" data-part="defects">Mängel</h3>
+              <p class="a4-p" data-part="defects">Handlauf 2. OG lose. Gemeldet am 22.09. an die Hausverwaltung, Folgeauftrag offen.</p>
+              <h3 class="a4-h" data-part="extras">Zusätzliche Leistungen</h3>
+              <table class="a4-table" data-part="extras">
+                <tbody>
+                  <tr data-rsrc="x24"><td>NT-2026-0024, 08.09.</td><td>Sperrmüll im Hof abtransportieren</td><td>Klasse A</td><td class="num">160,00 €</td></tr>
+                  <tr data-rsrc="x27"><td>NT-2026-0027, 17.09.</td><td>Sonderreinigung nach Umzug, 3. OG</td><td>Klasse C</td><td class="num">85,50 €</td></tr>
+                </tbody>
+              </table>
+              <p class="a4-p" data-part="goodwill">Ohne Berechnung: Briefkastenschild ersetzt, 15.09.</p>
+              <footer class="a4-foot"><span>Erstellt mit JobFold</span><span class="a4-seal"><svg class="i i-16" aria-hidden="true"><use href="#g-seal"/></svg>Prüfsiegel folgt beim Einfrieren</span><span>Seite 1 von 2</span></footer>
+            </article>
+          </div>
+
+          <aside class="rep-side" aria-labelledby="repSideH">
+            <div class="rep-source">
+              <h2 class="label" id="repSideH">Quelle</h2>
+              <p class="dw-kind" id="rsKind">Einsatz Di 15.09., Jana P.</p>
+              <div class="unknown-block" id="rsBody">
+                <p><strong>Kellergang fegen</strong>: als erledigt getippt, Vorher-Nachher-Foto fehlt. Grund: nicht angegeben.</p>
+              </div>
+              <p class="muted" id="rsNote">Im Bericht steht „Kein Nachweis“. Ein Nachweis lässt sich nicht nachträglich erfinden; du kannst nur einen Grund ergänzen.</p>
+              <button type="button" class="btn btn-secondary btn-block" id="rsAction" data-toast="Grund ergänzt: Keller verschlossen. Der Bericht zeigt Grund und „Kein Nachweis“.">Grund ergänzen</button>
+            </div>
+            <form class="rep-send" id="repSend" novalidate>
+              <h2 class="label">Senden</h2>
+              <label class="field"><span>An</span><input value="Frau Beispiel, Hausverwaltung Beispiel GmbH" readonly></label>
+              <div class="field"><span id="chanL">Weg</span>
+                <div class="seg seg-full" role="radiogroup" aria-labelledby="chanL">
+                  <button type="button" role="radio" aria-checked="true">E-Mail</button>
+                  <button type="button" role="radio" aria-checked="false">Link</button>
+                  <button type="button" role="radio" aria-checked="false">WhatsApp</button>
+                </div>
+              </div>
+              <label class="field"><span>Anhang</span><select><option>PDF/A, 2 Seiten, 1,8 MB</option><option>Link zur Empfängerseite</option></select></label>
+              <label class="field"><span>Nachricht</span><textarea rows="4">Guten Tag Frau Beispiel, anbei der Leistungsnachweis für die Lindenstraße 14, September 2026. Viele Grüße, Tim Berger</textarea></label>
+              <button type="submit" class="btn btn-primary btn-block btn-xl">Bericht senden</button>
+              <p class="muted">Beim Senden wird Version 1 eingefroren und bekommt ihr Prüfsiegel. Eine Korrektur erzeugt Version 2 mit dem Vermerk „ersetzt Version 1“ und ein neues Siegel.</p>
+            </form>
+          </aside>
+        </div>
+        <div class="rep-nav">
+          <button type="button" class="btn btn-secondary" id="repBack" hidden>Zurück</button>
+          <button type="button" class="btn btn-primary" id="repNext">Weiter zur Vorschau</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.6 MONEY FINDER ============ -->
+    <section class="screen" id="s-finder" data-screen="finder" aria-labelledby="mfTitle">
+      <div class="page">
+        <nav class="crumbs" aria-label="Pfad"><a href="#finder">Geld</a><span aria-hidden="true">/</span><span aria-current="page">Geldfinder</span></nav>
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="mfTitle">Geldfinder</h1>
+            <p class="job-sub">Findet Zusatzwünsche in Chat-Exporten. Du entscheidest jeden Fund; nichts wird gesendet.</p>
+          </div>
+        </header>
+        <div class="finder-top">
+          <div class="drop">
+            <svg class="i i-24" aria-hidden="true"><use href="#g-upload"/></svg>
+            <div><p><strong>WhatsApp-Export hierher ziehen oder auswählen</strong></p><p class="muted">.txt oder .zip. Telefonnummern, E-Mail-Adressen und Namen werden vor jeder Cloud-Prüfung entfernt.</p></div>
+            <button type="button" class="btn btn-secondary" data-missing="Datei auswählen">Datei auswählen</button>
+          </div>
+          <div class="file-row">
+            <svg class="i i-24" aria-hidden="true"><use href="#g-file"/></svg>
+            <div><p><strong>WhatsApp-Chat mit Hausverwaltung Beispiel.zip</strong></p><p class="muted">600 Nachrichten, 02.06. bis 27.09.2026, 1,2 MB, Original gespeichert</p></div>
+          </div>
+        </div>
+        <div class="stream" aria-live="polite">
+          <progress id="mfProgress" max="600" value="600">600 von 600</progress>
+          <p class="stream-text"><strong><span id="mfRead">600</span> von 600</strong> Nachrichten gelesen, <strong><span id="mfFound">9</span></strong> Zusatzwünsche, 2 doppelte zusammengefasst</p>
+        </div>
+        <div class="sec-head">
+          <h2 class="label">Funde</h2>
+          <p class="kbd-hint"><kbd>J</kbd><kbd>K</kbd> wechseln, <kbd>A</kbd> Nachtrag, <kbd>G</kbd> Kulanz, <kbd>D</kbd> kein Extra</p>
+        </div>
+        <div class="table-wrap">
+          <table class="data findings" id="findings">
+            <thead><tr><th scope="col">Datum</th><th scope="col">Von</th><th scope="col">Nachricht</th><th scope="col">Auftrag</th><th scope="col" class="num">Schätzung netto</th><th scope="col">Entscheidung</th></tr></thead>
+            <tbody>
+              <tr data-cents="4500" tabindex="-1"><td class="mono">14.06.</td><td>Frau Beispiel</td><td class="quote">„Könnten Sie beim nächsten Mal auch das Glasvordach am Eingang reinigen?“</td><td><span class="job-chip">Lindenstraße 14</span></td><td class="num mono">45,00 €</td><td class="acts"></td></tr>
+              <tr data-cents="8500" tabindex="-1"><td class="mono">02.07.</td><td>Frau Beispiel</td><td class="quote">„Im Hof steht Sperrmüll, können Sie den mitnehmen?“<span class="same">+1 ähnliche Nachricht zusammengefasst</span></td><td><span class="job-chip">Hofweg 3</span></td><td class="num mono">85,00 €</td><td class="acts"></td></tr>
+              <tr data-cents="7200" tabindex="-1"><td class="mono">19.07.</td><td>Herr Muster</td><td class="quote">„Bitte nach dem Umzug im 3. OG das Treppenhaus gründlich machen.“</td><td><span class="job-chip">Parkstraße 8</span></td><td class="num mono">72,00 €</td><td class="acts"></td></tr>
+              <tr data-cents="5700" tabindex="-1"><td class="mono">05.08.</td><td>Frau Beispiel</td><td class="quote">„Das Laub im Innenhof müsste weg, geht das diese Woche?“</td><td><span class="job-chip">Hofweg 3</span></td><td class="num mono">57,00 €<small>1,5 Std. × 38,00 €</small></td><td class="acts"></td></tr>
+              <tr data-cents="6750" tabindex="-1"><td class="mono">21.08.</td><td>Frau Beispiel</td><td class="quote">„Können Sie am Samstag die 6 Fenster im 2. OG mitmachen?“<span class="same">+1 ähnliche Nachricht zusammengefasst</span></td><td><span class="job-chip">Parkstraße 8</span></td><td class="num mono">67,50 €<small>mit Samstag +25 %</small></td><td class="acts"></td></tr>
+              <tr data-cents="1800" tabindex="-1"><td class="mono">28.08.</td><td>Herr Muster</td><td class="quote">„Die Briefkastenanlage ist total verklebt, bitte reinigen.“</td><td><span class="job-chip">Lindenstraße 14</span></td><td class="num mono">18,00 €</td><td class="acts"></td></tr>
+              <tr data-cents="5400" tabindex="-1"><td class="mono">03.09.</td><td>Frau Beispiel</td><td class="quote">„Bitte auch die Treppenhausfenster außen im Erdgeschoss putzen, 6 Stück.“</td><td><span class="job-chip">Birkenweg 21</span></td><td class="num mono">54,00 €</td><td class="acts"></td></tr>
+              <tr data-cents="1350" tabindex="-1"><td class="mono">10.09.</td><td>Herr Muster</td><td class="quote">„Die zwei Mülltonnen stinken, können Sie die auswaschen?“</td><td><span class="job-chip">Hofweg 3</span></td><td class="num mono">13,50 €<small>2 × 6,75 €</small></td><td class="acts"></td></tr>
+              <tr data-cents="" tabindex="-1"><td class="mono">22.09.</td><td>Frau Beispiel</td><td class="quote">„An der Garagenwand sind Graffiti, können Sie die entfernen?“</td><td><span class="job-chip">Am Anger 2</span></td><td class="num"><span class="unknown">Menge fehlt</span><small>Fläche nicht genannt</small></td><td class="acts"></td></tr>
+            </tbody>
+            <tfoot>
+              <tr><th scope="row" colspan="4">Gefunden: 9 Zusatzwünsche, 8 mit Menge</th><td class="num mono"><strong>mindestens 412,00 €</strong></td><td id="mfDecided">0 von 9 entschieden</td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="basis">Preisbasis: dein Preisbuch, Stand 01.09.2026, Zuschläge nach deinen Regeln. Eine Schätzung ist kein Nachtrag; jeder Nachtrag wird vor dem Senden geprüft.</p>
+      </div>
+    </section>
+
+    <!-- ============ 7.7 TODAY AND DISPATCH BOARD ============ -->
+    <section class="screen" id="s-today" data-screen="today" aria-labelledby="tdTitle">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="tdTitle">Heute, Di 29.09.2026</h1>
+            <p class="job-sub">14 Einsätze in 4 Teams, Stand 11:30</p>
+          </div>
+          <div class="head-actions">
+            <div class="seg" role="radiogroup" aria-label="Ansicht">
+              <button type="button" role="radio" aria-checked="true">Tag</button>
+              <button type="button" role="radio" aria-checked="false" data-missing="Wochenansicht">Woche</button>
+            </div>
+            <button type="button" class="btn btn-secondary btn-icon" aria-label="Vorheriger Tag" data-missing="Vorheriger Tag"><svg class="i" aria-hidden="true"><use href="#g-prev"/></svg></button>
+            <button type="button" class="btn btn-secondary btn-icon" aria-label="Nächster Tag" data-missing="Nächster Tag"><svg class="i" aria-hidden="true"><use href="#g-next"/></svg></button>
+            <button type="button" class="btn btn-primary" data-missing="Einsatz planen"><svg class="i" aria-hidden="true"><use href="#g-plus"/></svg>Einsatz planen</button>
+          </div>
+        </header>
+        <div class="today-layout">
+          <aside class="today-counts" aria-label="Überblick">
+            <dl class="count-list">
+              <div><dt>Einsätze</dt><dd>14</dd><p>7 erledigt, 2 laufen, 5 geplant</p></div>
+              <div><dt>Offene Zusatzwünsche</dt><dd>3</dd><p><a href="#finder">Im Geld-Bereich prüfen</a></p></div>
+              <div><dt>Reklamationen</dt><dd>1</dd><p>Parkstraße 8, Müllplatz, seit gestern</p></div>
+              <div class="is-warn"><dt>Synchronisierung</dt><dd>1 Gerät</dd><p>Mehmet Y.: 3 Aufnahmen noch auf dem Handy, zuletzt gestern 16:40</p></div>
+            </dl>
+            <div class="legend" aria-label="Legende">
+              <p><span class="lg lg-done" aria-hidden="true"></span>erledigt</p>
+              <p><span class="lg lg-run" aria-hidden="true"></span>läuft</p>
+              <p><span class="lg lg-plan" aria-hidden="true"></span>geplant</p>
+              <p><span class="lg lg-conflict" aria-hidden="true"></span>doppelt belegt</p>
+            </div>
+            <p class="kbd-hint">Einsatz wählen, dann <kbd>↑</kbd><kbd>↓</kbd> verschieben</p>
+          </aside>
+          <div class="board-wrap">
+            <div class="board" id="board">
+              <div class="bh bh-time" aria-hidden="true"></div>
+              <div class="slot r-2"><span>07:00</span></div><div class="slot half r-3"></div>
+              <div class="slot r-4"><span>08:00</span></div><div class="slot half r-5"></div>
+              <div class="slot r-6"><span>09:00</span></div><div class="slot half r-7"></div>
+              <div class="slot r-8"><span>10:00</span></div><div class="slot half r-9"></div>
+              <div class="slot r-10"><span>11:00</span></div><div class="slot half r-11"></div>
+              <div class="slot r-12"><span>12:00</span></div><div class="slot half r-13"></div>
+              <div class="slot r-14"><span>13:00</span></div><div class="slot half r-15"></div>
+              <div class="slot r-16"><span>14:00</span></div><div class="slot half r-17"></div>
+              <div class="slot r-18"><span>15:00</span></div><div class="slot half r-19"></div>
+              <div class="vline col-1" aria-hidden="true"></div><div class="vline col-2" aria-hidden="true"></div><div class="vline col-3" aria-hidden="true"></div><div class="vline col-4" aria-hidden="true"></div>
+              <div class="now-line r-11" aria-hidden="true"><span>11:30</span></div>
+
+              <div class="team-col" role="group" aria-labelledby="tmN">
+                <div class="bh col-1" id="tmN">Team Nord<span>Anna K., Mehmet Y.</span></div>
+                <button type="button" class="visit v-done col-1 r-2 sp-2" data-start="2" data-len="2" data-person="Anna K."><span class="vt">07:00–07:45</span><strong>Gartenweg 9</strong><span>Büroreinigung, 6 von 6</span></button>
+                <button type="button" class="visit v-done col-1 r-4 sp-2" data-start="4" data-len="2" data-person="Anna K."><span class="vt">08:14–08:41</span><strong>Lindenstraße 14</strong><span>8 von 8, 1 Extra</span></button>
+                <button type="button" class="visit v-done col-1 r-7 sp-2" data-start="7" data-len="2" data-person="Anna K."><span class="vt">09:30–10:30</span><strong>Rosenstraße 4</strong><span>Treppenhaus, 2 Fotos offen</span></button>
+                <button type="button" class="visit v-plan col-1 r-14 sp-3" data-start="14" data-len="3" data-person="Anna K."><span class="vt">13:00–14:30</span><strong>Hofweg 3</strong><span>Unterhaltsreinigung</span></button>
+              </div>
+              <div class="team-col" role="group" aria-labelledby="tmS">
+                <div class="bh col-2" id="tmS">Team Süd<span>Jana P., Lukas B.</span></div>
+                <button type="button" class="visit v-done col-2 r-2 sp-3" data-start="2" data-len="3" data-person="Jana P."><span class="vt">07:00–08:30</span><strong>Lessingplatz 1</strong><span>Büroreinigung</span></button>
+                <button type="button" class="visit v-done col-2 r-6 sp-2" data-start="6" data-len="2" data-person="Jana P."><span class="vt">09:00–10:00</span><strong>Mühlenweg 12</strong><span>Treppenhaus</span></button>
+                <button type="button" class="visit v-run col-2 r-9 sp-3" data-start="9" data-len="3" data-person="Lukas B."><span class="vt">10:30–12:00</span><strong>Ahornweg 7</strong><span>Grundreinigung, läuft</span></button>
+                <button type="button" class="visit v-plan col-2 r-16 sp-2" data-start="16" data-len="2" data-person="Jana P."><span class="vt">14:00–15:00</span><strong>Lessingplatz 1</strong><span>Glasflächen innen</span></button>
+              </div>
+              <div class="team-col" role="group" aria-labelledby="tmH">
+                <div class="bh col-3" id="tmH">Hausmeister<span>Olga S., Emre K.</span></div>
+                <button type="button" class="visit v-done col-3 r-3 sp-3" data-start="3" data-len="3" data-person="Olga S."><span class="vt">07:30–09:00</span><strong>Parkstraße 8</strong><span>Hausmeisterdienst</span></button>
+                <button type="button" class="visit v-run col-3 r-9 sp-4" data-start="9" data-len="4" data-person="Emre K."><span class="vt">10:30–12:30</span><strong>Schulstraße 5</strong><span>Grünpflege, läuft</span></button>
+                <button type="button" class="visit v-plan col-3 r-15 sp-3" data-start="15" data-len="3" data-person="Olga S."><span class="vt">13:30–15:00</span><strong>Am Anger 2</strong><span>Winterdienst vorbereiten</span></button>
+                <button type="button" class="visit v-plan col-3 r-16 sp-1" data-start="16" data-len="1" data-person="Olga S."><span class="vt">14:00–14:30</span><strong>Parkstraße 8</strong><span>Nachkontrolle Müllplatz</span></button>
+              </div>
+              <div class="team-col" role="group" aria-labelledby="tmG">
+                <div class="bh col-4" id="tmG">Glas<span>Piotr W.</span></div>
+                <button type="button" class="visit v-done col-4 r-4 sp-6" data-start="4" data-len="6" data-person="Piotr W."><span class="vt">08:00–11:00</span><strong>Birkenweg 21</strong><span>Glasreinigung, 38 Fenster</span></button>
+                <button type="button" class="visit v-plan col-4 r-12 sp-4" data-start="12" data-len="4" data-person="Piotr W."><span class="vt">12:00–14:00</span><strong>Kastanienallee 30</strong><span>Glasreinigung</span></button>
+              </div>
+            </div>
+            <div class="move-bar" id="moveBar" hidden>
+              <span id="moveWhat"></span>
+              <button type="button" class="btn btn-secondary" id="moveUp">30 Min. früher</button>
+              <button type="button" class="btn btn-secondary" id="moveDown">30 Min. später</button>
+            </div>
+            <p class="board-status" id="boardStatus" aria-live="polite">Doppelt belegt: Olga S., 14:00–14:30.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.17 FREIGABERAHMEN ============ -->
+    <section class="screen" id="s-frame" data-screen="frame" aria-labelledby="frTitle">
+      <div class="page">
+        <nav class="crumbs" aria-label="Pfad"><a href="#frame">Kunden und Objekte</a><span aria-hidden="true">/</span><span>Hausverwaltung Beispiel GmbH</span><span aria-hidden="true">/</span><span aria-current="page">Lindenstraße 14</span></nav>
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="frTitle">Freigaberahmen Lindenstraße 14</h1>
+            <p class="job-sub">Frau Beispiel erlaubt Nachträge bis zu einem Betrag im Monat. JobFold prüft jede Buchung in Euro und Cent.</p>
+            <div class="flags"><span class="state-chip c-ok" id="frState"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>aktiv bis 30.09.2027, Klasse A</span></div>
+          </div>
+          <div class="seg" role="radiogroup" aria-label="Zustand des Rahmens zeigen (nur im Prototyp)" id="frMode">
+            <button type="button" role="radio" aria-checked="false" data-fr="draft">Entwurf</button>
+            <button type="button" role="radio" aria-checked="true" data-fr="active">Aktiv</button>
+            <button type="button" role="radio" aria-checked="false" data-fr="spent">Ausgeschöpft</button>
+          </div>
+        </header>
+        <div class="notice" id="frNote" hidden>
+          <svg class="i" aria-hidden="true"><use href="#g-alert"/></svg>
+          <div id="frNoteText"></div>
+        </div>
+        <div class="fr-layout">
+          <section class="panel" aria-labelledby="frLimH">
+            <h2 class="label" id="frLimH">Grenzen</h2>
+            <div class="form-grid">
+              <label class="field"><span>Pro Monat, netto</span><input id="frMonth" inputmode="decimal" value="400,00 €"></label>
+              <label class="field"><span>Pro Nachtrag höchstens, netto</span><input id="frMax" inputmode="decimal" value="150,00 €"></label>
+              <label class="field"><span>Gültig bis</span><select><option>30.09.2027</option><option>31.03.2027</option></select></label>
+              <label class="field"><span>Gilt für</span><select><option>Nur Lindenstraße 14</option><option>Alle Objekte dieses Kunden</option></select></label>
+            </div>
+            <p class="field-error" id="frErr" hidden>Bitte einen Betrag wie 400,00 € eingeben.</p>
+            <fieldset class="field">
+              <legend>Leistungen aus deinem Preisbuch</legend>
+              <div class="cat-list">
+                <label class="check-row"><input type="checkbox" checked><span>Fensterreinigung</span></label>
+                <label class="check-row"><input type="checkbox" checked><span>Sonderreinigung</span></label>
+                <label class="check-row"><input type="checkbox" checked><span>Sperrmüll</span></label>
+                <label class="check-row"><input type="checkbox" checked><span>Laub und Grünschnitt</span></label>
+                <label class="check-row"><input type="checkbox"><span>Graffiti entfernen</span></label>
+              </div>
+            </fieldset>
+            <div class="msg-preview">
+              <p class="label-sm is-sentence">So liest es der Kunde</p>
+              <p id="frSentence">Ich erlaube Nachträge bis 150,00 € einzeln und 400,00 € im Monat für diese Leistungen.</p>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-primary" id="frSend">Zur Freigabe senden</button>
+              <button type="button" class="btn btn-secondary" data-toast="Neue Version 2 als Entwurf angelegt. Frau Beispiel muss sie neu unterschreiben; bis dahin gilt Version 1.">Neue Version</button>
+            </div>
+          </section>
+          <section class="panel" aria-labelledby="frUseH">
+            <h2 class="label" id="frUseH">Verbrauch im Oktober 2026</h2>
+            <p class="fr-use" id="frUse">0,00 € von 400,00 €, noch 400,00 €</p>
+            <meter class="fr-meter" id="frMeter" min="0" max="400" value="0">0 von 400 €</meter>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th scope="col">Nachtrag</th><th scope="col">Leistung</th><th scope="col" class="num">Netto</th><th scope="col">Nachweis</th></tr></thead>
+                <tbody id="frRows"></tbody>
+              </table>
+            </div>
+            <p class="note">Der Monat richtet sich nach dem Ausführungstermin (Zeitzone Europe/Berlin). Nicht genutzter Betrag verfällt am Monatsende. Frau Beispiel kann den Rahmen jederzeit über ihren Link widerrufen; frühere Buchungen bleiben.</p>
+          </section>
+        </div>
+        <section class="panel" aria-labelledby="frBundleH">
+          <h2 class="label" id="frBundleH">Offene Nachträge dieses Kunden</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th scope="col">Nachtrag</th><th scope="col">Objekt und Leistung</th><th scope="col" class="num">Netto</th><th scope="col">Gültig bis</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">NT-2026-0031</td><td>Lindenstraße 14: Kellerfenster innen und außen putzen, 6 Stück</td><td class="num mono">67,50 €</td><td>13.10.2026</td></tr>
+                <tr><td class="mono">NT-2026-0030</td><td>Hofweg 3: Glasvordach am Eingang reinigen</td><td class="num mono">45,00 €</td><td>02.10.2026</td></tr>
+                <tr><td class="mono">NT-2026-0028</td><td>Parkstraße 8: Tiefgarage grundreinigen, 60 m²</td><td class="num mono">180,00 €</td><td>09.10.2026</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row" colspan="2">3 Nachträge</th><td class="num mono">292,50 €</td><td></td></tr></tfoot>
+            </table>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="bundleSend">Freigabe-Übersicht senden</button>
+            <a class="btn btn-secondary" href="#bundle">Kundenansicht ansehen</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ 7.20 GELDBRIEF ============ -->
+    <section class="screen" id="s-letter" data-screen="letter" aria-labelledby="ltTitle">
+      <div class="page">
+        <nav class="crumbs" aria-label="Pfad"><a href="#letter">Geld</a><span aria-hidden="true">/</span><span aria-current="page">Geldbrief</span></nav>
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="ltTitle">Geldbrief, Woche 40</h1>
+            <p class="job-sub">Montag 28.09.2026, 07:00. Geht nur an Inhaber und Admins, die ihn abonniert haben. An Kunden geht nichts ohne deinen Klick.</p>
+          </div>
+          <div class="head-actions">
+            <div class="seg" role="radiogroup" aria-label="Woche zeigen (nur im Prototyp)" id="ltMode">
+              <button type="button" role="radio" aria-checked="true" data-lt="money">Mit Geld</button>
+              <button type="button" role="radio" aria-checked="false" data-lt="quiet">Ruhige Woche</button>
+            </div>
+            <a class="btn btn-secondary" href="#finder">Zum Geldfinder</a>
+          </div>
+        </header>
+        <div class="lt-layout">
+          <div>
+            <section class="panel" id="ltWeek" aria-labelledby="ltFigH">
+              <h2 class="label" id="ltFigH">Letzte Woche</h2>
+              <dl class="lt-figs">
+                <div><dt>Freigegeben</dt><dd class="mono">147,50 €</dd><p>Klasse A 67,50 €, Klasse C 80,00 €</p></div>
+                <div><dt>Warten auf Antwort</dt><dd class="mono">292,50 €</dd><p>3 Nachträge</p></div>
+                <div class="is-warn"><dt>Läuft diese Woche ab</dt><dd>1</dd><p>am Freitag 02.10.</p></div>
+                <div><dt>Im Geldfinder</dt><dd>9</dd><p>mindestens 412,00 € netto</p></div>
+              </dl>
+              <h2 class="label lt-sub" id="ltWaitH">Warten auf Antwort</h2>
+              <ul class="lt-list" aria-labelledby="ltWaitH">
+                <li>
+                  <div><strong>NT-2026-0030 Glasvordach reinigen</strong><span>Hofweg 3, Frau Beispiel, <span class="mono">45,00 €</span> netto, läuft am Freitag 02.10. ab</span></div>
+                  <button type="button" class="btn btn-secondary remind" data-no="NT-2026-0030" data-what="Glasvordach am Eingang reinigen" data-amt="45,00 €" data-until="02.10.2026">Erinnerung senden</button>
+                </li>
+                <li>
+                  <div><strong>NT-2026-0031 Kellerfenster putzen</strong><span>Lindenstraße 14, Frau Beispiel, <span class="mono">67,50 €</span> netto, gültig bis 13.10.</span></div>
+                  <button type="button" class="btn btn-secondary remind" data-no="NT-2026-0031" data-what="Kellerfenster innen und außen putzen" data-amt="67,50 €" data-until="13.10.2026">Erinnerung senden</button>
+                </li>
+                <li>
+                  <div><strong>NT-2026-0028 Tiefgarage grundreinigen</strong><span>Parkstraße 8, Frau Beispiel, <span class="mono">180,00 €</span> netto, gültig bis 09.10.</span></div>
+                  <button type="button" class="btn btn-secondary remind" data-no="NT-2026-0028" data-what="Tiefgarage grundreinigen, 60 m²" data-amt="180,00 €" data-until="09.10.2026">Erinnerung senden</button>
+                </li>
+              </ul>
+              <p class="note">Eine Erinnerung ist eine Nachricht an den Kunden: Du siehst die Vorschau und klickst. Höchstens eine Erinnerung je Nachtrag und 5 Tage.</p>
+            </section>
+            <section class="panel" id="ltQuiet" aria-labelledby="ltQuietH" hidden>
+              <h2 class="label" id="ltQuietH">Letzte Woche</h2>
+              <p class="lt-quiet">Nichts wartet und nichts läuft ab. Im Geldfinder liegen noch 9 Funde.</p>
+              <a class="btn btn-primary" href="#finder">Funde ansehen</a>
+            </section>
+          </div>
+          <aside class="panel mail-preview" aria-labelledby="ltMailH">
+            <h2 class="label" id="ltMailH">So sieht die E-Mail aus</h2>
+            <p class="mail-meta">An sabine.muster@muster-gebaeudeservice.example</p>
+            <p class="mail-subject">Geldbrief KW 40: 147,50 € freigegeben, 292,50 € warten</p>
+            <p>Guten Morgen Frau Muster,</p>
+            <p>letzte Woche wurden 147,50 € netto freigegeben (Klasse A 67,50 €, Klasse C 80,00 €). Drei Nachträge über 292,50 € warten auf Antwort, einer läuft am Freitag ab. Im Geldfinder liegen noch 9 Funde, mindestens 412,00 € netto.</p>
+            <p>Öffnen Sie den Geldbrief in JobFold, um Erinnerungen zu prüfen und zu senden.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.8 REQUEST INBOX ============ -->
+    <section class="screen" id="s-inbox" data-screen="inbox" aria-labelledby="inTitle">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="inTitle">Anfragen</h1>
+            <p class="job-sub">Alles, was Kunden schreiben, an einem Ort. Ein Preis entsteht erst nach deiner Prüfung, gesendet wird nur mit deinem Klick.</p>
+          </div>
+          <div class="filter-row in-filter" role="group" aria-label="Kanal filtern" id="inFilter">
+            <button type="button" class="fchip" aria-pressed="true" data-ch="all">Alle</button>
+            <button type="button" class="fchip" aria-pressed="false" data-ch="WhatsApp">WhatsApp</button>
+            <button type="button" class="fchip" aria-pressed="false" data-ch="E-Mail">E-Mail</button>
+            <button type="button" class="fchip" aria-pressed="false" data-ch="Aushang">Aushang</button>
+            <button type="button" class="fchip" aria-pressed="false" data-ch="Portal">Portal</button>
+          </div>
+        </header>
+        <div class="in-layout">
+          <div class="in-col">
+            <ul class="in-list" id="inList" aria-label="Anfragen"></ul>
+            <p class="note" id="inEmpty" hidden>Keine Anfragen in diesem Kanal.</p>
+          </div>
+          <article class="panel in-thread" id="inThread" aria-live="polite"></article>
+          <aside class="panel in-side" id="inSide" aria-label="Zuordnung und Aktionen"></aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ F-09 PRICE BOOK ============ -->
+    <section class="screen" id="s-prices" data-screen="prices" aria-labelledby="prTitle">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="prTitle">Preisbuch</h1>
+            <p class="job-sub">Deine Positionen und Regeln, Stand 01.09.2026. Eine Änderung gilt für neue Nachträge; gesendete Nachträge bleiben bei ihrer Version.</p>
+          </div>
+          <div class="head-actions">
+            <span class="state-chip c-open" id="prDraft" hidden><svg class="i" aria-hidden="true"><use href="#st-wait"/></svg>Entwurf wartet auf Speichern</span>
+            <button type="button" class="btn btn-primary" id="prDraftSave" hidden>Entwurf speichern</button>
+            <button type="button" class="btn btn-secondary" id="prImportOpen">Preisliste importieren</button>
+          </div>
+        </header>
+        <div class="pr-layout">
+          <section class="panel" aria-labelledby="prItemsH">
+            <h2 class="label" id="prItemsH">Positionen</h2>
+            <div class="table-wrap">
+              <table class="data" id="prTable">
+                <thead><tr><th scope="col">Code</th><th scope="col">Leistung</th><th scope="col">Einheit</th><th scope="col" class="num">Netto</th><th scope="col" class="num">MwSt.</th><th scope="col">Version</th><th scope="col"><span class="visually-hidden">Aktion</span></th></tr></thead>
+                <tbody id="prRows">
+                  <tr data-code="FR-02" data-name="Fensterreinigung innen und außen" data-unit="Stück" data-cents="900" data-vat="19" data-ver="3"><td class="mono">FR-02</td><td>Fensterreinigung innen und außen</td><td>Stück</td><td class="num mono">9,00 €</td><td class="num mono">19 %</td><td class="mono">v3</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> FR-02</span></button></td></tr>
+                  <tr data-code="FR-01" data-name="Fensterreinigung nur außen" data-unit="Stück" data-cents="650" data-vat="19" data-ver="2"><td class="mono">FR-01</td><td>Fensterreinigung nur außen</td><td>Stück</td><td class="num mono">6,50 €</td><td class="num mono">19 %</td><td class="mono">v2</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> FR-01</span></button></td></tr>
+                  <tr data-code="GV-01" data-name="Glasvordach am Eingang reinigen" data-unit="Stück" data-cents="4500" data-vat="19" data-ver="2"><td class="mono">GV-01</td><td>Glasvordach am Eingang reinigen</td><td>Stück</td><td class="num mono">45,00 €</td><td class="num mono">19 %</td><td class="mono">v2</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> GV-01</span></button></td></tr>
+                  <tr data-code="SP-01" data-name="Sperrmüll im Hof abtransportieren" data-unit="pauschal" data-cents="4500" data-vat="19" data-ver="1"><td class="mono">SP-01</td><td>Sperrmüll im Hof abtransportieren</td><td>pauschal</td><td class="num mono">45,00 €</td><td class="num mono">19 %</td><td class="mono">v1</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> SP-01</span></button></td></tr>
+                  <tr data-code="TG-01" data-name="Tiefgarage grundreinigen" data-unit="m²" data-cents="300" data-vat="19" data-ver="1"><td class="mono">TG-01</td><td>Tiefgarage grundreinigen</td><td>m²</td><td class="num mono">3,00 €</td><td class="num mono">19 %</td><td class="mono">v1</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> TG-01</span></button></td></tr>
+                  <tr data-code="LG-01" data-name="Laub und Grünschnitt" data-unit="Stunde" data-cents="4200" data-vat="19" data-ver="1"><td class="mono">LG-01</td><td>Laub und Grünschnitt</td><td>Stunde</td><td class="num mono">42,00 €</td><td class="num mono">19 %</td><td class="mono">v1</td><td><button type="button" class="link-btn" data-edit>Bearbeiten<span class="visually-hidden"> LG-01</span></button></td></tr>
+                  <tr class="is-archived"><td class="mono">GR-01</td><td>Graffiti entfernen</td><td>Stunde</td><td class="num mono">58,00 €</td><td class="num mono">19 %</td><td class="mono">v1</td><td><span class="state-chip c-unknown"><svg class="i" aria-hidden="true"><use href="#st-noev"/></svg>archiviert</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note" id="prNote">Jede Änderung legt eine neue Version an. Ein Nachtrag merkt sich die Version, mit der er gerechnet wurde. Archivierte Positionen bleiben in alten Nachträgen lesbar.</p>
+          </section>
+          <div class="pr-side">
+            <section class="panel" aria-labelledby="prRulesH">
+              <h2 class="label" id="prRulesH">Regeln</h2>
+              <ul class="pr-rules" id="prRules">
+                <li><div><strong>Samstag</strong><span>+25 % auf die Position, aus dem Termin</span></div><button type="button" role="switch" class="switch" aria-checked="true" aria-label="Regel Samstag" data-rule="sat"></button></li>
+                <li><div><strong>Sonn- und Feiertag</strong><span>+50 %, nach der Feiertagstabelle des Bundeslandes vom Objekt</span></div><button type="button" role="switch" class="switch" aria-checked="true" aria-label="Regel Sonn- und Feiertag" data-rule="hol"></button></li>
+                <li><div><strong>Eilauftrag</strong><span>+30 %, wenn du beim Nachtrag „eilig“ wählst</span></div><button type="button" role="switch" class="switch" aria-checked="true" aria-label="Regel Eilauftrag" data-rule="rush"></button></li>
+                <li><div><strong>Nacht 20 bis 6 Uhr</strong><span>+25 %</span></div><button type="button" role="switch" class="switch" aria-checked="false" aria-label="Regel Nacht" data-rule="night"></button></li>
+                <li><div><strong>Mindestbetrag</strong><span>35,00 € netto je Nachtrag</span></div><button type="button" role="switch" class="switch" aria-checked="true" aria-label="Regel Mindestbetrag" data-rule="min"></button></li>
+              </ul>
+            </section>
+            <section class="panel" aria-labelledby="prExH">
+              <h2 class="label" id="prExH">Beispielrechnung</h2>
+              <div class="form-grid">
+                <label class="field"><span>Menge (FR-02)</span>
+                  <select id="prQty"><option value="2">2 Fenster</option><option value="6" selected>6 Fenster</option><option value="12">12 Fenster</option></select></label>
+                <label class="field"><span>Termin</span>
+                  <select id="prDate"><option value="sat" selected>Sa 10.10.2026</option><option value="hol">Sa 03.10.2026, Feiertag</option><option value="wd">Mo 12.10.2026</option></select></label>
+              </div>
+              <table class="data pr-calc" aria-label="Beispielrechnung">
+                <tbody id="prCalc"></tbody>
+              </table>
+              <p class="note" id="prCalcNote"></p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8.17 INSIGHTS ============ -->
+    <section class="screen" id="s-insights" data-screen="insights" aria-labelledby="insTitle">
+      <div class="page">
+        <header class="page-head">
+          <div>
+            <h1 class="display" id="insTitle">Auswertungen</h1>
+            <p class="job-sub">September 2026, bis 29.09. Jede Zahl ist die Summe der Zeilen darunter; Zeiträume in deiner Zeitzone. Teamweise, ohne Rangliste einzelner Personen.</p>
+          </div>
+        </header>
+        <div class="ins-grid" id="insGrid" role="group" aria-label="Kennzahlen"></div>
+        <section class="panel" id="insDetail" aria-live="polite" aria-labelledby="insDetailH"></section>
+      </div>
+    </section>
+
+    <!-- ============ 7.9 TEAM, ROLES, DEVICES ============ -->
+    <section class="screen" id="s-team" data-screen="team" aria-labelledby="teamTitle">
+      <div class="settings">
+        <nav class="set-nav" aria-label="Einstellungen">
+          <a href="#" data-missing="Betrieb">Betrieb</a>
+          <a href="#team" class="is-on" aria-current="page">Team und Rollen</a>
+          <a href="#" data-missing="Geräte und Sicherheit">Geräte und Sicherheit</a>
+          <a href="#billing">Tarif und Rechnungen</a>
+          <a href="#prices">Preisbuch</a>
+          <a href="#" data-missing="Vorlagen und Pakete">Vorlagen und Pakete</a>
+          <a href="#" data-missing="Prüfungen (KI)">Prüfungen (KI)</a>
+          <a href="#" data-missing="Benachrichtigungen">Benachrichtigungen</a>
+          <a href="#" data-missing="Integrationen">Integrationen</a>
+          <a href="#" data-missing="API und Webhooks">API und Webhooks</a>
+          <a href="#" data-missing="Daten und Datenschutz">Daten und Datenschutz</a>
+          <a href="#" data-missing="Protokoll">Protokoll</a>
+        </nav>
+        <div class="set-main">
+          <header class="page-head">
+            <div>
+              <h1 class="display" id="teamTitle">Team und Rollen</h1>
+              <p class="job-sub">2 Büro-Plätze, 8 aktive Einsatzkräfte im September, 1 Einladung offen</p>
+            </div>
+            <button type="button" class="btn btn-primary" id="inviteOpen" aria-expanded="true" aria-controls="invitePanel"><svg class="i" aria-hidden="true"><use href="#g-plus"/></svg>Person einladen</button>
+          </header>
+          <div class="tabs" role="tablist" aria-label="Team">
+            <button type="button" role="tab" class="tab" id="tbTeam" aria-selected="true" aria-controls="tpTeam">Team<span class="tab-count">11</span></button>
+            <button type="button" role="tab" class="tab" id="tbRoles" aria-selected="false" aria-controls="tpRoles" tabindex="-1">Rollen</button>
+            <button type="button" role="tab" class="tab" id="tbDevices" aria-selected="false" aria-controls="tpDevices" tabindex="-1">Geräte</button>
+          </div>
+          <div class="team-layout">
+            <div class="tab-panels">
+              <div role="tabpanel" id="tpTeam" aria-labelledby="tbTeam">
+                <div class="table-wrap">
+                  <table class="data team-table">
+                    <thead><tr><th scope="col">Name</th><th scope="col">Rolle</th><th scope="col">Platz</th><th scope="col">Sprache</th><th scope="col">Preise</th><th scope="col">Zuletzt aktiv</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>Sabine Muster</strong></td><td><span class="role">Inhaber</span></td><td>Büro</td><td>DE</td><td>ja</td><td>jetzt</td></tr>
+                      <tr><td><strong>Tim Berger</strong></td><td><span class="role">Büro</span></td><td>Büro</td><td>DE</td><td>ja</td><td>11:02</td></tr>
+                      <tr><td><strong>Katrin Lang</strong></td><td><span class="role">Objektleitung</span></td><td>Einsatz<small>aktiv</small></td><td>DE</td><td>ja</td><td>10:47</td></tr>
+                      <tr><td><strong>Anna Keller</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>DE</td><td>nein</td><td>11:26</td></tr>
+                      <tr><td><strong>Mehmet Yıldız</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>TR</td><td>nein</td><td>gestern 16:40</td></tr>
+                      <tr><td><strong>Jana Peters</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>DE</td><td>nein</td><td>09:58</td></tr>
+                      <tr><td><strong>Lukas Brandt</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>DE</td><td>nein</td><td>11:15</td></tr>
+                      <tr><td><strong>Olga Schmidt</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>DE</td><td>nein</td><td>09:04</td></tr>
+                      <tr><td><strong>Piotr Wójcik</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>EN</td><td>nein</td><td>11:01</td></tr>
+                      <tr><td><strong>Emre Kaya</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>aktiv</small></td><td>TR</td><td>nein</td><td>11:20</td></tr>
+                      <tr><td><strong>Nina Vogel</strong></td><td><span class="role">Einsatzkraft</span></td><td>Einsatz<small>noch kein Einsatz</small></td><td>DE</td><td>nein</td><td><span class="state-chip c-open"><svg class="i i-16" aria-hidden="true"><use href="#st-wait"/></svg>eingeladen</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="note">Aktiv heißt: mindestens ein Einsatz im Kalendermonat. Wer in einem Monat keinen Einsatz hat, kostet in diesem Monat nichts.</p>
+              </div>
+              <div role="tabpanel" id="tpRoles" aria-labelledby="tbRoles" hidden>
+                <div class="table-wrap">
+                  <table class="data matrix">
+                    <thead><tr><th scope="col">Recht</th><th scope="col"><abbr title="Inhaber">Inh.</abbr></th><th scope="col"><abbr title="Admin">Adm.</abbr></th><th scope="col">Büro</th><th scope="col"><abbr title="Objektleitung">Obj.</abbr></th><th scope="col"><abbr title="Einsatzkraft">Eins.</abbr></th><th scope="col"><abbr title="Nachunternehmer">Nachu.</abbr></th><th scope="col"><abbr title="Steuerbüro">Steuer</abbr></th><th scope="col"><abbr title="Nur lesen">Lesen</abbr></th></tr></thead>
+                    <tbody>
+                      <tr><th scope="row">Tarif, Rechnungen, Kündigung</th><td>✓</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Team, Rollen, Sicherheit</th><td>✓</td><td>✓</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Preisbuch bearbeiten</th><td>✓</td><td>✓</td><td>✓</td><td>wählbar</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Preise und Geld sehen</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>wählbar</td><td>–</td><td>✓</td><td>wählbar</td></tr>
+                      <tr><th scope="row">Nachtrag, Angebot, Umfang senden</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Notizen, Fotos, Sprache, Mängel erfassen</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>zugewiesen</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Nachtrag entwerfen</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>wählbar</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Chat- oder mündliche Freigabe erfassen</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Bericht oder Monatsnachweis senden</th><td>✓</td><td>✓</td><td>✓</td><td>wählbar</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Einsätze planen und zuweisen</th><td>✓</td><td>✓</td><td>✓</td><td>eigenes Team</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                      <tr><th scope="row">Abrechnungsexport, Rechnungsentwürfe</th><td>✓</td><td>✓</td><td>✓</td><td>–</td><td>–</td><td>–</td><td>✓</td><td>–</td></tr>
+                      <tr><th scope="row">Prüfungen (KI): Modus und Einwilligung</th><td>✓</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="note">„wählbar“ schaltest du je Person ein. Eigene Rollen gibt es im Tarif Business. Was eine Rolle nicht darf, sieht sie gar nicht.</p>
+              </div>
+              <div role="tabpanel" id="tpDevices" aria-labelledby="tbDevices" hidden>
+                <ul class="devices" id="devices">
+                  <li><div class="dev-who"><strong>Anna Keller</strong><span>Einsatzkraft, per QR-Code gekoppelt</span></div><div class="dev-what"><svg class="i" aria-hidden="true"><use href="#g-device"/></svg>Pixel 8, App 3.2</div><div class="dev-sync"><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>alles synchronisiert</span><span class="muted">11:26</span></div><button type="button" class="btn btn-secondary" data-signout="Anna Keller" data-unsynced="0">Abmelden</button></li>
+                  <li><div class="dev-who"><strong>Mehmet Yıldız</strong><span>Einsatzkraft, per QR-Code gekoppelt</span></div><div class="dev-what"><svg class="i" aria-hidden="true"><use href="#g-device"/></svg>iPhone 13, Web-App</div><div class="dev-sync"><span class="state-chip c-open"><svg class="i i-16" aria-hidden="true"><use href="#st-wait"/></svg>3 nicht synchronisiert</span><span class="muted">gestern 16:40</span></div><button type="button" class="btn btn-secondary" data-signout="Mehmet Yıldız" data-unsynced="3">Abmelden</button></li>
+                  <li><div class="dev-who"><strong>Katrin Lang</strong><span>Objektleitung, Passkey</span></div><div class="dev-what"><svg class="i" aria-hidden="true"><use href="#g-device"/></svg>Galaxy A54, App 3.2</div><div class="dev-sync"><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>alles synchronisiert</span><span class="muted">10:47</span></div><button type="button" class="btn btn-secondary" data-signout="Katrin Lang" data-unsynced="0">Abmelden</button></li>
+                  <li><div class="dev-who"><strong>Tim Berger</strong><span>Büro, Passkey</span></div><div class="dev-what"><svg class="i" aria-hidden="true"><use href="#g-device"/></svg>Windows, Browser</div><div class="dev-sync"><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>alles synchronisiert</span><span class="muted">11:02</span></div><button type="button" class="btn btn-secondary" data-signout="Tim Berger" data-unsynced="0">Abmelden</button></li>
+                </ul>
+                <p class="note">Ein abgemeldetes Gerät kann nicht mehr synchronisieren. Die App löscht ihre Daten beim nächsten Kontakt; die Web-App lässt sich nicht aus der Ferne löschen.</p>
+              </div>
+            </div>
+            <aside class="side-panel" id="invitePanel" aria-labelledby="invH">
+              <div class="sp-head"><h2 class="label" id="invH">Person einladen</h2><button type="button" class="icon-btn" id="inviteClose" aria-label="Einladen schließen"><svg class="i" aria-hidden="true"><use href="#g-close"/></svg></button></div>
+              <form id="inviteForm" novalidate>
+                <label class="field"><span>E-Mail oder Telefon</span><input id="invWho" autocomplete="off" placeholder="name@beispiel.de oder +49 …"></label>
+                <p class="field-error" id="invErr" hidden>Bitte E-Mail oder Telefonnummer eingeben.</p>
+                <label class="field"><span>Rolle</span>
+                  <select id="invRole"><option value="E" selected>Einsatzkraft</option><option value="L">Objektleitung</option><option value="B">Büro</option><option value="A">Admin</option></select>
+                </label>
+                <label class="field"><span>Sprache</span><select><option>Deutsch</option><option>English</option><option>Türkçe</option></select></label>
+                <div class="switch-row"><span id="invPricesL">Preise sichtbar</span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="invPricesL"></button></div>
+                <div class="seat-preview" aria-live="polite">
+                  <p class="label-sm">Kosten</p>
+                  <p id="seatCost"><strong>7,00 € pro Monat</strong>, nur in Monaten mit mindestens einem Einsatz</p>
+                  <p class="muted" id="seatSum">Monatssumme in einem Monat mit Einsatz: 106,00 € statt 99,00 €</p>
+                </div>
+                <p class="muted">Ohne E-Mail? Nach der Einladung zeigt JobFold einen QR-Code zum Koppeln des Handys.</p>
+                <button type="submit" class="btn btn-primary btn-block">Einladung senden</button>
+              </form>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7.10 BILLING AND PLAN ============ -->
+    <section class="screen" id="s-billing" data-screen="billing" aria-labelledby="billTitle">
+      <div class="settings">
+        <nav class="set-nav" aria-label="Einstellungen">
+          <a href="#" data-missing="Betrieb">Betrieb</a>
+          <a href="#team">Team und Rollen</a>
+          <a href="#" data-missing="Geräte und Sicherheit">Geräte und Sicherheit</a>
+          <a href="#billing" class="is-on" aria-current="page">Tarif und Rechnungen</a>
+          <a href="#prices">Preisbuch</a>
+          <a href="#" data-missing="Vorlagen und Pakete">Vorlagen und Pakete</a>
+          <a href="#" data-missing="Prüfungen (KI)">Prüfungen (KI)</a>
+          <a href="#" data-missing="Benachrichtigungen">Benachrichtigungen</a>
+          <a href="#" data-missing="Integrationen">Integrationen</a>
+          <a href="#" data-missing="API und Webhooks">API und Webhooks</a>
+          <a href="#" data-missing="Daten und Datenschutz">Daten und Datenschutz</a>
+          <a href="#" data-missing="Protokoll">Protokoll</a>
+        </nav>
+        <div class="set-main">
+          <header class="page-head">
+            <div>
+              <h1 class="display" id="billTitle">Tarif und Rechnungen</h1>
+              <p class="job-sub">Muster Gebäudeservice GmbH, Kunde seit 01.10.2025</p>
+            </div>
+          </header>
+          <section class="plan-now" aria-labelledby="planH">
+            <div class="pn-main">
+              <p class="label-sm" id="planH">Aktueller Tarif</p>
+              <p class="plan-name">Team</p>
+              <p class="muted">49,00 € mit 1 Büro-Platz und 3 Einsatzkräften; jeder weitere Büro-Platz 15,00 €, jede weitere aktive Einsatzkraft 7,00 €</p>
+            </div>
+            <dl class="pn-facts">
+              <div><dt>Büro-Plätze</dt><dd>2</dd></div>
+              <div><dt>Aktive Einsatzkräfte im September</dt><dd>8</dd></div>
+              <div><dt>Nächste Rechnung am 01.10.2026</dt><dd>99,00 €<small>netto, 117,81 € brutto</small></dd></div>
+            </dl>
+            <p class="calc-line mono">49,00 € + 1 × 15,00 € + 5 × 7,00 € = 99,00 €</p>
+          </section>
+
+          <div class="bill-grid">
+            <section class="panel" aria-labelledby="useH">
+              <h2 class="label" id="useH">Rechnungsbeträge, 12 Monate</h2>
+              <ol class="chart" aria-label="Monatliche Beträge netto">
+                <li><span class="bar h-87"><span class="bar-v">92</span></span><span class="bar-m">Okt</span><span class="visually-hidden">Oktober 2025: 92,00 €, 7 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-93"><span class="bar-v">99</span></span><span class="bar-m">Nov</span><span class="visually-hidden">November 2025: 99,00 €, 8 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-100"><span class="bar-v">106</span></span><span class="bar-m">Dez</span><span class="visually-hidden">Dezember 2025: 106,00 €, 9 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-100"><span class="bar-v">106</span></span><span class="bar-m">Jan</span><span class="visually-hidden">Januar 2026: 106,00 €, 9 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-93"><span class="bar-v">99</span></span><span class="bar-m">Feb</span><span class="visually-hidden">Februar 2026: 99,00 €, 8 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-87"><span class="bar-v">92</span></span><span class="bar-m">Mär</span><span class="visually-hidden">März 2026: 92,00 €, 7 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-87"><span class="bar-v">92</span></span><span class="bar-m">Apr</span><span class="visually-hidden">April 2026: 92,00 €, 7 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-93"><span class="bar-v">99</span></span><span class="bar-m">Mai</span><span class="visually-hidden">Mai 2026: 99,00 €, 8 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-93"><span class="bar-v">99</span></span><span class="bar-m">Jun</span><span class="visually-hidden">Juni 2026: 99,00 €, 8 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-80"><span class="bar-v">85</span></span><span class="bar-m">Jul</span><span class="visually-hidden">Juli 2026: 85,00 €, 6 aktive Einsatzkräfte</span></li>
+                <li><span class="bar h-87"><span class="bar-v">92</span></span><span class="bar-m">Aug</span><span class="visually-hidden">August 2026: 92,00 €, 7 aktive Einsatzkräfte</span></li>
+                <li class="is-now"><span class="bar h-93"><span class="bar-v">99</span></span><span class="bar-m">Sep</span><span class="visually-hidden">September 2026: 99,00 €, 8 aktive Einsatzkräfte, wird am 01.10. berechnet</span></li>
+              </ol>
+              <p class="note">Beträge netto in Euro. Im Juli waren 6 Einsatzkräfte aktiv, im Winter bis zu 9. Ein Monat ohne Einsatz einer Einsatzkraft kostet für sie nichts.</p>
+              <dl class="meters">
+                <div><dt>Speicher</dt><dd><meter min="0" max="90" value="18.4">18,4 GB</meter><span>18,4 GB von 90 GB</span></dd></div>
+                <div><dt>SMS-Codes</dt><dd><meter min="0" max="50" value="0">0</meter><span>0 von 50 im Monat; der SMS-Versand startet 2027, E-Mail-Codes sind unbegrenzt</span></dd></div>
+                <div><dt>WhatsApp</dt><dd><span>Nicht gebucht. Der Kanal startet im April 2027.</span></dd></div>
+              </dl>
+            </section>
+
+            <section class="panel" aria-labelledby="payH">
+              <h2 class="label" id="payH">Zahlung</h2>
+              <dl class="facts">
+                <dt>Zahlart</dt><dd><svg class="i i-16" aria-hidden="true"><use href="#g-card"/></svg>SEPA-Lastschrift, Konto endet auf 3000</dd>
+                <dt>Rechnungsadresse</dt><dd>Muster Gebäudeservice GmbH, Musterweg 5, Musterstadt</dd>
+                <dt>USt-IdNr.</dt><dd>DE123456789, geprüft am 01.09.2026: gültig</dd>
+                <dt>Rechnungen an</dt><dd>buchhaltung@muster-gebaeudeservice.example</dd>
+              </dl>
+              <button type="button" class="btn btn-secondary" data-missing="Zahlung ändern">Zahlung ändern</button>
+            </section>
+          </div>
+
+          <section class="panel" aria-labelledby="invListH">
+            <h2 class="label" id="invListH">Rechnungen</h2>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th scope="col">Nummer</th><th scope="col">Datum</th><th scope="col">Zeitraum</th><th scope="col" class="num">Netto</th><th scope="col" class="num">Brutto</th><th scope="col">Status</th><th scope="col">Dateien</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">R-2026-0412</td><td>01.09.2026</td><td>August 2026</td><td class="num mono">92,00 €</td><td class="num mono">109,48 €</td><td><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>bezahlt</span></td><td class="files"><a href="#billing" data-missing="PDF">PDF</a><a href="#billing" data-missing="E-Rechnung">E-Rechnung (ZUGFeRD)</a></td></tr>
+                  <tr><td class="mono">R-2026-0371</td><td>01.08.2026</td><td>Juli 2026</td><td class="num mono">85,00 €</td><td class="num mono">101,15 €</td><td><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>bezahlt</span></td><td class="files"><a href="#billing" data-missing="PDF">PDF</a><a href="#billing" data-missing="E-Rechnung">E-Rechnung (ZUGFeRD)</a></td></tr>
+                  <tr><td class="mono">R-2026-0330</td><td>01.07.2026</td><td>Juni 2026</td><td class="num mono">99,00 €</td><td class="num mono">117,81 €</td><td><span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>bezahlt</span></td><td class="files"><a href="#billing" data-missing="PDF">PDF</a><a href="#billing" data-missing="E-Rechnung">E-Rechnung (ZUGFeRD)</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="chgH">
+            <h2 class="label" id="chgH">Tarif wechseln</h2>
+            <p class="muted">Beträge für dein Team heute: 2 Büro-Plätze, 8 aktive Einsatzkräfte. Preise netto, „Einführungspreise bis 30.06.2027“.</p>
+            <div class="table-wrap">
+              <table class="data plans">
+                <thead><tr><th scope="col">Tarif</th><th scope="col">Rechnung für dein Team</th><th scope="col" class="num">Im Monat</th><th scope="col"><span class="visually-hidden">Aktion</span></th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Free</th><td class="muted">Passt nicht: 1 Person, 3 aktive Aufträge</td><td class="num mono">0,00 €</td><td></td></tr>
+                  <tr><th scope="row">Solo</th><td class="muted">Passt nicht: 1 Person und bis zu 2 Helfer</td><td class="num mono">19,00 €</td><td></td></tr>
+                  <tr class="is-current"><th scope="row">Team</th><td class="mono">49,00 € + 1 × 15,00 € + 5 × 7,00 €</td><td class="num mono">99,00 €</td><td><span class="state-chip c-run">aktuell</span></td></tr>
+                  <tr><th scope="row">Business</th><td><span class="mono">149,00 €</span> mit 2 Büro-Plätzen und 8 Einsatzkräften<small>eigene Rollen, Single Sign-on, eigene Domain, Kanal für WhatsApp, OAuth und MCP (ab April 2027)</small></td><td class="num mono">149,00 €</td><td><button type="button" class="btn btn-secondary" id="toBusiness" aria-expanded="false" aria-controls="bizPreview">Ansehen</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="preview-box" id="bizPreview" hidden>
+              <p><strong>Business ab 01.10.2026: 149,00 € netto statt 99,00 €</strong>, also 50,00 € mehr im Monat. Der Wechsel gilt sofort; der September wird noch im Tarif Team berechnet.</p>
+              <button type="button" class="btn btn-primary" data-toast="Tarif gewechselt: Business ab 01.10.2026. Eine Bestätigung ging an buchhaltung@muster-gebaeudeservice.example.">Zu Business wechseln</button>
+            </div>
+          </section>
+
+          <section class="panel panel-quiet" aria-labelledby="cancelH">
+            <h2 class="label" id="cancelH">Kündigen</h2>
+            <p>Du kannst zum Monatsende kündigen. Danach bleiben Lesezugriff und der vollständige Export 90 Tage verfügbar. Vorher wird nichts gelöscht.</p>
+            <button type="button" class="btn btn-secondary btn-danger" id="cancelBtn">Kündigen</button>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Bereiche">
+    <a href="#today" data-nav="today"><svg class="i" aria-hidden="true"><use href="#g-today"/></svg><span>Heute</span></a>
+    <a href="#timeline" data-nav="jobs"><svg class="i" aria-hidden="true"><use href="#g-jobs"/></svg><span>Aufträge</span></a>
+    <button type="button" class="bn-plus" data-open-cmd aria-label="Erfassen oder Befehl"><svg class="i" aria-hidden="true"><use href="#g-plus"/></svg></button>
+    <a href="#letter" data-nav="money"><svg class="i" aria-hidden="true"><use href="#g-money"/></svg><span>Geld</span></a>
+    <a href="#team" data-nav="settings"><svg class="i" aria-hidden="true"><use href="#g-more"/></svg><span>Mehr</span></a>
+  </nav>
+</div>
+
+<!-- ================= STAGE SCREENS (phone, recipient, first run) ================= -->
+<div class="stage">
+
+  <!-- ============ 7.2 VISIT MODE ============ -->
+  <section class="screen" id="s-visit" data-screen="visit" aria-label="Einsatzmodus auf dem Handy">
+    <div class="stage-row">
+      <div class="phone">
+        <header class="v-head">
+          <a class="v-back" href="#timeline" aria-label="Zurück zum Auftrag"><svg class="i i-24" aria-hidden="true"><use href="#g-back"/></svg></a>
+          <div class="v-title"><h1>Lindenstraße 14</h1><p>vor Ort seit 08:14</p></div>
+          <button type="button" class="icon-btn" id="fileOpen" aria-label="Objektmappe öffnen"><svg class="i" aria-hidden="true"><use href="#g-file"/></svg></button>
+          <span class="state-chip c-ok"><svg class="i i-16" aria-hidden="true"><use href="#st-done"/></svg>Angekommen</span>
+        </header>
+        <div class="v-status">
+          <span class="sync-pill is-local">Auf diesem Handy gespeichert<svg class="i i-16" aria-hidden="true"><use href="#g-saved"/></svg></span>
+          <span class="v-count" id="vCount" aria-live="polite">3 von 8 erledigt</span>
+        </div>
+        <div class="v-progress" id="vProgress" aria-hidden="true"><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span></span><span></span><span></span><span></span><span></span></div>
+        <ul class="checklist" id="checklist">
+          <li><button type="button" class="ci is-done" aria-pressed="true"><span class="ci-text">Treppen und Podeste nass wischen</span><svg class="i ci-state" aria-hidden="true"><use href="#st-done"/></svg></button></li>
+          <li><button type="button" class="ci is-done" aria-pressed="true"><span class="ci-text">Handläufe und Geländer abwischen</span><svg class="i ci-state" aria-hidden="true"><use href="#st-done"/></svg></button></li>
+          <li><button type="button" class="ci is-done" aria-pressed="true"><span class="ci-text">Eingangstür innen und außen</span><span class="ci-ev"><svg class="i i-16" aria-hidden="true"><use href="#g-camera"/></svg>Foto: 1 aufgenommen</span><span class="ci-ref"><span class="ph ph-2" aria-hidden="true"></span>So sieht erledigt aus</span><svg class="i ci-state" aria-hidden="true"><use href="#st-done"/></svg></button></li>
+          <li><button type="button" class="ci" aria-pressed="false"><span class="ci-text">Briefkastenanlage abwischen</span><svg class="i ci-state" aria-hidden="true"><use href="#st-open"/></svg></button></li>
+          <li><button type="button" class="ci needs-ev" aria-pressed="false"><span class="ci-text">Kellergang fegen</span><span class="ci-ev"><svg class="i i-16" aria-hidden="true"><use href="#g-pair"/></svg>Vorher und nachher</span><span class="ci-ref"><span class="ph ph-4" aria-hidden="true"></span>So sieht erledigt aus</span><span class="noev">Kein Nachweis</span><svg class="i ci-state" aria-hidden="true"><use href="#st-open"/></svg></button></li>
+          <li><button type="button" class="ci" aria-pressed="false"><span class="ci-text">Treppenhausfenster innen, 1. bis 3. OG</span><svg class="i ci-state" aria-hidden="true"><use href="#st-open"/></svg></button></li>
+          <li><button type="button" class="ci needs-ev" aria-pressed="false"><span class="ci-text">Mülltonnenplatz kontrollieren</span><span class="ci-ev"><svg class="i i-16" aria-hidden="true"><use href="#g-value"/></svg>Angabe: Tonnen voll?</span><span class="noev">Angabe fehlt</span><svg class="i ci-state" aria-hidden="true"><use href="#st-open"/></svg></button></li>
+          <li><button type="button" class="ci" aria-pressed="false"><span class="ci-text">Lichtschalter und Klingeltableau abwischen</span><svg class="i ci-state" aria-hidden="true"><use href="#st-open"/></svg></button></li>
+        </ul>
+        <div class="v-note">
+          <p class="vn-top"><svg class="i i-16" aria-hidden="true"><use href="#g-voice"/></svg><strong>Sprachnotiz 08:31</strong><span class="muted">Text auf dem Handy erkannt</span></p>
+          <p class="vn-text">„Frau Beispiel fragt, ob wir am Samstag auch die sechs Kellerfenster putzen können, innen und außen.“</p>
+          <a class="radar-chip" href="#change"><span class="rc-mark" aria-hidden="true"></span><span>Zusatzwunsch? Kellerfenster putzen</span><span class="band b-check">Prüfen</span></a>
+        </div>
+        <nav class="thumb-bar" aria-label="Erfassen">
+          <button type="button" class="tb" id="tbPhoto"><svg class="i" aria-hidden="true"><use href="#g-camera"/></svg><span>Foto</span></button>
+          <button type="button" class="tb" id="tbTalk" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#g-mic"/></svg><span>Sprechen</span></button>
+          <button type="button" class="tb" id="tbNote"><svg class="i" aria-hidden="true"><use href="#g-note"/></svg><span>Notiz</span></button>
+          <a class="tb tb-done" href="#closeout"><svg class="i" aria-hidden="true"><use href="#g-finish"/></svg><span>Fertig</span></a>
+        </nav>
+      </div>
+      <aside class="proto-note" aria-label="Hinweise zum Prototyp">
+        <h2>Im Prototyp ausprobieren</h2>
+        <ul>
+          <li>Punkt antippen: erledigt oder wieder offen.</li>
+          <li>„Kellergang fegen“ antippen: erledigt, aber ohne Nachweis, deshalb schraffiert.</li>
+          <li>„Sprechen“ gedrückt halten: Aufnahme läuft, bis du loslässt.</li>
+          <li>Den Zusatzwunsch antippen: öffnet den bepreisten Nachtrag.</li>
+          <li>„Fertig“: Vollständigkeitsprüfung und Feierabend.</li>
+          <li>Oben „Draußen“: Kontrast für Sonnenlicht, größere Schrift.</li>
+          <li>Kleine Fotos bei den Punkten zeigen, wie „erledigt“ hier aussieht. Das Mappen-Symbol öffnet die Objektmappe.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ 7.4 CUSTOMER APPROVAL PAGE ============ -->
+  <section class="screen" id="s-approve" data-screen="approve" aria-label="Kundenseite: Nachtrag freigeben">
+    <div class="rcp">
+      <header class="rcp-head">
+        <span class="co-logo" aria-hidden="true">MG</span>
+        <div><p class="co-name">Muster Gebäudeservice GmbH</p><p class="co-contact">Ihr Ansprechpartner: Tim Berger, 030 1234 5678</p></div>
+      </header>
+      <main class="rcp-sheet">
+        <div>
+          <p class="rcp-kicker">Nachtrag NT-2026-0031</p>
+          <h1 class="display">Nachtrag vom 29.09.2026</h1>
+          <p class="rcp-lead">Guten Tag Frau Beispiel, wir bitten um Ihre Freigabe für eine zusätzliche Leistung.</p>
+        </div>
+        <section aria-labelledby="rcpWhatH">
+          <h2 class="label" id="rcpWhatH">Leistung</h2>
+          <p class="rcp-what">Kellerfenster innen und außen putzen, 6 Stück, Samstag 10.10.2026</p>
+          <div class="rcp-photos">
+            <figure><span class="ph ph-5"></span><figcaption>Kellerfenster Hofseite</figcaption></figure>
+            <figure><span class="ph ph-6"></span><figcaption>Kellerfenster Straßenseite</figcaption></figure>
+          </div>
+        </section>
+        <section aria-labelledby="rcpPriceH">
+          <h2 class="label" id="rcpPriceH">Preis</h2>
+          <table class="price-table">
+            <tbody>
+              <tr><td>Fensterreinigung innen und außen, 6 Stück zu 9,00 €</td><td class="num mono">54,00 €</td></tr>
+              <tr><td>Zuschlag Samstag, 25 %</td><td class="num mono">13,50 €</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><th scope="row">Netto</th><td class="num mono">67,50 €</td></tr>
+              <tr><th scope="row">MwSt. 19 %</th><td class="num mono">12,83 €</td></tr>
+              <tr class="gross"><th scope="row">Brutto</th><td class="num mono">80,33 €</td></tr>
+            </tfoot>
+          </table>
+          <p class="valid">Dieses Angebot gilt bis 13.10.2026.</p>
+        </section>
+        <section class="rcp-scope">
+          <p>Gehört zu: <strong>Treppenhausreinigung Lindenstraße 14</strong> (Leistungsumfang Version 2) <button type="button" class="link-btn" id="scopeBtn" aria-expanded="false" aria-controls="scopeList">anzeigen</button></p>
+          <div id="scopeList" hidden>
+            <p class="label-sm">Enthalten</p>
+            <ul class="plain-list"><li>Treppen und Podeste nass wischen, wöchentlich</li><li>Handläufe, Geländer, Eingangstür, Briefkastenanlage</li><li>Kellergang fegen, Mülltonnenplatz kontrollieren</li><li>Treppenhausfenster innen, 1. bis 3. OG</li></ul>
+            <p class="label-sm">Nicht enthalten</p>
+            <ul class="plain-list"><li>Kellerfenster</li><li>Fenster außen</li><li>Außenanlagen</li></ul>
+          </div>
+        </section>
+        <section class="rcp-choice" aria-labelledby="rcpChoiceH">
+          <h2 class="label" id="rcpChoiceH">Ihre Entscheidung</h2>
+          <div class="choice-row">
+            <button type="button" class="btn btn-primary btn-xl" data-choice="approve" aria-pressed="false">Freigeben</button>
+            <button type="button" class="btn btn-secondary btn-xl" data-choice="ask" aria-pressed="false">Rückfrage</button>
+            <button type="button" class="btn btn-secondary btn-xl" data-choice="decline" aria-pressed="false">Ablehnen</button>
+          </div>
+          <p class="more-open">Weitere offene Nachträge: 2. <a href="#bundle">Alle zusammen ansehen</a></p>
+        </section>
+        <form class="rcp-step" id="rcpApprove" hidden novalidate aria-labelledby="apH">
+          <h2 class="label" id="apH">Freigeben</h2>
+          <label class="field"><span>Ihr Name</span><input id="apName" autocomplete="name"></label>
+          <label class="field"><span>Code aus der E-Mail an f•••@beispiel-verwaltung.example</span><input id="apCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6 Ziffern"><small>10 Minuten gültig. <button type="button" class="link-btn" data-toast="Neuer Code gesendet an f•••@beispiel-verwaltung.example.">Code neu senden</button></small></label>
+          <div class="field">
+            <span id="sigL">Unterschrift</span>
+            <canvas id="sigPad" width="320" height="160" role="img" aria-labelledby="sigL"></canvas>
+            <div class="sig-actions"><button type="button" class="link-btn" id="sigClear">Löschen</button><button type="button" class="link-btn" id="sigType" aria-expanded="false" aria-controls="sigTypedWrap">Name tippen statt zeichnen</button></div>
+            <label class="field" id="sigTypedWrap" hidden><span>Name als Unterschrift</span><input id="sigTyped" autocomplete="name"></label>
+          </div>
+          <label class="check-row"><input type="checkbox" id="apCheck"><span>Ich beauftrage diese Leistung zum genannten Preis.</span></label>
+          <p class="legal">Ihre Freigabe ist eine Erklärung in Textform. Sie ist keine qualifizierte elektronische Signatur.</p>
+          <button type="submit" class="btn btn-primary btn-xl btn-block" id="apSubmit" disabled>Verbindlich freigeben</button>
+        </form>
+        <form class="rcp-step" id="rcpAsk" hidden novalidate aria-labelledby="askH">
+          <h2 class="label" id="askH">Rückfrage</h2>
+          <label class="field"><span>Ihre Frage an Muster Gebäudeservice</span><textarea id="askText" rows="3"></textarea></label>
+          <button type="submit" class="btn btn-primary btn-xl btn-block">Rückfrage senden</button>
+        </form>
+        <form class="rcp-step" id="rcpDecline" hidden novalidate aria-labelledby="decH">
+          <h2 class="label" id="decH">Ablehnen</h2>
+          <label class="field"><span>Grund (freiwillig)</span><textarea rows="3"></textarea></label>
+          <button type="submit" class="btn btn-secondary btn-danger btn-xl btn-block">Nachtrag ablehnen</button>
+        </form>
+        <section class="rcp-done" id="rcpDone" hidden tabindex="-1" aria-live="polite">
+          <span class="stamp stamp-lg" id="doneStamp">Freigegeben<small id="doneSmall">Klasse A, 14:02</small></span>
+          <h2 class="display-sm" id="doneTitle">Danke, Ihre Freigabe ist gespeichert.</h2>
+          <p id="doneText">Freigegeben am 29.09.2026 um 14:02.</p>
+          <p class="seal-line" id="doneSeal"><svg class="i i-16" aria-hidden="true"><use href="#g-seal"/></svg>Prüfsiegel <span class="mono">K3P9-4XQ2</span> <a href="#seal" data-seal="K3P9-4XQ2">Siegel prüfen</a></p>
+          <button type="button" class="btn btn-secondary" id="donePdf" data-toast="PDF „Nachtrag NT-2026-0031, Freigabe“ wird heruntergeladen."><svg class="i" aria-hidden="true"><use href="#g-download"/></svg>PDF herunterladen</button>
+        </section>
+        <details class="tech">
+          <summary>Technische Angaben</summary>
+          <dl class="facts"><dt>Version</dt><dd>1</dd><dt>Prüfsumme</dt><dd class="mono">sha256 7f3a…c91e</dd><dt>Link gültig bis</dt><dd>13.10.2026, 23:59</dd></dl>
+        </details>
+      </main>
+      <footer class="rcp-foot"><a href="#approve" data-missing="Impressum">Impressum</a><a href="#approve" data-missing="Datenschutz">Datenschutz</a><span>Erstellt mit JobFold</span></footer>
+    </div>
+  </section>
+
+  <!-- ============ 7.18 SAMMELFREIGABE ============ -->
+  <section class="screen" id="s-bundle" data-screen="bundle" aria-label="Kundenseite: offene Nachträge gemeinsam freigeben">
+    <div class="rcp">
+      <header class="rcp-head">
+        <span class="co-logo" aria-hidden="true">MG</span>
+        <div><p class="co-name">Muster Gebäudeservice GmbH</p><p class="co-contact">Ihr Ansprechpartner: Tim Berger, 030 1234 5678</p></div>
+      </header>
+      <main class="rcp-sheet">
+        <div>
+          <p class="rcp-kicker">Freigabe-Übersicht</p>
+          <h1 class="display">Offene Nachträge, Hausverwaltung Beispiel GmbH</h1>
+          <p class="rcp-lead">Guten Tag Frau Beispiel, drei Nachträge für Ihre Objekte warten auf Ihre Entscheidung. Sie können alle gemeinsam beantworten oder die Entscheidung weitergeben.</p>
+        </div>
+        <ul class="bundle" id="bundle">
+          <li class="bi" data-id="A" data-net="6750" data-vat="1283" data-gross="8033">
+            <fieldset class="bi-set">
+              <legend class="bi-title">Lindenstraße 14: Kellerfenster innen und außen putzen, 6 Stück, Sa 10.10.2026</legend>
+              <p class="bi-price"><span class="mono">67,50 €</span> netto, <span class="mono">80,33 €</span> brutto, gültig bis 13.10.2026</p>
+              <div class="bi-choice">
+                <label class="bi-opt"><input type="radio" name="bi-A" value="approve"><span>Freigeben</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-A" value="ask"><span>Rückfrage</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-A" value="decline"><span>Ablehnen</span></label>
+              </div>
+            </fieldset>
+          </li>
+          <li class="bi" data-id="B" data-net="4500" data-vat="855" data-gross="5355">
+            <fieldset class="bi-set">
+              <legend class="bi-title">Hofweg 3: Glasvordach am Eingang reinigen, 1 Stück</legend>
+              <p class="bi-price"><span class="mono">45,00 €</span> netto, <span class="mono">53,55 €</span> brutto, gültig bis 02.10.2026</p>
+              <div class="bi-choice">
+                <label class="bi-opt"><input type="radio" name="bi-B" value="approve"><span>Freigeben</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-B" value="ask"><span>Rückfrage</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-B" value="decline"><span>Ablehnen</span></label>
+              </div>
+            </fieldset>
+          </li>
+          <li class="bi is-over" data-id="C" data-net="18000" data-vat="3420" data-gross="21420">
+            <fieldset class="bi-set">
+              <legend class="bi-title">Parkstraße 8: Tiefgarage grundreinigen, 60 m²</legend>
+              <p class="bi-price"><span class="mono">180,00 €</span> netto, <span class="mono">214,20 €</span> brutto, gültig bis 09.10.2026</p>
+              <p class="bi-limit"><svg class="i i-16" aria-hidden="true"><use href="#st-noev"/></svg>Über Ihrem Limit von 100,00 €. Sie können eine Frage stellen, ablehnen oder die Entscheidung weitergeben.</p>
+              <div class="bi-choice">
+                <label class="bi-opt is-off"><input type="radio" name="bi-C" value="approve" disabled><span>Freigeben</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-C" value="ask"><span>Rückfrage</span></label>
+                <label class="bi-opt"><input type="radio" name="bi-C" value="decline"><span>Ablehnen</span></label>
+              </div>
+              <p class="bi-fw" id="biFw" hidden></p>
+            </fieldset>
+          </li>
+        </ul>
+        <p class="bundle-sum" id="bundleSum" role="status">Noch nichts zur Freigabe ausgewählt.</p>
+        <form class="rcp-step" id="bundleForm" novalidate aria-labelledby="bfH">
+          <h2 class="label" id="bfH">Ausgewählte Nachträge freigeben</h2>
+          <label class="field"><span>Ihr Name</span><input id="bfName" autocomplete="name"></label>
+          <label class="field"><span>Code aus der E-Mail an f•••@beispiel-verwaltung.example</span><input id="bfCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6 Ziffern"><small>10 Minuten gültig.</small></label>
+          <label class="field"><span>Unterschrift: Ihren Namen tippen</span><input id="bfSig" autocomplete="name"><small>Auf der Einzelseite können Sie stattdessen zeichnen.</small></label>
+          <label class="check-row"><input type="checkbox" id="bfCheck"><span>Ich beauftrage die ausgewählten Leistungen zu den genannten Preisen.</span></label>
+          <p class="legal">Ihre Freigabe ist eine Erklärung in Textform. Sie ist keine qualifizierte elektronische Signatur. Jeder ausgewählte Nachtrag bekommt seine eigene Bestätigung.</p>
+          <button type="submit" class="btn btn-primary btn-xl btn-block" id="bfSubmit" disabled>Ausgewählte verbindlich freigeben</button>
+        </form>
+        <section class="rcp-step" aria-labelledby="fwH">
+          <h2 class="label" id="fwH">Entscheidung weitergeben</h2>
+          <p>Entscheidet jemand anderes, zum Beispiel der Beirat oder die Eigentümer? Diese Person bekommt eine E-Mail mit diesem Link und antwortet mit ihrem eigenen Code.</p>
+          <button type="button" class="btn btn-secondary" id="fwOpen" aria-expanded="false" aria-controls="fwForm">An Entscheider weiterleiten</button>
+          <form id="fwForm" class="fw-form" hidden novalidate>
+            <label class="field"><span>Name der Person</span><input id="fwName" autocomplete="off" placeholder="Herr Muster, Beirat"></label>
+            <label class="field"><span>E-Mail oder Telefon</span><input id="fwTo" autocomplete="off" placeholder="name@beispiel.de"></label>
+            <p class="field-error" id="fwErr" hidden>Bitte Name und E-Mail oder Telefon eingeben.</p>
+            <div class="msg-preview">
+              <p class="label-sm is-sentence">Nachricht, die JobFold sendet</p>
+              <p id="fwText">Frau Beispiel bittet Sie, drei Nachträge für Objekte der Hausverwaltung Beispiel GmbH zu prüfen (Muster Gebäudeservice GmbH). Hier prüfen und antworten: jobfold.eu/r/…</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Weiterleiten</button>
+          </form>
+        </section>
+        <section class="rcp-done" id="bundleDone" hidden tabindex="-1" aria-live="polite" aria-labelledby="bdTitle">
+          <h2 class="display-sm" id="bdTitle">Danke, Ihre Antworten sind gespeichert.</h2>
+          <ul class="bd-list" id="bdList"></ul>
+          <p class="seal-line"><svg class="i i-16" aria-hidden="true"><use href="#g-seal"/></svg>Prüfsiegel <span class="mono">R8WN-5DZ7</span> <a href="#seal" data-seal="R8WN-5DZ7">Siegel prüfen</a></p>
+        </section>
+        <details class="tech">
+          <summary>Technische Angaben</summary>
+          <dl class="facts"><dt>Übersicht</dt><dd>3 Nachträge, je mit eigener Version und Prüfsumme</dd><dt>Link gültig bis</dt><dd>13.10.2026, 23:59</dd><dt>Weiterleitung</dt><dd>höchstens 3 Personen, 3 Weiterleitungen je Tag</dd></dl>
+        </details>
+      </main>
+      <footer class="rcp-foot"><a href="#bundle" data-missing="Impressum">Impressum</a><a href="#bundle" data-missing="Datenschutz">Datenschutz</a><span>Erstellt mit JobFold</span></footer>
+    </div>
+  </section>
+
+  <!-- ============ 7.19 PRÜFSIEGEL ============ -->
+  <section class="screen" id="s-seal" data-screen="seal" aria-label="Öffentliche Prüfseite für ein Prüfsiegel">
+    <div class="rcp">
+      <header class="rcp-head rcp-head-seal">
+        <span class="co-logo" aria-hidden="true"><svg class="i i-24" aria-hidden="true"><use href="#g-seal"/></svg></span>
+        <div><p class="co-name">JobFold Prüfsiegel</p><p class="co-contact">Prüft, ob ein Dokument unverändert ist. Kein Konto nötig.</p></div>
+      </header>
+      <main class="rcp-sheet">
+        <form class="seal-form" id="sealForm" novalidate>
+          <label class="field"><span>Siegelcode</span><input id="sealCode" value="K3P9-4XQ2" autocomplete="off" spellcheck="false" maxlength="9"></label>
+          <button type="submit" class="btn btn-secondary">Prüfen</button>
+        </form>
+        <div class="seal-result" id="sealResult" aria-live="polite"></div>
+        <section class="seal-check" id="sealCheck" aria-labelledby="scH">
+          <h2 class="label" id="scH">Datei prüfen</h2>
+          <p>Die Datei wird in Ihrem Browser gelesen und mit dem Siegel verglichen. Nichts wird hochgeladen.</p>
+          <label class="field"><span>Datei wählen</span><input type="file" id="sealFile"></label>
+          <div class="btn-row">
+            <button type="button" class="btn btn-secondary" id="sealSample">Beispieldatei prüfen</button>
+            <button type="button" class="btn btn-secondary" id="sealSampleBad">Geänderte Beispieldatei prüfen</button>
+          </div>
+          <p class="seal-verdict" id="sealVerdict" role="status"></p>
+        </section>
+        <section class="seal-meaning" aria-labelledby="smH">
+          <h2 class="label" id="smH">Was das Siegel zeigt</h2>
+          <p>Es zeigt, dass ein Dokument mit genau diesem Inhalt zu dem genannten Zeitpunkt bei JobFold festgehalten wurde und seitdem nicht verändert ist.</p>
+          <p>Es zeigt nicht, wer unterschrieben hat und welche rechtliche Wirkung das Dokument hat.</p>
+        </section>
+      </main>
+      <footer class="rcp-foot"><a href="#seal" data-missing="Impressum">Impressum</a><a href="#seal" data-missing="Datenschutz">Datenschutz</a><span>JobFold</span></footer>
+    </div>
+  </section>
+
+  <!-- ============ 7.13 CUSTOMER PORTAL ============ -->
+  <section class="screen" id="s-portal" data-screen="portal" aria-label="Portal der Hausverwaltung">
+    <div class="rcp ptl">
+      <header class="rcp-head ptl-head">
+        <span class="co-logo" aria-hidden="true">HB</span>
+        <div><p class="co-name">Portal der Hausverwaltung Beispiel GmbH</p><p class="co-contact">Frau Beispiel, angemeldet mit E-Mail-Link. Kostenlos für Hausverwaltungen.</p></div>
+      </header>
+      <div class="ptl-body">
+        <nav class="ptl-list" aria-label="Objekte">
+          <h2 class="label">Objekte</h2>
+          <ul id="ptlList"></ul>
+        </nav>
+        <main class="rcp-sheet ptl-main" id="ptlMain" aria-live="polite"></main>
+      </div>
+      <footer class="rcp-foot"><a href="#portal" data-missing="Impressum">Impressum</a><a href="#portal" data-missing="Datenschutz">Datenschutz</a><span>JobFold</span></footer>
+    </div>
+  </section>
+
+  <!-- ============ 7.16 STAIRWELL NOTICE ============ -->
+  <section class="screen" id="s-notice" data-screen="notice" aria-label="Treppenhaus-Aushang">
+    <div class="rcp nt">
+      <header class="rcp-head">
+        <span class="co-logo" aria-hidden="true">MG</span>
+        <div><p class="co-name">Muster Gebäudeservice GmbH</p><p class="co-contact">Reinigung Treppenhaus, Lindenstraße 14</p></div>
+      </header>
+      <main class="rcp-sheet">
+        <section aria-labelledby="ntLastH">
+          <p class="rcp-kicker">Lindenstraße 14</p>
+          <h1 class="display" id="ntLastH">Letzte Reinigung: Di 22.09.2026, 08:14 bis 08:41</h1>
+          <p class="rcp-lead">Das Treppenhaus wird jeden Dienstag gereinigt. Diese Angaben stammen aus den Einsätzen der Firma.</p>
+          <ul class="nt-dates" aria-label="Frühere Reinigungen">
+            <li><span>Di 15.09.2026</span><span class="mono">08:09 bis 08:38</span></li>
+            <li><span>Di 08.09.2026</span><span class="mono">08:16 bis 08:44</span></li>
+            <li><span>Di 01.09.2026</span><span class="mono">08:12 bis 08:40</span></li>
+            <li><span>Di 25.08.2026</span><span class="mono">08:20 bis 08:49</span></li>
+            <li><span>Di 18.08.2026</span><span class="mono">08:11 bis 08:37</span></li>
+            <li><span>Di 11.08.2026</span><span class="mono">08:15 bis 08:43</span></li>
+            <li><span>Di 04.08.2026</span><span class="mono">08:13 bis 08:39</span></li>
+          </ul>
+        </section>
+        <section class="rcp-step" aria-labelledby="ntFormH">
+          <h2 class="label" id="ntFormH">Problem melden</h2>
+          <form id="ntForm" novalidate>
+            <label class="field"><span>Was ist Ihnen aufgefallen?</span><textarea id="ntText" rows="4" maxlength="500" placeholder="Zum Beispiel: Licht im Keller defekt oder Treppe im 2. Stock nass"></textarea></label>
+            <p class="field-error" id="ntError" role="alert" hidden>Bitte beschreiben Sie das Problem in einem Satz.</p>
+            <label class="field"><span>Foto (freiwillig)</span><input type="file" id="ntPhoto" accept="image/*"></label>
+            <label class="field"><span>E-Mail für Rückfragen (freiwillig)</span><input type="email" id="ntMail" autocomplete="email" placeholder="name@beispiel.example"></label>
+            <p class="legal">Ihre Meldung geht an Muster Gebäudeservice und nur an diese Firma. Ihre E-Mail-Adresse wird nur für Rückfragen zu dieser Meldung verwendet. Die Firma antwortet nicht automatisch.</p>
+            <button type="submit" class="btn btn-primary btn-block">Meldung senden</button>
+          </form>
+          <div class="rcp-done" id="ntDone" hidden role="status">
+            <p><strong>Danke. Ihre Meldung ist bei Muster Gebäudeservice angekommen.</strong></p>
+            <p>Die Firma sieht sie in ihren Anfragen und meldet sich, wenn Sie eine E-Mail-Adresse angegeben haben.</p>
+            <button type="button" class="btn btn-secondary" id="ntAgain">Noch eine Meldung</button>
+          </div>
+        </section>
+      </main>
+      <footer class="rcp-foot"><a href="#notice" data-missing="Impressum">Impressum</a><a href="#notice" data-missing="Datenschutz">Datenschutz</a><span>JobFold</span></footer>
+    </div>
+  </section>
+
+  <!-- ============ 7.14 ADMIN CONSOLE ============ -->
+  <section class="screen" id="s-admin" data-screen="admin" aria-labelledby="admTitle">
+    <div class="adm">
+      <header class="adm-head">
+        <div><p class="adm-kicker">JobFold intern</p><h1 class="display-sm" id="admTitle">Admin-Konsole</h1></div>
+        <p class="adm-user">Angemeldet: Support, Tim B. (Passkey)</p>
+      </header>
+      <div class="adm-body">
+        <div class="tabs" role="tablist" aria-label="Bereiche der Admin-Konsole" id="admTabs">
+          <button type="button" role="tab" class="tab" id="admT1" aria-selected="true" aria-controls="admP1" data-adm="1">Betriebe</button>
+          <button type="button" role="tab" class="tab" id="admT2" aria-selected="false" aria-controls="admP2" data-adm="2">Support-Sitzung</button>
+          <button type="button" role="tab" class="tab" id="admT3" aria-selected="false" aria-controls="admP3" data-adm="3">Abrechnung</button>
+          <button type="button" role="tab" class="tab" id="admT4" aria-selected="false" aria-controls="admP4" data-adm="4">Störungen</button>
+          <button type="button" role="tab" class="tab" id="admT5" aria-selected="false" aria-controls="admP5" data-adm="5">Prüfungen (Jev)</button>
+        </div>
+
+        <section role="tabpanel" id="admP1" aria-labelledby="admT1" class="panel">
+          <h2 class="label">Betriebe</h2>
+          <label class="search" for="admSearch"><svg class="i i-16" aria-hidden="true"><use href="#g-search"/></svg><input id="admSearch" type="search" placeholder="Betrieb oder Tarif suchen" autocomplete="off"></label>
+          <div class="table-wrap">
+            <table class="data" id="admTable">
+              <thead><tr><th scope="col">Betrieb</th><th scope="col">Tarif</th><th scope="col">Status</th><th scope="col" class="num">Büro und Einsatz</th><th scope="col" class="num">Speicher</th><th scope="col">Region</th></tr></thead>
+              <tbody>
+                <tr><td>Muster Gebäudeservice GmbH</td><td>Team</td><td><span class="state-chip c-ok"><svg class="i" aria-hidden="true"><use href="#st-done"/></svg>aktiv</span></td><td class="num mono">2 und 8</td><td class="num mono">4,2 GB</td><td>Deutschland</td></tr>
+                <tr><td>Hausmeister Beispiel</td><td>Solo</td><td><span class="state-chip c-open"><svg class="i" aria-hidden="true"><use href="#st-wait"/></svg>Testzeit, Tag 12 von 30</span></td><td class="num mono">1 und 1</td><td class="num mono">0,3 GB</td><td>Deutschland</td></tr>
+                <tr><td>Glas und Rahmen Muster</td><td>Business</td><td><span class="state-chip c-ok"><svg class="i" aria-hidden="true"><use href="#st-done"/></svg>aktiv</span></td><td class="num mono">3 und 22</td><td class="num mono">61 GB</td><td>Deutschland</td></tr>
+                <tr><td>Klima Musterhaus GmbH</td><td>Free</td><td><span class="state-chip c-ok"><svg class="i" aria-hidden="true"><use href="#st-done"/></svg>aktiv</span></td><td class="num mono">1 und 0</td><td class="num mono">0,8 GB</td><td>Deutschland</td></tr>
+                <tr><td>Reinigung Nord Muster</td><td>Team</td><td><span class="state-chip c-stop"><svg class="i" aria-hidden="true"><use href="#st-noev"/></svg>Zahlung offen</span></td><td class="num mono">1 und 5</td><td class="num mono">9,7 GB</td><td>Deutschland</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" id="admEmpty" hidden>Kein Betrieb gefunden.</p>
+          <p class="note">Inhalte der Betriebe (Aufträge, Fotos, Nachrichten) zeigt diese Liste nicht. Dafür braucht es eine Support-Sitzung.</p>
+        </section>
+
+        <section role="tabpanel" id="admP2" aria-labelledby="admT2" class="panel" hidden>
+          <h2 class="label">Support-Sitzung</h2>
+          <p class="adm-lead">Lesezugriff auf einen Betrieb gibt es nur befristet, mit Grund und nach Freigabe durch den Betrieb. Jede Ansicht wird protokolliert und ist für den Betrieb sichtbar.</p>
+          <form class="adm-form" id="admSupForm" novalidate>
+            <label class="field"><span>Betrieb</span><select id="admSupWs"><option>Muster Gebäudeservice GmbH</option><option>Hausmeister Beispiel</option><option>Reinigung Nord Muster</option></select></label>
+            <label class="field"><span>Grund (Pflicht)</span><input id="admSupWhy" autocomplete="off" placeholder="Zum Beispiel: Ticket 4127, Bericht lässt sich nicht senden"></label>
+            <label class="field"><span>Dauer</span><select id="admSupMin"><option value="30">30 Minuten</option><option value="60">60 Minuten</option></select></label>
+            <p class="field-error" id="admSupErr" role="alert" hidden>Bitte einen Grund eintragen.</p>
+            <button type="submit" class="btn btn-primary">Anfrage an den Betrieb senden</button>
+          </form>
+          <h3 class="label lt-sub">Sitzungen</h3>
+          <ul class="adm-sessions" id="admSessions">
+            <li><div><strong>Reinigung Nord Muster</strong><span>Ticket 4098, 60 Minuten, gestern 14:40</span></div><span class="state-chip c-unknown"><svg class="i" aria-hidden="true"><use href="#st-noev"/></svg>beendet, 23 Ansichten protokolliert</span></li>
+          </ul>
+        </section>
+
+        <section role="tabpanel" id="admP3" aria-labelledby="admT3" class="panel" hidden>
+          <h2 class="label">Abrechnung</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th scope="col">Betrieb</th><th scope="col">Stripe-Stand</th><th scope="col" class="num">Offen</th><th scope="col">Mahnstufe</th><th scope="col"><span class="visually-hidden">Aktion</span></th></tr></thead>
+              <tbody>
+                <tr><td>Reinigung Nord Muster</td><td>SEPA-Lastschrift zurückgegeben</td><td class="num mono">99,00 €</td><td>1. Erinnerung gesendet 24.09.</td><td><button type="button" class="link-btn" data-toast="Eine Gutschrift braucht einen Grund und wird im Prüfprotokoll gebucht. Im Prototyp nicht ausgeführt.">Gutschrift anlegen</button></td></tr>
+                <tr><td>Muster Gebäudeservice GmbH</td><td>bezahlt am 01.09.</td><td class="num mono">0,00 €</td><td>keine</td><td></td></tr>
+                <tr><td>Glas und Rahmen Muster</td><td>bezahlt am 01.09.</td><td class="num mono">0,00 €</td><td>keine</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Gutschriften und Änderungen sind Buchungen mit Grund, Person und Zeit im Prüfprotokoll. Kein Wert wird still überschrieben.</p>
+        </section>
+
+        <section role="tabpanel" id="admP4" aria-labelledby="admT4" class="panel" hidden>
+          <h2 class="label">Störungen</h2>
+          <p class="adm-lead">Entwurf für die Statusseite. Betroffene Betriebe werden erst benachrichtigt, wenn du klickst.</p>
+          <div class="adm-form">
+            <label class="field"><span>Titel</span><input id="admIncTitle" value="Verzögerte E-Mail-Zustellung"></label>
+            <label class="field"><span>Text</span><textarea id="admIncText" rows="3">Freigabe-E-Mails kommen mit bis zu 20 Minuten Verzögerung an. Aufträge, Fotos und Berichte sind nicht betroffen.</textarea></label>
+            <p class="note">Betroffen: 14 Betriebe mit Freigabelinks in den letzten 60 Minuten. Sie werden erst benachrichtigt, wenn du bestätigst.</p>
+            <button type="button" class="btn btn-primary" id="admIncSend">Statusseite aktualisieren</button>
+            <p class="note" id="admIncDone" role="status" hidden>Gesendet um 15:02: Statusseite aktualisiert, 14 Betriebe benachrichtigt.</p>
+          </div>
+        </section>
+
+        <section role="tabpanel" id="admP5" aria-labelledby="admT5" class="panel" hidden>
+          <h2 class="label">Prüfungen (Jev)</h2>
+          <dl class="adm-budget">
+            <div><dt>Monatsbudget</dt><dd class="mono">40,00 €</dd></div>
+            <div><dt>Verbraucht</dt><dd class="mono">3,10 €</dd></div>
+          </dl>
+          <meter class="fr-meter" min="0" max="4000" value="310">3,10 € von 40,00 €</meter>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th scope="col">Aufgabe</th><th scope="col">Sprache</th><th scope="col" class="num">Prüffälle</th><th scope="col">Stufe</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">JF-RADAR-1</td><td>Deutsch</td><td class="num mono">150</td><td><span class="state-chip c-ok"><svg class="i" aria-hidden="true"><use href="#st-done"/></svg>sichtbar</span></td></tr>
+                <tr><td class="mono">JF-PRICE-1</td><td>Deutsch</td><td class="num mono">96</td><td><span class="state-chip c-open"><svg class="i" aria-hidden="true"><use href="#st-wait"/></svg>Schatten, 54 fehlen</span></td></tr>
+                <tr><td class="mono">JF-APPROVAL-1</td><td>Deutsch</td><td class="num mono">118</td><td><span class="state-chip c-open"><svg class="i" aria-hidden="true"><use href="#st-wait"/></svg>Schatten, 32 fehlen</span></td></tr>
+                <tr><td class="mono">JF-REPLY-1</td><td>Deutsch</td><td class="num mono">0</td><td><span class="state-chip c-unknown"><svg class="i" aria-hidden="true"><use href="#st-noev"/></svg>nicht gestartet</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Eine Aufgabe wird erst sichtbar, wenn sie an 150 zurückgehaltenen deutschen Fällen die Grenzwerte erreicht. Bis dahin läuft sie im Schatten und zeigt nichts an. Ohne Prüfungen („Aus“) laufen nur die Regeln.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7.12 FIRST RUN ============ -->
+  <section class="screen" id="s-onboarding" data-screen="onboarding" aria-labelledby="obTitle">
+    <div class="ob">
+      <header class="ob-head">
+        <span class="brand"><svg class="i brand-mark" aria-hidden="true"><use href="#g-logo"/></svg><span>JobFold</span></span>
+        <ol class="ob-steps" id="obSteps" aria-label="Schritte">
+          <li class="is-on" aria-current="step"><span class="step-n">1</span>Betrieb</li>
+          <li><span class="step-n">2</span>Beispiel</li>
+          <li><span class="step-n">3</span>Preise</li>
+          <li><span class="step-n">4</span>Prüfungen</li>
+          <li><span class="step-n">5</span>Team</li>
+        </ol>
+        <span class="muted" id="obCount">Schritt 1 von 5</span>
+      </header>
+      <div class="ob-body">
+        <div class="ob-form">
+          <div class="ob-step" data-ob="1">
+            <h1 class="display" id="obTitle">Dein Betrieb</h1>
+            <p class="lead">Drei Angaben, dann siehst du deinen ersten Auftrag.</p>
+            <label class="field"><span>Firmenname</span><input id="obName" value="Muster Gebäudeservice GmbH"></label>
+            <fieldset class="field">
+              <legend>Womit arbeitest du?</legend>
+              <div class="pack-list" id="packList">
+                <label class="pack"><input type="radio" name="pack" value="clean" checked><span>Gebäudereinigung</span></label>
+                <label class="pack"><input type="radio" name="pack" value="care"><span>Hausmeisterdienst</span></label>
+                <label class="pack"><input type="radio" name="pack" value="winter"><span>Winterdienst</span></label>
+                <label class="pack"><input type="radio" name="pack" value="shk"><span>Sanitär, Heizung, Klima</span></label>
+                <label class="pack"><input type="radio" name="pack" value="elec"><span>Elektro</span></label>
+                <label class="pack"><input type="radio" name="pack" value="paint"><span>Maler</span></label>
+                <label class="pack"><input type="radio" name="pack" value="roof"><span>Dach</span></label>
+                <label class="pack"><input type="radio" name="pack" value="pv"><span>PV und Wärmepumpe</span></label>
+                <label class="pack"><input type="radio" name="pack" value="inspect"><span>Prüfdienste</span></label>
+              </div>
+            </fieldset>
+            <div class="field"><span id="sizeL">Wie viele Leute arbeiten mit?</span>
+              <div class="seg seg-full" role="radiogroup" aria-labelledby="sizeL" id="obSize">
+                <button type="button" role="radio" aria-checked="false">nur ich</button>
+                <button type="button" role="radio" aria-checked="false">2 bis 5</button>
+                <button type="button" role="radio" aria-checked="true">6 bis 15</button>
+                <button type="button" role="radio" aria-checked="false">16 bis 30</button>
+                <button type="button" role="radio" aria-checked="false">mehr</button>
+              </div>
+            </div>
+          </div>
+          <div class="ob-step" data-ob="2" hidden>
+            <h2 class="display">Wie willst du starten?</h2>
+            <p class="lead">Du kannst beides später tun.</p>
+            <div class="start-choice">
+              <label class="choice"><input type="radio" name="start" checked><span><strong>Beispielauftrag ansehen</strong><small>Ein Treppenhaus mit Nachrichten, einem gefundenen Zusatzwunsch und einem fertigen Bericht. Alles als MUSTER markiert.</small></span></label>
+              <label class="choice"><input type="radio" name="start"><span><strong>Eigenen Auftrag anlegen</strong><small>Kunde, Objekt und Starttermin. Den Leistungsumfang schlägt dein Paket vor.</small></span></label>
+            </div>
+          </div>
+          <div class="ob-step" data-ob="3" hidden>
+            <h2 class="display">Deine Preise</h2>
+            <p class="lead">Die zehn häufigsten Positionen deines Pakets. Setze mindestens fünf Preise; der Rest geht später.</p>
+            <p class="price-count" id="priceCount" aria-live="polite">0 von 10 Preisen gesetzt</p>
+            <div class="table-wrap">
+              <table class="data starter">
+                <thead><tr><th scope="col">Position</th><th scope="col">Einheit</th><th scope="col" class="num">Preis netto</th></tr></thead>
+                <tbody id="starterRows">
+                  <tr><td>Fensterreinigung innen und außen</td><td>Stück</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Fensterreinigung innen und außen"></td></tr>
+                  <tr><td>Glasvordach reinigen</td><td>Stück</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Glasvordach reinigen"></td></tr>
+                  <tr><td>Sonderreinigung Treppenhaus</td><td>pauschal</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Sonderreinigung Treppenhaus"></td></tr>
+                  <tr><td>Grundreinigung Bodenbelag</td><td>m²</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Grundreinigung Bodenbelag"></td></tr>
+                  <tr><td>Teppichreinigung</td><td>m²</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Teppichreinigung"></td></tr>
+                  <tr><td>Sperrmüll abtransportieren</td><td>pauschal</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Sperrmüll abtransportieren"></td></tr>
+                  <tr><td>Laub entfernen</td><td>Stunde</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Laub entfernen"></td></tr>
+                  <tr><td>Mülltonne auswaschen</td><td>Stück</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Mülltonne auswaschen"></td></tr>
+                  <tr><td>Graffiti entfernen</td><td>m²</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Graffiti entfernen"></td></tr>
+                  <tr><td>Anfahrt</td><td>pauschal</td><td class="num"><input class="price-in" inputmode="decimal" placeholder="Preis fehlt" aria-label="Preis Anfahrt"></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Zuschläge wie „Samstag +25 %“ oder „Sonn- und Feiertag +50 %“ legst du im Preisbuch fest. JobFold rechnet sie aus Termin und Feiertagen deines Bundeslands.</p>
+          </div>
+          <div class="ob-step" data-ob="4" hidden>
+            <h2 class="display">Prüfungen</h2>
+            <p class="lead">Prüfungen beantworten feste Fragen, zum Beispiel „Ist diese Nachricht ein Zusatzwunsch?“. Beträge, Mengen, Termine und Freigaben kommen nie von einem Modell, und kein Modell schreibt Sätze an deine Kunden.</p>
+            <div class="start-choice" id="obMode">
+              <label class="choice"><input type="radio" name="mode" value="Aus" checked><span><strong>Aus</strong><small>Nur feste Regeln, zum Beispiel Stichwörter für Zusatzwünsche. Nichts verlässt JobFold.</small></span></label>
+              <label class="choice"><input type="radio" name="mode" value="Jev"><span><strong>Jev</strong><small>Jev prüft feste Fragen als Unterauftragsverarbeiter, sobald du den Eintrag bestätigt hast. Jede Prüfung erscheint erst, wenn sie ihre Qualitätsschwelle erreicht. Ein Filter hält Gesundheits-, Ausweis-, Lohn- und Bankdaten zurück.</small></span></label>
+            </div>
+            <p class="links-row"><a href="#onboarding" data-missing="AVV">Auftragsverarbeitung (AVV) lesen</a><a href="#onboarding" data-missing="Unterauftragsverarbeiter">Liste der Unterauftragsverarbeiter</a></p>
+          </div>
+          <div class="ob-step" data-ob="5" hidden>
+            <h2 class="display">Dein Team</h2>
+            <p class="lead">Lade jetzt ein oder später. Einsatzkräfte ohne E-Mail koppeln ihr Handy per QR-Code.</p>
+            <div class="invite-rows">
+              <label class="field"><span>Person 1</span><input placeholder="E-Mail oder Telefon"></label>
+              <label class="field"><span>Rolle</span><select><option>Einsatzkraft</option><option>Objektleitung</option><option>Büro</option></select></label>
+            </div>
+            <div class="install">
+              <svg class="i qr" aria-hidden="true"><use href="#g-qr"/></svg>
+              <div><p><strong>App auf dem Handy installieren</strong></p><p class="muted">jobfold.eu/app öffnen, dann „Zum Startbildschirm“. Funktioniert auch ohne Netz im Keller.</p></div>
+            </div>
+          </div>
+          <div class="ob-nav">
+            <button type="button" class="btn btn-secondary" id="obBack" hidden>Zurück</button>
+            <button type="button" class="btn btn-ghost" id="obLater" hidden>Später</button>
+            <button type="button" class="btn btn-primary" id="obNext">Weiter</button>
+          </div>
+        </div>
+        <aside class="ob-preview" aria-labelledby="obPrevH">
+          <p class="label is-sentence" id="obPrevH">So beginnt dein erster Auftrag</p>
+          <div class="pv-job">
+            <p class="pv-name" id="pvName">Muster Gebäudeservice GmbH</p>
+            <p class="pv-title" id="pvTitle">Treppenhausreinigung</p>
+            <ul class="pv-list" id="pvList"></ul>
+            <p class="pv-foot"><span class="unknown" id="pvPrice">Preise fehlen</span><span class="muted">kommen aus deinem Preisbuch, Schritt 3</span></p>
+            <p class="pv-mode" id="pvMode">Prüfungen: Aus</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7.15 COVERAGE SHEET AND FEIERABEND ============ -->
+  <section class="screen" id="s-closeout" data-screen="closeout" aria-label="Vollständigkeitsprüfung und Feierabend">
+    <div class="stage-row">
+      <div class="phone phone-sheet">
+        <header class="v-head">
+          <a class="v-back" href="#visit" aria-label="Zurück zum Einsatz"><svg class="i i-24" aria-hidden="true"><use href="#g-back"/></svg></a>
+          <div class="v-title"><h1>Lindenstraße 14</h1><p>vor Ort seit 08:14</p></div>
+        </header>
+        <div class="dimmed" aria-hidden="true">
+          <p class="dim-row"></p><p class="dim-row"></p><p class="dim-row"></p><p class="dim-row"></p>
+        </div>
+        <section class="bottom-sheet" aria-labelledby="covH">
+          <span class="grab" aria-hidden="true"></span>
+          <h2 class="display-sm" id="covH">Vor dem Gehen: <span id="covCount">2 Punkte ohne Nachweis</span></h2>
+          <ul class="gaps" id="gaps">
+            <li class="gap">
+              <p class="gap-head"><svg class="i i-24 gl-unknown" aria-hidden="true"><use href="#st-noev"/></svg><span><strong>Kellergang fegen</strong><small>Vorher-Nachher-Foto fehlt</small></span></p>
+              <div class="gap-acts">
+                <button type="button" class="btn btn-secondary" data-resolve="Foto vorher und nachher aufgenommen">Foto aufnehmen</button>
+                <button type="button" class="btn btn-secondary" data-resolve="Notiz: Gang gefegt, Kamera beschlagen">Notiz</button>
+                <button type="button" class="btn btn-secondary" data-skip>Heute nicht erledigt</button>
+              </div>
+              <label class="field skip-reason" hidden><span>Grund</span><select><option>Kein Zugang, Keller verschlossen</option><option>Material fehlt</option><option>Keine Zeit mehr</option><option>Anderer Grund</option></select></label>
+            </li>
+            <li class="gap">
+              <p class="gap-head"><svg class="i i-24 gl-unknown" aria-hidden="true"><use href="#st-noev"/></svg><span><strong>Mülltonnenplatz kontrollieren</strong><small>Angabe fehlt: Tonnen voll?</small></span></p>
+              <p class="hint-row"><span class="band b-check">Vorschlag</span>Deine Notiz erwähnt es: „Tonnen waren voll, Hausverwaltung informiert.“</p>
+              <div class="gap-acts">
+                <button type="button" class="btn btn-secondary" data-resolve="Angabe: Tonnen voll">Ja, voll</button>
+                <button type="button" class="btn btn-secondary" data-resolve="Angabe: Tonnen nicht voll">Nein</button>
+                <button type="button" class="btn btn-secondary" data-skip>Heute nicht erledigt</button>
+              </div>
+              <label class="field skip-reason" hidden><span>Grund</span><select><option>Kein Zugang</option><option>Keine Zeit mehr</option><option>Anderer Grund</option></select></label>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-primary btn-xl btn-block" id="finishVisit">Einsatz abschließen</button>
+          <p class="muted sheet-note" id="finishNote">Offene Punkte erscheinen im Bericht als „Kein Nachweis“.</p>
+        </section>
+      </div>
+
+      <div class="phone">
+        <header class="v-head v-head-plain">
+          <div class="v-title"><h1>Feierabend</h1><p>Di 29.09.2026, Anna K.</p></div>
+        </header>
+        <section class="fa" aria-label="Tagesabschluss">
+          <p class="fa-lead">4 Einsätze heute. Bevor du gehst:</p>
+          <ul class="fa-list">
+            <li class="fa-row"><div><strong>Gartenweg 9</strong><span>07:00–07:45, alles belegt</span></div><svg class="i i-24 gl-ok" aria-hidden="true"><use href="#st-done"/></svg></li>
+            <li class="fa-row"><div><strong>Lindenstraße 14</strong><span>08:14–08:41, alles belegt, 1 Zusatzwunsch bepreist</span></div><svg class="i i-24 gl-ok" aria-hidden="true"><use href="#st-done"/></svg></li>
+            <li class="fa-row has-open" id="faOpen">
+              <div><strong>Rosenstraße 4</strong><span>09:30–10:30</span>
+                <ul class="fa-issues"><li id="faPhotos">2 Fotos nur auf diesem Handy</li><li>1 Zusatzwunsch ohne Preis: „Kinderwagenraum auch mitmachen?“</li></ul>
+              </div>
+              <button type="button" class="btn btn-secondary" id="faHand">An Büro übergeben</button>
+            </li>
+            <li class="fa-row"><div><strong>Hofweg 3</strong><span>13:00–14:30, alles belegt</span></div><svg class="i i-24 gl-ok" aria-hidden="true"><use href="#st-done"/></svg></li>
+          </ul>
+          <div class="fa-sync" id="faSync">
+            <span class="sync-pill is-local" id="faPill">2 Fotos auf diesem Handy<svg class="i i-16" aria-hidden="true"><use href="#g-saved"/></svg></span>
+            <button type="button" class="btn btn-secondary" id="faUpload"><svg class="i" aria-hidden="true"><use href="#g-upload"/></svg>Jetzt hochladen</button>
+          </div>
+          <p class="fa-warn" id="faWarn" role="alert" hidden><svg class="i i-16" aria-hidden="true"><use href="#g-alert"/></svg>Noch 2 Fotos nur auf diesem Handy. Lade sie hoch, bevor du Feierabend machst.</p>
+          <button type="button" class="btn btn-primary btn-xl btn-block" id="faDone">Feierabend</button>
+          <p class="muted sheet-note">Diese Übersicht siehst nur du. Sie ist kein Bericht an Kunden.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ 7.11 COMMAND BAR ============ -->
+<dialog class="cmd" id="cmd" aria-label="Befehl oder Suche">
+  <div class="cmd-input">
+    <svg class="i" aria-hidden="true"><use href="#g-search"/></svg>
+    <input id="cmdInput" type="text" value="Nachtrag für die Kellerfenster an Frau Beispiel" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="cmdList" aria-autocomplete="list" aria-label="Befehl oder Suche">
+    <button type="button" class="icon-btn" aria-label="Sprechen" data-toast="Sprich deinen Befehl. Der Text wird auf dem Gerät erkannt."><svg class="i" aria-hidden="true"><use href="#g-mic"/></svg></button>
+  </div>
+  <ul class="cmd-list" id="cmdList" role="listbox" aria-label="Ergebnisse">
+    <li class="cmd-group" role="presentation">Aktionen</li>
+    <li role="option" class="cmd-opt" id="opt1" aria-selected="true" data-go="change" data-preview="co" data-k="nachtrag erstellen kellerfenster frau beispiel"><svg class="i" aria-hidden="true"><use href="#g-tag"/></svg><span class="opt-main">Nachtrag erstellen</span><span class="band b-check">Vorschlag</span></li>
+    <li role="option" class="cmd-opt" id="opt2" aria-selected="false" data-go="change" data-preview="price" data-k="zusatzwunsch bepreisen kellerfenster"><svg class="i" aria-hidden="true"><use href="#g-money"/></svg><span class="opt-main">Zusatzwunsch bepreisen</span></li>
+    <li role="option" class="cmd-opt" id="opt3" aria-selected="false" data-go="change" data-preview="link" data-k="freigabelink senden frau beispiel nachtrag"><svg class="i" aria-hidden="true"><use href="#g-mail"/></svg><span class="opt-main">Freigabelink senden</span><span class="confirm-tag">Bestätigung</span></li>
+    <li role="option" class="cmd-opt" id="opt7" aria-selected="false" data-go="frame" data-preview="frame" data-k="freigaberahmen vorschlagen budget rahmen lindenstraße frau beispiel"><svg class="i" aria-hidden="true"><use href="#g-frame"/></svg><span class="opt-main">Freigaberahmen vorschlagen</span></li>
+    <li role="option" class="cmd-opt" id="opt8" aria-selected="false" data-go="frame" data-preview="bundle" data-k="freigabe übersicht senden nachträge frau beispiel"><svg class="i" aria-hidden="true"><use href="#g-mail"/></svg><span class="opt-main">Freigabe-Übersicht senden</span><span class="confirm-tag">Bestätigung</span></li>
+    <li class="cmd-group" role="presentation">Bereiche</li>
+    <li role="option" class="cmd-opt" id="opt9" aria-selected="false" data-go="inbox" data-preview="inbox" data-k="anfragen posteingang nachrichten reklamation zusatzwunsch"><svg class="i" aria-hidden="true"><use href="#g-inbox"/></svg><span class="opt-main">Anfragen öffnen</span></li>
+    <li role="option" class="cmd-opt" id="opt10" aria-selected="false" data-go="prices" data-preview="prices" data-k="preisbuch preise positionen regeln zuschlag samstag"><svg class="i" aria-hidden="true"><use href="#g-tag"/></svg><span class="opt-main">Preisbuch öffnen</span></li>
+    <li class="cmd-group" role="presentation">Aufträge</li>
+    <li role="option" class="cmd-opt" id="opt4" aria-selected="false" data-go="timeline" data-preview="job" data-k="treppenhausreinigung lindenstraße 14 kellerfenster"><svg class="i" aria-hidden="true"><use href="#g-jobs"/></svg><span class="opt-main">Treppenhausreinigung Lindenstraße 14</span></li>
+    <li class="cmd-group" role="presentation">Kunden</li>
+    <li role="option" class="cmd-opt" id="opt5" aria-selected="false" data-go="timeline" data-preview="customer" data-k="hausverwaltung beispiel gmbh frau beispiel"><svg class="i" aria-hidden="true"><use href="#g-user"/></svg><span class="opt-main">Hausverwaltung Beispiel GmbH, Frau Beispiel</span></li>
+    <li class="cmd-group" role="presentation">Objekte</li>
+    <li role="option" class="cmd-opt" id="opt6" aria-selected="false" data-go="timeline" data-preview="site" data-k="lindenstraße 14 musterstadt objekt kellerfenster"><svg class="i" aria-hidden="true"><use href="#g-building"/></svg><span class="opt-main">Lindenstraße 14, Musterstadt</span></li>
+  </ul>
+  <div class="cmd-preview" id="cmdPreview" aria-live="polite">
+    <p class="label-sm">Vorschau</p>
+    <p class="pv-line" id="pvLine">Nachtrag an Frau Beispiel</p>
+    <ul class="pv-facts" id="pvFacts"><li>Kellerfenster</li><li>6 Stück</li><li class="mono">80,33 €</li></ul>
+    <p class="muted" id="pvNote">Öffnet den Nachtrag zum Prüfen. Gesendet wird erst dort, mit deinem Klick.</p>
+    <button type="button" class="btn btn-primary" id="cmdGo">Öffnen und prüfen</button>
+  </div>
+  <p class="cmd-foot"><kbd>↑</kbd><kbd>↓</kbd> wählen <kbd>Enter</kbd> öffnen <kbd>Esc</kbd> schließen</p>
+</dialog>
+
+<dialog class="confirm" id="confirmDlg" aria-labelledby="cfTitle">
+  <h2 class="display-sm" id="cfTitle">Gerät abmelden?</h2>
+  <p id="cfText"></p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary" id="cfCancel">Abbrechen</button>
+    <button type="button" class="btn btn-primary btn-danger-solid" id="cfOk">Gerät abmelden</button>
+  </div>
+</dialog>
+
+<dialog class="confirm pr-dlg" id="prDlg" aria-labelledby="pdTitle">
+  <h2 class="display-sm" id="pdTitle">Position bearbeiten</h2>
+  <div class="form-grid">
+    <label class="field"><span>Code</span><input id="pdCode" readonly></label>
+    <label class="field"><span>Einheit</span><input id="pdUnit" autocomplete="off"></label>
+    <label class="field pd-wide"><span>Leistung</span><input id="pdName" autocomplete="off"></label>
+    <label class="field"><span>Preis netto in Euro</span><input id="pdPrice" inputmode="decimal" autocomplete="off"></label>
+    <label class="field"><span>MwSt.</span><select id="pdVat"><option value="19">19 %</option><option value="7">7 %</option><option value="0">0 %</option></select></label>
+  </div>
+  <p class="field-error" id="pdError" role="alert" hidden>Bitte einen Betrag wie 9,00 eingeben.</p>
+  <p class="note" id="pdEffect"></p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary" id="pdCancel">Abbrechen</button>
+    <button type="button" class="btn btn-primary" id="pdSave">Als neue Version speichern</button>
+  </div>
+</dialog>
+
+<dialog class="confirm pr-imp" id="prImp" aria-labelledby="piTitle">
+  <h2 class="display-sm" id="piTitle">Preisliste prüfen</h2>
+  <p>Aus „Preisliste 2026.pdf“ (MUSTER). Beträge liest der Code aus dem Text der Datei; ob eine Zeile eine Position ist, schlägt Jev vor. Du entscheidest je Zeile.</p>
+  <div class="table-wrap">
+    <table class="data" id="piTable">
+      <thead><tr><th scope="col">Übernehmen</th><th scope="col">Zeile aus der Datei</th><th scope="col">Vorschlag</th><th scope="col" class="num">Netto</th></tr></thead>
+      <tbody>
+        <tr><td><input type="checkbox" checked data-pi="item" data-name="Balkon reinigen" data-unit="m²" data-cents="450" aria-label="Balkon reinigen übernehmen"></td><td>Balkon reinigen je m² 4,50 EUR</td><td>neue Position, m²</td><td class="num mono">4,50 €</td></tr>
+        <tr><td><input type="checkbox" checked data-pi="item" data-name="Treppenhausfenster reinigen" data-unit="Stück" data-cents="750" aria-label="Treppenhausfenster übernehmen"></td><td>Treppenhausfenster je Stück 7,50 EUR</td><td>neue Position, Stück</td><td class="num mono">7,50 €</td></tr>
+        <tr><td><input type="checkbox" data-pi="change" aria-label="Änderung FR-02 übernehmen"></td><td>Fenster innen/außen je Stück 9,50 EUR</td><td>Änderung: FR-02 wird v4, 9,00 € auf 9,50 €</td><td class="num mono">9,50 €</td></tr>
+        <tr><td><input type="checkbox" checked data-pi="rule" aria-label="Regel Anfahrt übernehmen"></td><td>Anfahrt je Einsatz 18,00 EUR</td><td>neue Regel „Anfahrt“</td><td class="num mono">18,00 €</td></tr>
+        <tr class="is-skipped"><td><input type="checkbox" disabled aria-label="Zahlungsziel: keine Position"></td><td>Zahlungsziel 14 Tage netto</td><td>keine Preisposition</td><td class="num">–</td></tr>
+        <tr class="is-skipped"><td><input type="checkbox" disabled aria-label="Keller entrümpeln: Preis fehlt"></td><td>Keller entrümpeln nach Aufwand</td><td><span class="unknown">Preis fehlt</span></td><td class="num"><span class="unknown">offen</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" id="piSum" role="status"></p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary" id="piCancel">Abbrechen</button>
+    <button type="button" class="btn btn-primary" id="piApply">Auswahl als Entwurf übernehmen</button>
+  </div>
+</dialog>
+
+<dialog class="confirm sitefile" id="fileDlg" aria-labelledby="sfTitle">
+  <h2 class="display-sm" id="sfTitle">Objektmappe Lindenstraße 14</h2>
+  <dl class="facts">
+    <dt>Zugang</dt><dd>Haustür, Code <span class="mono" id="sfCode">••••</span> <button type="button" class="link-btn small" id="sfReveal">Anzeigen (wird protokolliert)</button></dd>
+    <dt>Schlüssel</dt><dd>Schlüssel 3 übernommen von Olga S. um 07:52, Übergabe von beiden bestätigt</dd>
+    <dt>Achtung</dt><dd>Kellergang: Stufe 4 ist bei Nässe rutschig. Handlauf 2. OG lose, gemeldet am 22.09.</dd>
+    <dt>Letzte Notizen</dt><dd>Kunde bevorzugt Reinigung vor 09:00. Mülltonnenplatz nur mit Handschuhen.</dd>
+    <dt>Referenzfotos</dt><dd>Eingangstür, Kellergang, Treppenhausfenster (bestätigt von Katrin Lang)</dd>
+  </dl>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="sfSeen">Gesehen</button>
+    <button type="button" class="btn btn-secondary" id="sfClose">Schließen</button>
+  </div>
+  <p class="muted" id="sfSeenNote">Dein „Gesehen“ wird mit Namen und Zeit gespeichert; das Büro sieht es auf der Plantafel.</p>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+</body>
+</html>

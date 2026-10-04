@@ -1,0 +1,2171 @@
+<!doctype html>
+<html lang="de" data-theme="tag">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>JobFold Objektakte Prototyp</title>
+<meta name="description" content="Klickbarer Prototyp der Objektakte: Android-Feldapp, Büro, Hausverwaltung und Seiten ohne Konto. Alle Firmen, Personen, Objekte und Beträge sind Musterdaten.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16v-5a5.5 5.5 0 0 1 11 0v5l1.5 2h-14z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 6.5v7"/><path d="M12 17.5h.01" stroke-width="3"/></symbol>
+  <symbol id="i-question" viewBox="0 0 24 24"><path d="M9.3 9a2.7 2.7 0 1 1 3.8 2.5c-.7.3-1.1.9-1.1 1.7v.6"/><path d="M12 17.5h.01" stroke-width="3"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4.5 19.5l1-4L16 5a2.1 2.1 0 0 1 3 3L8.5 18.5z"/><path d="M14 7l3 3"/></symbol>
+  <symbol id="i-dash" viewBox="0 0 24 24"><path d="M7 12h10"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9.5 5.5L16 12l-6.5 6.5"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M12 5.5h.01M12 12h.01M12 18.5h.01" stroke-width="3.2"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 21V4.5h14V21"/><path d="M3 21h18"/><path d="M10 21v-4h4v4"/><path d="M8.5 8h.01M12 8h.01M15.5 8h.01M8.5 12h.01M12 12h.01M15.5 12h.01" stroke-width="2.6"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13l2.5-7h11L20 13v6H4z"/><path d="M4 13h4.5l1 2h5l1-2H20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.1-7 10-4-1.9-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4.5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 7.2A6.5 6.5 0 1 0 17.5 16.8"/><path d="M4.5 10.5h8M4.5 13.5h8"/></symbol>
+  <symbol id="i-invoice" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c1.8.8 3 2.9 3 5.7"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></symbol>
+  <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M7 8.5a5 5 0 0 1 0 7M10.5 6a8.5 8.5 0 0 1 0 12M14 3.5a12 12 0 0 1 0 17"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9"/><path d="M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 13v7h14v-7"/></symbol>
+  <symbol id="i-seal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12l2.3 2.3 4.7-4.8"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.4 5.2 3.4 8.5s-1 6.1-3.4 8.5c-2.4-2.4-3.4-5.2-3.4-8.5s1-6.1 3.4-8.5z"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 11.8a3.4 3.4 0 0 0 1 6.7z"/><path d="M12 15.5v-5M9.8 12.5L12 10.3l2.2 2.2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5.5 4h10a3 3 0 0 1 3 3v13.5H8.5a3 3 0 0 1-3-3z"/><path d="M5.5 17.5a3 3 0 0 1 3-3h10"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L4 20z"/></symbol>
+  <symbol id="i-stack" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4z"/><path d="M4 12l8 4 8-4M4 16l8 4 8-4"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24"><path d="M5 18v-1M9 18v-4M13 18v-7M17 18V8" stroke-width="2.4"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="3" y="8" width="16" height="8" rx="1.5"/><path d="M21 11v2M5.5 10.5h8v3h-8z"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 2v-8.5z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-cloud-off" viewBox="0 0 24 24"><path d="M7 18.5h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 11.8a3.4 3.4 0 0 0 1 6.7z"/><path d="M4 4l16 16"/></symbol>
+  <symbol id="i-retry" viewBox="0 0 24 24"><path d="M18.5 12a6.5 6.5 0 1 1-1.9-4.6"/><path d="M17.2 3.6v4h-4"/></symbol>
+</svg>
+
+<header class="proto">
+  <p class="proto-name">JobFold <small>Musterdaten</small></p>
+  <nav class="proto-nav" aria-label="Bildschirme des Prototyps">
+    <div class="proto-group"><span>Telefon</span>
+      <a class="scr" href="#heute">Heute</a>
+      <a class="scr" href="#objekt">Objekt</a>
+      <a class="scr" href="#einsatz">Einsatz</a>
+      <a class="scr" href="#extra">Extra</a>
+      <a class="scr" href="#winter">Winterdienst</a>
+    </div>
+    <div class="proto-group"><span>Verwaltung</span>
+      <a class="scr" href="#strasse">Straße</a>
+      <a class="scr" href="#akte">Objektakte</a>
+      <a class="scr" href="#eingang">Eingang</a>
+      <a class="scr" href="#pflichten">Pflichten</a>
+      <a class="scr" href="#kosten">Betriebskosten</a>
+      <a class="scr" href="#rechnungen">Rechnungen</a>
+    </div>
+    <div class="proto-group"><span>Dienstleister</span>
+      <a class="scr" href="#objektakte">Objektakte</a>
+      <a class="scr" href="#teilen">Teilen</a>
+    </div>
+    <div class="proto-group"><span>Ohne Konto</span>
+      <a class="scr" href="#freigabe">Freigabe</a>
+      <a class="scr" href="#treppenhaus">Treppenhaus</a>
+      <a class="scr" href="#belegeinsicht">Belegeinsicht</a>
+    </div>
+    <div class="proto-group"><span>Zustände</span>
+      <a class="scr" href="#laden">Laden</a>
+      <a class="scr" href="#leer">Leer</a>
+      <a class="scr" href="#fehler">Fehler</a>
+      <a class="scr" href="#offline">Offline</a>
+      <a class="scr" href="#teilweise">Teilweise</a>
+      <a class="scr" href="#konflikt">Konflikt</a>
+      <a class="scr" href="#blatt">Vor dem Gehen</a>
+      <a class="scr" href="#vorschau">Vorschau</a>
+      <a class="scr" href="#befehle">Befehle</a>
+    </div>
+  </nav>
+  <div class="proto-tools">
+    <div class="seg" role="group" aria-label="Darstellung">
+      <button type="button" data-theme-set="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-theme-set="tag" aria-pressed="false">Tag</button>
+      <button type="button" data-theme-set="nacht" aria-pressed="false">Nacht</button>
+      <button type="button" data-theme-set="draussen" aria-pressed="false">Draußen</button>
+    </div>
+  </div>
+</header>
+
+<main class="stage" id="stage">
+
+<!-- ============ TELEFON: HEUTE ============ -->
+<section class="screen field" id="s-heute" data-screen="heute" data-title="Heute" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>07:41</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <h1>Montag, 18. Januar<span class="sub">Glanzwerk Gebäudeservice, Team Nord</span></h1>
+      <a class="iconbtn" href="#heute" aria-label="Mehr"><svg class="icon" aria-hidden="true"><use href="#i-more"/></svg></a>
+    </header>
+    <div class="scroll">
+      <div class="sync" role="group" aria-label="Stand der Daten">
+        <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>Tag geladen 05:31</span>
+        <span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-cloud"/></svg>1 Foto wartet auf Netz</span>
+      </div>
+      <ol class="dayline" aria-label="Deine Route heute">
+        <li><a class="stop-row done" href="#winter">
+          <span class="stop-time">05:45</span>
+          <span class="stop-rail"><span class="stop-dot"></span></span>
+          <span class="stop-card">
+            <b>Winterrunde Nord</b>
+            <span class="np-meta">3 Objekte, geräumt und gestreut bis 06:40</span>
+            <span class="lights"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="np-meta">3 von 3 Runden belegt</span></span>
+          </span>
+        </a></li>
+        <li><a class="stop-row now" href="#objekt">
+          <span class="stop-time">07:50</span>
+          <span class="stop-rail"><span class="stop-dot"></span></span>
+          <span class="stop-card">
+            <b>Lindenstraße 14</b>
+            <span class="np-meta">Treppenhausreinigung, Umfang geändert</span>
+            <span class="lights"><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="np-meta">1 Extra wartet auf Freigabe</span></span>
+          </span>
+        </a></li>
+        <li><a class="stop-row" href="#objekt">
+          <span class="stop-time">09:30</span>
+          <span class="stop-rail"><span class="stop-dot"></span></span>
+          <span class="stop-card">
+            <b>Hofweg 3</b>
+            <span class="np-meta">Unterhaltsreinigung, Zugang über den Hof</span>
+            <span class="lights"><span class="led sm" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span><span class="np-meta">Nichts offen</span></span>
+          </span>
+        </a></li>
+        <li><a class="stop-row" href="#objekt">
+          <span class="stop-time">11:15</span>
+          <span class="stop-rail"><span class="stop-dot"></span></span>
+          <span class="stop-card">
+            <b>Parkstraße 8</b>
+            <span class="np-meta">Hausmeister-Rundgang, 24 Wohnungen</span>
+            <span class="lights"><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><span class="np-meta">Spielplatzkontrolle seit 15.01. überfällig</span></span>
+          </span>
+        </a></li>
+        <li><a class="stop-row" href="#objekt">
+          <span class="stop-time">13:30</span>
+          <span class="stop-rail"><span class="stop-dot"></span></span>
+          <span class="stop-card">
+            <b>Kastanienallee 21</b>
+            <span class="np-meta">Treppenhausreinigung, 18 Wohnungen</span>
+            <span class="lights"><span class="led sm" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span><span class="np-meta">Schlüsselübergabe unbekannt, nicht bestätigt</span></span>
+          </span>
+        </a></li>
+      </ol>
+    </div>
+    <a class="talk" href="#extra"><span class="grille" aria-hidden="true"></span>Extra melden</a>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#objekt"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">1</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Heute.</b> Die Route als eine Linie. Jede Station trägt das Licht ihres Objekts, damit vor der Tür klar ist, was dort wartet. Der Datenstand steht immer als Fakt da, nie als ein einzelner grüner Haken.</p>
+</section>
+
+<!-- ============ TELEFON: OBJEKT ============ -->
+<section class="screen field" id="s-objekt" data-screen="objekt" data-title="Objekt" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>07:52</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#heute" aria-label="Zurück zu Heute"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Objekt<span class="sub">Hausverwaltung Beispiel GmbH</span></h1>
+      <a class="iconbtn" href="#objekt" aria-label="Objektmappe"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></a>
+    </header>
+    <div class="scroll">
+      <article class="tableau" aria-labelledby="t-linden t-linden-no">
+        <div class="t-head">
+          <div><h2 class="t-street" id="t-linden">Lindenstraße</h2><p class="t-city">Musterstadt, 12 Wohnungen</p></div>
+          <p class="t-no" id="t-linden-no"><span class="sr-only">Hausnummer </span>14</p>
+        </div>
+        <div class="t-rows">
+          <a class="np" href="#einsatz">
+            <span class="np-plate"><b>Treppenhausreinigung</b><span class="np-meta">geplant, heute fällig, Umfang Version 4 neu</span></span>
+            <span class="led" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>
+          </a>
+          <a class="np" href="#winter">
+            <span class="np-plate"><b>Winterdienst</b><span class="np-meta">06:12 geräumt und gestreut, belegt</span></span>
+            <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </a>
+          <a class="np" href="#extra">
+            <span class="np-plate"><b>Extra: Sperrmüll im Keller</b><span class="np-meta"><span class="eur">67,50&nbsp;€</span> netto, wartet seit Freitag auf Freigabe</span></span>
+            <span class="led" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+          </a>
+          <a class="np" href="#objekt">
+            <span class="np-plate"><b>Hinweis: Kellerlicht defekt</b><span class="np-meta">Von der Verwaltung an euch, seit 16.01. offen, überfällig</span></span>
+            <span class="led" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span>
+          </a>
+          <a class="np" href="#objekt">
+            <span class="np-plate"><b>Feuerlöscher Keller</b><span class="np-meta">Kein Nachweis hinterlegt, Zuständigkeit unbekannt</span></span>
+            <span class="led" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span>
+          </a>
+        </div>
+        <div class="t-foot">
+          <span>Treppenhaus 2026: 11 von 12 Monaten belegt, August teilweise</span>
+          <svg class="ring" viewBox="0 0 64 64" role="img" aria-label="11 von 12 Monaten belegt, August teilweise">
+            <g transform="rotate(-90 32 32)">
+              <circle class="m-track" cx="32" cy="32" r="26"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="0"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-1"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-2"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-3"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-4"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-5"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-6"/>
+              <circle class="m-part" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.43 11.57" stroke-dashoffset="-7"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-8"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-9"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-10"/>
+              <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-11"/>
+            </g>
+            <text x="32" y="37" text-anchor="middle">11/12</text>
+          </svg>
+        </div>
+      </article>
+
+      <div class="arrive">
+        <button class="arrive-tag" type="button" data-arrive>
+          <span class="arrive-wave" aria-hidden="true"><svg class="icon l" aria-hidden="true"><use href="#i-nfc"/></svg></span>
+          <span><b data-arrive-label>Objektmarke antippen</b><span class="np-meta" data-arrive-meta>Halte das Telefon an die Marke neben der Haustür.</span></span>
+        </button>
+        <button class="btn quiet" type="button" data-arrive-manual>Ohne Marke ankommen</button>
+      </div>
+
+      <section class="sheet" aria-labelledby="h-mappe">
+        <h2 id="h-mappe">Objektmappe</h2>
+        <dl class="kv">
+          <dt>Zugang</dt><dd>Schlüsseltresor links neben der Tür, Code nach Ankunft</dd>
+          <dt>Wasser</dt><dd>Hahn im Keller, Raum 2</dd>
+          <dt>Müll</dt><dd>Tonnen am Montag bis 06:30 an die Straße</dd>
+          <dt>Ansprechperson</dt><dd>Frau Sommer, Hausverwaltung</dd>
+        </dl>
+      </section>
+    </div>
+    <a class="talk" href="#extra"><span class="grille" aria-hidden="true"></span>Extra melden</a>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#objekt" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">1</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Objekt.</b> Wer ankommt, sieht zuerst das Klingeltableau des Hauses: ein Namensschild je Leistung oder Pflicht, ein Licht je Zustand. Grün belegt, Bernstein wartet auf eine Person, Rot fehlt oder überfällig, schraffiert unbekannt, unbeleuchtet geplant. Die Objektmarke (NFC) belegt die Ankunft ohne Standortdaten.</p>
+</section>
+
+<!-- ============ TELEFON: EINSATZ ============ -->
+<section class="screen field" id="s-einsatz" data-screen="einsatz" data-title="Einsatz" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>07:58</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#objekt" aria-label="Zurück zum Objekt"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Treppenhausreinigung<span class="sub">Lindenstraße 14, Umfang Version 4</span></h1>
+    </header>
+    <div class="scroll" data-checklist>
+      <ol class="stepper" aria-label="Ablauf">
+        <li class="done">Ankommen</li>
+        <li class="cur" aria-current="step">Arbeiten</li>
+        <li>Belegen</li>
+        <li>Abschließen</li>
+      </ol>
+
+      <section class="changed" data-changed aria-labelledby="h-changed">
+        <h2 id="h-changed"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span data-changed-title>Umfang geändert seit deinem letzten Einsatz</span></h2>
+        <ul>
+          <li><span><b>Neu:</b> Kellertreppe wöchentlich feucht wischen</span></li>
+          <li><span><b>Entfällt:</b> Fenster im 3. OG, die Mieterin verzichtet</span></li>
+        </ul>
+        <button class="btn block" type="button" data-seen>Gesehen</button>
+        <p class="seen-note" role="status" data-seen-note></p>
+      </section>
+
+      <div class="langbar">
+        <span class="hint lang-l" id="lang-l"><svg class="icon s" aria-hidden="true"><use href="#i-globe"/></svg>Arbeitssprache</span>
+        <div class="seg light" role="group" aria-labelledby="lang-l">
+          <button type="button" data-lang-set="de" aria-pressed="true">Deutsch</button>
+          <button type="button" data-lang-set="tr" aria-pressed="false">Türkçe</button>
+        </div>
+      </div>
+
+      <section class="sheet" aria-labelledby="h-check">
+        <div class="check-head">
+          <h2 id="h-check">Checkliste</h2>
+          <span class="mono" data-check-count>2 von 6</span>
+        </div>
+        <div class="progress" aria-hidden="true" data-progress></div>
+        <ul class="i18n" data-i18n>
+          <li class="check is-done">
+            <button class="mark" type="button" aria-pressed="true" aria-labelledby="ck-1"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-1"><span class="de">Treppenhaus EG bis 3. OG fegen und feucht wischen</span><span class="tr" lang="tr">Merdiven boşluğu zemin kattan 3. kata kadar süpürülecek ve nemli silinecek</span></b>
+              <span class="orig orig-de">Original: Treppenhaus EG bis 3. OG fegen und feucht wischen</span>
+            </div>
+            <span></span>
+          </li>
+          <li class="check is-done">
+            <button class="mark" type="button" aria-pressed="true" aria-labelledby="ck-2"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-2"><span class="de">Handläufe und Türgriffe abwischen</span><span class="tr" lang="tr">Tırabzanlar ve kapı kolları silinecek</span></b>
+              <span class="orig orig-de">Original: Handläufe und Türgriffe abwischen</span>
+            </div>
+            <span></span>
+          </li>
+          <li class="check">
+            <button class="mark" type="button" aria-pressed="false" aria-labelledby="ck-3"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-3"><span class="de">Briefkastenanlage und Klingeltableau reinigen</span><span class="tr" lang="tr">Posta kutuları ve zil paneli temizlenecek</span></b>
+              <span class="orig orig-de">Original: Briefkastenanlage und Klingeltableau reinigen</span>
+            </div>
+            <span></span>
+          </li>
+          <li class="check">
+            <button class="mark" type="button" aria-pressed="false" aria-labelledby="ck-4"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-4"><span class="de">Kellertreppe feucht wischen</span><span class="tr" lang="tr">Bodrum merdiveni nemli silinecek</span></b>
+              <span class="orig orig-de">Original: Kellertreppe feucht wischen</span>
+              <span class="state wait">Neu in Version 4</span>
+            </div>
+            <span></span>
+          </li>
+          <li class="check">
+            <button class="mark" type="button" aria-pressed="false" aria-labelledby="ck-5"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-5"><span class="de">Glas der Haustür innen reinigen</span><span class="tr" lang="tr">Giriş kapısının camı içeriden temizlenecek</span></b>
+              <span class="orig orig-de">Original: Glas der Haustür innen reinigen</span>
+              <span class="ref"><svg class="icon s" aria-hidden="true"><use href="#i-camera"/></svg>Foto nachher nötig, Referenzfoto im Ordner</span>
+            </div>
+            <button class="cap" type="button" data-cap aria-describedby="ck-5"><svg class="icon s" aria-hidden="true"><use href="#i-camera"/></svg><span>Foto</span></button>
+          </li>
+          <li class="check">
+            <button class="mark na" type="button" aria-pressed="false" aria-labelledby="ck-6" aria-describedby="ck-6-n" disabled><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></button>
+            <div class="check-body">
+              <b id="ck-6"><span class="de">Fenster im 3. OG</span><span class="tr" lang="tr">3. kattaki pencereler</span></b>
+              <span class="orig" id="ck-6-n">Entfällt ab Version 4, nicht abzuhaken</span>
+            </div>
+            <span></span>
+          </li>
+        </ul>
+      </section>
+
+      <button class="btn primary block" type="button" data-finish>Einsatz abschließen <span class="count" data-finish-count>3 offen</span></button>
+      <p class="hint" role="status" data-finish-status></p>
+      <p class="hint">Fotos und Häkchen bleiben auf dem Telefon, bis sie gesendet sind. Nichts geht verloren, auch ohne Netz.</p>
+    </div>
+
+    <div class="scrim" data-scrim hidden></div>
+    <section class="bsheet" role="dialog" aria-modal="true" aria-labelledby="vg-h" aria-describedby="vg-d" data-overlay="blatt" data-on="einsatz" data-title="Vor dem Gehen" hidden>
+      <div class="bsheet-head">
+        <h2 id="vg-h" tabindex="-1">Vor dem Gehen: <span data-gap-count>3 Punkte ohne Nachweis</span></h2>
+        <button class="iconbtn" type="button" data-close aria-label="Schließen, zurück zur Checkliste"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <p class="hint" id="vg-d">Hake ab, was erledigt ist, oder nenne den Grund. Offene Punkte stehen im Bericht als „kein Nachweis“, mit deinem Grund.</p>
+      <ul class="gaps" data-gaps></ul>
+      <button class="btn primary block" type="button" data-gap-finish>Einsatz abschließen <span class="count" data-gap-finish-count>3 ohne Nachweis</span></button>
+    </section>
+  </div>
+  <p class="screen-note"><b>Einsatz.</b> Eine Umfangsänderung bleibt markiert, bis die Kraft sie gesehen hat. Die Checkliste erscheint in der Arbeitssprache der Person, das deutsche Original ist immer darunter. Haken sind gedruckte Marken: offener Kreis, gefüllt erledigt, durchgestrichen entfällt. „Einsatz abschließen“ prüft zuerst, was ohne Nachweis ist, im Blatt „Vor dem Gehen“.</p>
+</section>
+
+<!-- ============ TELEFON: EXTRA ============ -->
+<section class="screen field" id="s-extra" data-screen="extra" data-title="Extra melden" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>08:09</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#objekt" aria-label="Abbrechen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a>
+      <h1>Extra melden<span class="sub">Lindenstraße 14</span></h1>
+    </header>
+    <div class="scroll">
+      <ol class="stepper" aria-label="Ablauf">
+        <li class="done">Erfassen</li>
+        <li class="cur" aria-current="step">Preis</li>
+        <li>Freigabe</li>
+        <li>Gesendet</li>
+      </ol>
+      <section class="sheet" aria-labelledby="h-wunsch">
+        <h2 id="h-wunsch">Was wurde gewünscht?</h2>
+        <p class="quote">„Im Keller steht vor dem Heizungsraum Sperrmüll. Die Mieterin aus Wohnung 3 fragt, ob wir das wegräumen können.“</p>
+        <p class="hint"><svg class="icon s" aria-hidden="true"><use href="#i-mic"/></svg> Deine Sprachnotiz, 0:14, auf dem Telefon in Text umgewandelt</p>
+      </section>
+      <div class="photos">
+        <figure class="photo"><svg class="icon l" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>vorher 08:06</figcaption></figure>
+        <button class="photo add" type="button"><svg class="icon l" aria-hidden="true"><use href="#i-plus"/></svg><span class="cap-txt">Foto</span></button>
+      </div>
+
+      <section aria-labelledby="h-preis" class="stack">
+        <h2 class="section-title" id="h-preis">Preis aus eurem Preisbuch</h2>
+        <div class="pricechip">
+          <span class="what">Sperrmüll entfernen, Kleinmenge</span>
+          <span class="sum eur">67,50&nbsp;€</span>
+          <span class="calc">1,5&nbsp;Std × 38,00&nbsp;€ = 57,00&nbsp;€<br>+ Entsorgungspauschale 10,50&nbsp;€<br>netto, zzgl. 19&nbsp;% USt 12,83&nbsp;€ = 80,33&nbsp;€ brutto</span>
+        </div>
+        <p class="hint">Der Betrag kommt aus dem Preisbuch, gerechnet in ganzen Cent. Ändern kann ihn nur das Büro.</p>
+      </section>
+
+      <section aria-labelledby="h-route" class="stack">
+        <h2 class="section-title" id="h-route">Wer gibt frei?</h2>
+        <div class="route" role="radiogroup" aria-labelledby="h-route" data-route>
+          <div class="route-opt" role="radio" aria-checked="true" tabindex="0">
+            <span class="radio" aria-hidden="true"></span>
+            <span><b>Frau Sommer per Link</b><span>Hausverwaltung Beispiel, gibt bis 500,00&nbsp;€ je Objekt frei</span></span>
+          </div>
+          <div class="route-opt" role="radio" aria-checked="false" tabindex="-1">
+            <span class="radio" aria-hidden="true"></span>
+            <span><b>Im Freigaberahmen buchen</b><span>Rahmen Kleinreparaturen Q1: noch 32,00&nbsp;€ frei, reicht nicht</span></span>
+          </div>
+          <div class="route-opt" role="radio" aria-checked="false" tabindex="-1">
+            <span class="radio" aria-hidden="true"></span>
+            <span><b>Unterschrift vor Ort</b><span>Nur wenn eine berechtigte Person da ist</span></span>
+          </div>
+        </div>
+      </section>
+
+      <a class="btn primary block" href="#freigabe">Vorschau ansehen und senden</a>
+      <p class="hint">Erst nach der Vorschau geht etwas raus. Die Arbeit beginnt nach der Freigabe.</p>
+    </div>
+  </div>
+  <p class="screen-note"><b>Extra.</b> Der Sprechknopf der Gegensprechanlage ist die eine Hauptaktion auf jedem Telefonbild. Das Extra wird aus dem eigenen Preisbuch bepreist, nicht von einem Modell, und erst nach einer Vorschau zur Freigabe geschickt.</p>
+</section>
+
+<!-- ============ TELEFON: WINTERDIENST ============ -->
+<section class="screen field" id="s-winter" data-screen="winter" data-title="Winterdienst" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>06:13</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#heute" aria-label="Zurück zu Heute"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Winterrunde Nord<span class="sub">Runde 23 der Saison 2026/27</span></h1>
+    </header>
+    <div class="scroll">
+      <div class="facts">
+        <div class="fact"><span class="lab">Beginn, Objektmarke</span><span class="val">06:04</span></div>
+        <div class="fact"><span class="lab">Ende</span><span class="val">06:12</span></div>
+        <div class="fact"><span class="lab">Wetter DWD, Station Musterstadt</span><span class="val">−3,1&nbsp;°C</span></div>
+        <div class="fact"><span class="lab">Glättewarnung</span><span class="val">seit 04:50</span></div>
+        <div class="fact wide"><span class="lab">Streugut</span><span class="val">Splitt, kein Salz (Satzung der Stadt)</span></div>
+      </div>
+
+      <section class="sheet" aria-labelledby="h-flaechen">
+        <div class="check-head"><h2 class="t-street" id="h-flaechen">Lindenstraße 14</h2><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></div>
+        <ul>
+          <li class="check is-done">
+            <span class="mark is-on" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <div class="check-body"><b>Gehweg vor dem Haus, 18&nbsp;m</b><span class="orig">geräumt und gestreut, 1 Foto, belegt</span></div><span></span>
+          </li>
+          <li class="check is-done">
+            <span class="mark is-on" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <div class="check-body"><b>Zugang zur Haustür</b><span class="orig">geräumt und gestreut, 1 Foto, belegt</span></div><span></span>
+          </li>
+          <li class="check is-done">
+            <span class="mark is-on" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <div class="check-body"><b>Weg zu den Mülltonnen</b><span class="orig">geräumt und gestreut, 1 Foto, belegt</span></div><span></span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="t-rows">
+        <a class="np" href="#winter"><span class="np-plate"><b>Hofweg 3</b><span class="np-meta">06:18 bis 06:27, belegt</span></span><span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></a>
+        <a class="np" href="#winter"><span class="np-plate"><b>Parkstraße 8</b><span class="np-meta">06:31 bis 06:40, belegt</span></span><span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></a>
+      </div>
+      <p class="hint">Jede Runde ist eine Eintragung im Pflichtenkalender der Verwaltung. Nach einem Sturz zählt, ob geräumt wurde und ob man es zeigen kann.</p>
+    </div>
+    <a class="talk" href="#extra"><span class="grille" aria-hidden="true"></span>Extra melden</a>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#objekt"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">1</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Winterdienst.</b> Jede Runde trägt Zeit, Objektmarke, Wetterdaten des Deutschen Wetterdienstes und Fotos. Daraus wird das versiegelte Räumprotokoll, das die Verwaltung im Schadensfall vorlegt.</p>
+</section>
+
+<!-- ============ VERWALTUNG: STRASSE ============ -->
+<section class="screen desk with-inspector" id="s-strasse" data-screen="strasse" data-title="Straße" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Kostenlos für Verwaltungen</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <h1>Straße</h1>
+        <p>42 Objekte. 6 klingeln, weil etwas auf Sie wartet. Sortiert nach dem, was zuerst eine Antwort braucht.</p>
+      </div>
+      <div class="toolbar">
+        <label class="search"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg><span class="sr-only">Objekt suchen, Eingabetaste öffnet die Befehlsleiste</span><input class="search-in" type="search" placeholder="Adresse suchen" aria-keyshortcuts="Control+K Meta+K" data-cmd-search><kbd aria-hidden="true">Strg K</kbd></label>
+      </div>
+    </div>
+    <div class="toolbar" role="group" aria-label="Filter">
+      <button class="chip" type="button" aria-pressed="false">Alle 42</button>
+      <button class="chip" type="button" aria-pressed="true">Klingelt 6</button>
+      <button class="chip" type="button" aria-pressed="false">Überfällig 2</button>
+      <button class="chip" type="button" aria-pressed="false">Ohne Nachweis 3</button>
+      <button class="chip" type="button" aria-pressed="false">Unbekannt 5</button>
+    </div>
+    <div class="desk-split">
+      <ul class="street-col" aria-label="Objekte, die klingeln">
+        <li><a class="tableau mini rings is-open" href="#strasse" aria-current="true">
+          <span class="t-head"><span class="t-street">Lindenstraße</span> <span class="t-no">14</span> <span class="t-city">12&nbsp;WE, 2 Dienstleister</span></span>
+          <span class="mini-lights"><span class="lab">Extra wartet, 67,50&nbsp;€</span><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="lab">Kellerlicht überfällig</span><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span></span>
+        </a></li>
+        <li><a class="tableau mini rings" href="#akte">
+          <span class="t-head"><span class="t-street">Parkstraße</span> <span class="t-no">8</span> <span class="t-city">24&nbsp;WE, 3 Dienstleister</span></span>
+          <span class="mini-lights"><span class="lab">Spielplatz überfällig</span><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><span class="lab">Extra wartet, 68,90&nbsp;€</span><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span></span>
+        </a></li>
+        <li><a class="tableau mini rings" href="#akte">
+          <span class="t-head"><span class="t-street">Hofweg</span> <span class="t-no">3</span> <span class="t-city">8&nbsp;WE, 1 Dienstleister</span></span>
+          <span class="mini-lights"><span class="lab">Extra wartet, 50,00&nbsp;€</span><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="lab">Dachrinne nicht zugeordnet</span><span class="led sm" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span></span>
+        </a></li>
+        <li><a class="tableau mini rings" href="#akte">
+          <span class="t-head"><span class="t-street">Kastanienallee</span> <span class="t-no">21</span> <span class="t-city">18&nbsp;WE, 2 Dienstleister</span></span>
+          <span class="mini-lights"><span class="lab">Sturmschaden wartet, 92,00&nbsp;€</span><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span></span>
+        </a></li>
+        <li><a class="tableau mini" href="#akte">
+          <span class="t-head"><span class="t-street">Bahnhofstraße</span> <span class="t-no">40</span> <span class="t-city">32&nbsp;WE, 4 Dienstleister</span></span>
+          <span class="mini-lights"><span class="lab">Alles belegt bis heute</span><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span>
+        </a></li>
+        <li class="street-more"><a class="btn quiet" href="#strasse">36 weitere Objekte ohne offene Frage</a></li>
+      </ul>
+
+      <article class="tableau open" aria-labelledby="t-open t-open-no">
+        <div class="t-head">
+          <div><h2 class="t-street" id="t-open">Lindenstraße</h2><p class="t-city">Musterstadt, 12 Wohnungen, WEG Lindenstraße 14</p></div>
+          <p class="t-no" id="t-open-no"><span class="sr-only">Hausnummer </span>14</p>
+        </div>
+        <div class="t-rows" role="group" aria-label="Leistungen und Pflichten, die Auswahl zeigt den Nachweis" data-panes>
+          <button class="np" type="button" data-pane="p-extra" aria-pressed="true">
+            <span class="np-plate"><b>Extra: Sperrmüll im Keller</b><span class="np-meta">Glanzwerk, <span class="eur">67,50&nbsp;€</span> netto, wartet auf Ihre Freigabe seit Freitag</span></span>
+            <span class="led" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+          </button>
+          <button class="np" type="button" data-pane="p-licht" aria-pressed="false">
+            <span class="np-plate"><b>Mieterhinweis: Kellerlicht defekt</b><span class="np-meta">An Glanzwerk weitergeleitet, Reaktionszeit 24&nbsp;h überschritten, überfällig</span></span>
+            <span class="led" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span>
+          </button>
+          <button class="np" type="button" data-pane="p-treppe" aria-pressed="false">
+            <span class="np-plate"><b>Treppenhausreinigung</b><span class="np-meta">Glanzwerk, Mo 18.01. 07:52 bis 08:41, 9 Fotos, belegt</span></span>
+            <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </button>
+          <button class="np" type="button" data-pane="p-winter" aria-pressed="false">
+            <span class="np-plate"><b>Winterdienst</b><span class="np-meta">Glanzwerk, heute 06:12 geräumt und gestreut, Runde 23, belegt</span></span>
+            <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </button>
+          <button class="np" type="button" data-pane="p-garten" aria-pressed="false">
+            <span class="np-plate"><b>Gartenpflege</b><span class="np-meta">Grünzeit Gartenbau, Winterpause bis 01.03., geplant</span></span>
+            <span class="led" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>
+          </button>
+          <button class="np" type="button" data-pane="p-loescher" aria-pressed="false">
+            <span class="np-plate"><b>Pflicht: Feuerlöscher Keller</b><span class="np-meta">Prüfung alle 2 Jahre, nicht zugeordnet, kein Nachweis</span></span>
+            <span class="led" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span>
+          </button>
+        </div>
+        <div class="t-foot">
+          <span>Betriebskosten 2026: 3 von 4 Zeilen geprüft</span>
+          <a class="btn" href="#kosten">Zur Abrechnung</a>
+        </div>
+      </article>
+    </div>
+  </div>
+  <aside class="inspector" aria-label="Nachweis" data-inspector>
+    <div class="pane" id="p-extra">
+      <span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg>wartet auf Ihre Freigabe</span>
+      <h2>Sperrmüll im Keller entfernen</h2>
+      <p class="src">Gemeldet von Glanzwerk, Fr 15.01. 08:09, nach Wunsch der Mieterin aus Wohnung 3</p>
+      <figure class="photo"><svg class="icon l" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>vorher, Fr 15.01. 08:06</figcaption></figure>
+      <dl class="kv">
+        <dt>1,5&nbsp;Std × 38,00&nbsp;€</dt><dd class="eur">57,00&nbsp;€</dd>
+        <dt>Entsorgungspauschale</dt><dd class="eur">10,50&nbsp;€</dd>
+        <dt>Netto</dt><dd class="eur">67,50&nbsp;€</dd>
+        <dt>19&nbsp;% USt</dt><dd class="eur">12,83&nbsp;€</dd>
+        <dt><b>Brutto</b></dt><dd class="eur"><b>80,33&nbsp;€</b></dd>
+      </dl>
+      <p class="hint">Preis aus dem Preisbuch von Glanzwerk, Stand 01.01.2027. Ihre Freigabegrenze für dieses Objekt: 500,00&nbsp;€.</p>
+      <div class="actions">
+        <a class="btn sign" href="#freigabe"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>Freigeben</a>
+        <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg>Rückfrage</button>
+        <button class="btn quiet" type="button">Ablehnen</button>
+      </div>
+    </div>
+    <div class="pane" id="p-licht" hidden>
+      <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig</span>
+      <h2>Kellerlicht defekt</h2>
+      <p class="src">Mieterhinweis über die Treppenhaus-Seite, Sa 16.01. 19:40, ohne Namen</p>
+      <p class="quote">„Im Kellergang ist das Licht seit gestern aus, man sieht die Stufen nicht.“</p>
+      <ol class="tl compact">
+        <li>Sa 16.01. 19:40, Hinweis eingegangen</li>
+        <li>Mo 18.01. 08:15, von Ihnen an Glanzwerk weitergeleitet</li>
+        <li>Reaktionszeit laut Vertrag 24&nbsp;h, seit 2 Tagen offen</li>
+      </ol>
+      <div class="actions"><button class="btn" type="button">Bei Glanzwerk nachfragen</button></div>
+    </div>
+    <div class="pane" id="p-treppe" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Treppenhausreinigung</h2>
+      <p class="src">Glanzwerk, Mo 18.01., Objektmarke 07:52 geprüft, Ende 08:41</p>
+      <div class="photos"><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>EG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>2. OG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>Keller</figcaption></figure></div>
+      <p class="hint">6 von 6 Punkten nach Umfang Version 4, davon 1 entfallen. Bericht versiegelt, Prüfcode JF-7Q4M-2K.</p>
+    </div>
+    <div class="pane" id="p-winter" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Winterdienst, Runde 23</h2>
+      <p class="src">Heute 06:04 bis 06:12, Objektmarke geprüft, DWD −3,1&nbsp;°C, Glättewarnung seit 04:50</p>
+      <p class="hint">Saison 2026/27: 23 Runden belegt, 0 fehlen. Das Räumprotokoll ist jederzeit exportierbar.</p>
+    </div>
+    <div class="pane" id="p-garten" hidden>
+      <span class="state">geplant</span>
+      <h2>Gartenpflege</h2>
+      <p class="src">Grünzeit Gartenbau, nächster Einsatz 01.03.2027</p>
+    </div>
+    <div class="pane" id="p-loescher" hidden>
+      <span class="state unk">unbekannt</span>
+      <h2>Feuerlöscher Keller</h2>
+      <p class="src">Pflicht aus der Vorlage, Prüfintervall 2 Jahre. Kein Dienstleister zugeordnet, kein Nachweis vorhanden.</p>
+      <div class="actions"><button class="btn" type="button">Dienstleister zuordnen</button><button class="btn quiet" type="button">Fremdnachweis hochladen</button></div>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ VERWALTUNG: OBJEKTAKTE ============ -->
+<section class="screen desk with-inspector" id="s-akte" data-screen="akte" data-title="Objektakte" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Kostenlos für Verwaltungen</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#strasse">Straße</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Objektakte</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, WEG Lindenstraße 14, 12 Wohnungen, 940&nbsp;m² Wohnfläche</p>
+      </div>
+      <div class="toolbar">
+        <a class="btn" href="#belegeinsicht"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>Belegeinsicht-Link</a>
+        <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Nachweis hinzufügen</button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte">
+      <a href="#strasse">Übersicht</a>
+      <a href="#akte" aria-current="page">Verlauf <span class="n">214</span></a>
+      <a href="#pflichten">Pflichten <span class="n">6</span></a>
+      <a href="#kosten">Kosten</a>
+      <a href="#akte">Dokumente <span class="n">18</span></a>
+      <a href="#akte">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <div class="toolbar" role="group" aria-label="Verlauf filtern">
+      <button class="chip" type="button" aria-pressed="true">Alles</button>
+      <button class="chip" type="button" aria-pressed="false">Einsätze</button>
+      <button class="chip" type="button" aria-pressed="false">Extras</button>
+      <button class="chip" type="button" aria-pressed="false">Pflichten</button>
+      <button class="chip" type="button" aria-pressed="false">Mieterhinweise</button>
+      <button class="chip" type="button" aria-pressed="false">Fremdnachweise</button>
+    </div>
+    <ol class="tl" aria-label="Verlauf, neueste zuerst">
+      <li class="tl-row"><span class="tl-when">heute<br>06:12</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><b>Winterdienst, Runde 23</b><p>Glanzwerk. Geräumt und gestreut, Objektmarke 06:04 geprüft, DWD −3,1&nbsp;°C, 3 Fotos, belegt.</p></div></li>
+      <li class="tl-row"><span class="tl-when">Sa 16.01.<br>19:40</span><span class="tl-rail"><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span></span><div class="tl-body"><b>Mieterhinweis: Kellerlicht defekt</b><p>Über die Treppenhaus-Seite, ohne Namen. Am Montag an Glanzwerk weitergeleitet, noch offen, überfällig.</p></div></li>
+      <li class="tl-row"><span class="tl-when">Fr 15.01.<br>08:09</span><span class="tl-rail"><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span></span><div class="tl-body"><b>Extra: Sperrmüll im Keller, 67,50&nbsp;€</b><p>Glanzwerk. Auf Wunsch der Mieterin aus Wohnung 3, Preis aus dem Preisbuch, wartet auf Ihre Freigabe.</p></div></li>
+      <li class="tl-row"><span class="tl-when">Mo 11.01.<br>08:44</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><b>Treppenhausreinigung</b><p>Glanzwerk. 5 von 5 Punkten, 8 Fotos, Bericht versiegelt, belegt.</p></div></li>
+      <li class="tl-row"><span class="tl-when">Do 07.01.<br>10:02</span><span class="tl-rail"><span class="led sm" data-s="sign" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></span></span><div class="tl-body"><b>Umfang Version 4 freigegeben</b><p>Von Ihnen, Frau Sommer. Neu: Kellertreppe wöchentlich. Entfällt: Fenster im 3. OG.</p></div></li>
+      <li class="tl-row"><span class="tl-when">Di 05.01.<br>14:20</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><b>Fremdnachweis: Rauchwarnmelder 2026</b><p>PDF von Messdienst Nord, von Ihnen zugeordnet. Nachweisklasse C, Original unverändert gespeichert.</p></div></li>
+    </ol>
+  </div>
+  <aside class="inspector" aria-label="Beteiligte und Jahr">
+    <h2>Das Jahr 2026</h2>
+    <div class="year">
+      <svg class="ring lg" viewBox="0 0 64 64" role="img" aria-label="Treppenhausreinigung 2026: 11 Monate belegt, August teilweise">
+        <g transform="rotate(-90 32 32)">
+          <circle class="m-track" cx="32" cy="32" r="26"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="0"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-1"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-2"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-3"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-4"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-5"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-6"/>
+          <circle class="m-part" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.43 11.57" stroke-dashoffset="-7"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-8"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-9"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-10"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-11"/>
+        </g>
+        <text x="32" y="37" text-anchor="middle">11/12</text>
+      </svg>
+      <p>Treppenhausreinigung: 51 von 52 Einsätzen belegt. Im August fehlt der Nachweis für KW&nbsp;33, der Monat zählt deshalb nur teilweise.</p>
+    </div>
+    <div class="divider"></div>
+    <h2>Beteiligte</h2>
+    <ul class="parties">
+      <li><b>Glanzwerk Gebäudeservice</b><span>Treppenhaus, Winterdienst. Teilt Einsätze, Extras, Fotos.</span><span class="state ok">verknüpft seit 09/2026</span></li>
+      <li><b>Grünzeit Gartenbau</b><span>Gartenpflege. Teilt Einsätze und Berichte.</span><span class="state ok">verknüpft</span></li>
+      <li><b>Messdienst Nord</b><span>Rauchwarnmelder. Nutzt JobFold nicht, Nachweise als PDF.</span><span class="state unk">Fremdnachweis</span></li>
+      <li><b>Verwaltungsbeirat</b><span>Herr Albers. Liest die Kosten 2026, keine Rechte darüber hinaus.</span><span class="state">eingeladen</span></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ VERWALTUNG: EINGANG ============ -->
+<section class="screen desk with-inspector" id="s-eingang" data-screen="eingang" data-title="Eingang" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Kostenlos für Verwaltungen</span></div>
+  </aside>
+  <div class="main" data-bundle>
+    <div class="main-head">
+      <div>
+        <h1>Eingang</h1>
+        <p>7 Fragen aus allen Objekten und von allen Dienstleistern. Extras desselben Dienstleisters geben Sie in einem Schritt frei.</p>
+      </div>
+    </div>
+
+    <section class="group" aria-labelledby="g-glanz">
+      <div class="group-head">
+        <h2 id="g-glanz">Glanzwerk Gebäudeservice</h2>
+        <span class="muted">3 Extras</span>
+      </div>
+      <ul class="inlist">
+        <li class="inrow">
+          <label class="tick"><input type="checkbox" checked data-cents="6750"><span class="sr-only">Auswählen: Sperrmüll im Keller</span></label>
+          <div><b>Sperrmüll im Keller entfernen</b><span class="np-meta">Lindenstraße 14, seit Fr 15.01., 1 Foto, <span data-word>wartet auf Ihre Freigabe</span></span></div>
+          <span class="eur">67,50&nbsp;€</span>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+        <li class="inrow">
+          <label class="tick"><input type="checkbox" checked data-cents="5000"><span class="sr-only">Auswählen: Kellerfenster reinigen</span></label>
+          <div><b>Kellerfenster reinigen, 4 Stück</b><span class="np-meta">Hofweg 3, 4 × 12,50&nbsp;€, seit Do 14.01., <span data-word>wartet auf Ihre Freigabe</span></span></div>
+          <span class="eur">50,00&nbsp;€</span>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+        <li class="inrow">
+          <label class="tick"><input type="checkbox" checked data-cents="6890"><span class="sr-only">Auswählen: Schmiererei an der Haustür</span></label>
+          <div><b>Schmiererei an der Haustür entfernen</b><span class="np-meta">Parkstraße 8, 1&nbsp;Std × 38,00&nbsp;€ + Spezialreiniger 30,90&nbsp;€, <span data-word>wartet auf Ihre Freigabe</span></span></div>
+          <span class="eur">68,90&nbsp;€</span>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+      </ul>
+      <div class="bundlebar">
+        <span class="muted" data-bundle-note>Netto, Preise aus dem Preisbuch von Glanzwerk</span>
+        <button class="btn sign" type="button" data-bundle-go><svg class="icon" aria-hidden="true"><use href="#i-stack"/></svg><span data-bundle-label>3 Extras freigeben, 186,40&nbsp;€</span></button>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-gruen">
+      <div class="group-head"><h2 id="g-gruen">Grünzeit Gartenbau</h2><span class="muted">1 Extra</span></div>
+      <ul class="inlist">
+        <li class="inrow">
+          <span></span>
+          <div><b>Sturmschaden: abgebrochenen Ast entfernen</b><span class="np-meta">Kastanienallee 21, 2&nbsp;Std × 46,00&nbsp;€, Fotos vorher, wartet auf Ihre Freigabe</span></div>
+          <span class="eur">92,00&nbsp;€</span>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group" aria-labelledby="g-mieter">
+      <div class="group-head"><h2 id="g-mieter">Mieterhinweise</h2><span class="muted">2 neu</span></div>
+      <ul class="inlist">
+        <li class="inrow">
+          <span></span>
+          <div><b>Haustür schließt schwer</b><span class="np-meta">Hofweg 3, über die Treppenhaus-Seite, heute 07:12, wartet auf Ihre Entscheidung</span></div>
+          <button class="btn" type="button">Weiterleiten</button>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+        <li class="inrow">
+          <span></span>
+          <div><b>Belegeinsicht angefragt</b><span class="np-meta">Lindenstraße 14, Wohnung 3, Betriebskosten 2026, wartet auf Ihre Entscheidung</span></div>
+          <a class="btn" href="#belegeinsicht">Link erstellen</a>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group" aria-labelledby="g-rahmen">
+      <div class="group-head"><h2 id="g-rahmen">Freigaberahmen</h2><span class="muted">1 Anfrage</span></div>
+      <ul class="inlist">
+        <li class="inrow">
+          <span></span>
+          <div><b>Kleinreparaturen Q2 2027, je Objekt bis 300,00&nbsp;€</b><span class="np-meta">Glanzwerk, für Lindenstraße 14, Hofweg 3, Parkstraße 8. Einzelbeträge bis 80,00&nbsp;€ ohne Rückfrage. Wartet auf Ihre Entscheidung</span></div>
+          <button class="btn" type="button">Prüfen</button>
+          <span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </li>
+      </ul>
+    </section>
+    <div class="toast" data-toast><span role="status" data-toast-text></span><button type="button" data-undo hidden>Rückgängig</button></div>
+  </div>
+  <aside class="inspector" aria-label="Vorschau">
+    <h2>Was mit dem Freigeben passiert</h2>
+    <ol class="steps">
+      <li>Glanzwerk erhält die Freigabe mit Ihrem Namen, der Zeit und dem Preis jedes Extras.</li>
+      <li>Jedes Extra bekommt Nachweisklasse A, weil Sie angemeldet freigeben.</li>
+      <li>Die Beträge erscheinen in den Betriebskosten 2027 der Objekte als Entwurf, nicht umgelegt, bis Sie die Kategorie bestätigen.</li>
+    </ol>
+    <div class="divider"></div>
+    <p class="hint">Rückgängig ist möglich, solange Glanzwerk die Arbeit noch nicht begonnen hat.</p>
+  </aside>
+</section>
+
+<!-- ============ VERWALTUNG: PFLICHTEN ============ -->
+<section class="screen desk with-inspector" id="s-pflichten" data-screen="pflichten" data-title="Pflichten" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Kostenlos für Verwaltungen</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <h1>Pflichten</h1>
+        <p>Verkehrssicherung über alle Objekte: wer zuständig ist, wann es fällig ist und womit es belegt ist. Vorlagen, keine Rechtsberatung: prüfen Sie Ihre Pflichten je Objekt.</p>
+      </div>
+      <div class="toolbar"><button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Pflicht aus Vorlage</button></div>
+    </div>
+    <div class="toolbar" role="group" aria-label="Filter">
+      <button class="chip" type="button" aria-pressed="false">Alle 31</button>
+      <button class="chip" type="button" aria-pressed="true">Braucht Sie 7</button>
+      <button class="chip" type="button" aria-pressed="false">Winterdienst 9</button>
+    </div>
+    <div class="tblwrap" role="region" aria-labelledby="cap-pfl" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-pfl">Pflichten, die Aufmerksamkeit brauchen</caption>
+        <thead><tr><th scope="col">Zustand</th><th scope="col">Pflicht und Objekt</th><th scope="col" class="num">Letzter Nachweis</th><th scope="col" class="num">Fällig</th></tr></thead>
+        <tbody>
+          <tr class="is-sel"><td><span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig</span></td><td class="row-title">Spielplatz, Sichtkontrolle<span class="sub">Parkstraße 8, Glanzwerk, wöchentlich</span></td><td class="num">08.01.</td><td class="num">15.01.</td></tr>
+          <tr><td><span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig</span></td><td class="row-title">Mieterhinweis Kellerlicht<span class="sub">Lindenstraße 14, Glanzwerk, Reaktion binnen 24&nbsp;h</span></td><td class="num">nicht vorhanden</td><td class="num">17.01.</td></tr>
+          <tr><td><span class="state unk">nicht zugeordnet</span></td><td class="row-title">Dachrinnen reinigen<span class="sub">Hofweg 3, niemand zuständig, halbjährlich</span></td><td class="num">unbekannt</td><td class="num">unbekannt</td></tr>
+          <tr><td><span class="state unk">nicht zugeordnet</span></td><td class="row-title">Feuerlöscher prüfen<span class="sub">Lindenstraße 14, niemand zuständig, alle 2 Jahre</span></td><td class="num">unbekannt</td><td class="num">unbekannt</td></tr>
+          <tr><td><span class="state wait">fällig bald</span></td><td class="row-title">Trinkwasser auf Legionellen<span class="sub">Bahnhofstraße 40, Messdienst Nord, alle 3 Jahre</span></td><td class="num">12.03.2024</td><td class="num">12.03.</td></tr>
+          <tr><td><span class="state wait">fällig bald</span></td><td class="row-title">Baumkontrolle<span class="sub">Kastanienallee 21, Grünzeit, jährlich</span></td><td class="num">02.02.2026</td><td class="num">02.02.</td></tr>
+          <tr><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td><td class="row-title">Winterdienst<span class="sub">Lindenstraße 14, Glanzwerk, bei Glätte von 7 bis 20 Uhr</span></td><td class="num">heute 06:12</td><td class="num">laufend</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="inspector" aria-label="Pflicht im Detail">
+    <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig seit 15.01.</span>
+    <h2>Spielplatz, Sichtkontrolle</h2>
+    <p class="src">Parkstraße 8, Spielplatz im Hof. Zuständig: Glanzwerk im Hausmeister-Rundgang.</p>
+    <dl class="kv">
+      <dt>Regel</dt><dd>wöchentlich, Foto je Spielgerät</dd>
+      <dt>Quelle der Vorlage</dt><dd>DIN EN 1176-7</dd>
+      <dt>2027 bisher</dt><dd>1 belegt, 1 überfällig</dd>
+    </dl>
+    <div class="weeks" role="img" aria-label="Kalenderwochen 1 bis 8 2027: Woche 1 belegt, Woche 2 überfällig, Woche 3 heute fällig, weitere geplant">
+      <span class="wk ok"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>1</span><span class="wk miss"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>2</span><span class="wk due"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>3</span><span class="wk">4</span><span class="wk">5</span><span class="wk">6</span><span class="wk">7</span><span class="wk">8</span>
+    </div>
+    <p class="hint">Heute 11:15 steht Parkstraße 8 auf der Route von Glanzwerk. Die Kontrolle wird dort als fällig angezeigt.</p>
+    <div class="actions">
+      <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg>Glanzwerk erinnern</button>
+      <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Nachweis exportieren</button>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ VERWALTUNG: BETRIEBSKOSTEN ============ -->
+<section class="screen desk with-inspector" id="s-kosten" data-screen="kosten" data-title="Betriebskosten" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Verwaltung Pro, Testphase</span></div>
+  </aside>
+  <div class="main" data-costs>
+    <div class="main-head">
+      <div>
+        <p class="crumbs"><a href="#akte">Lindenstraße 14</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Betriebskosten</p>
+        <h1>Abrechnung 2026</h1>
+        <p>01.01. bis 31.12.2026. Jede Zeile mit ihren Nachweisen. Kategorie und umlagefähigen Anteil entscheiden Sie, JobFold rechnet und zeigt, woher der Vorschlag kommt.</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>CSV</button>
+        <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>XLSX</button>
+        <button class="btn primary" type="button" data-freeze aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg><span data-freeze-label>Festschreiben, 1 Zeile ungeprüft</span></button>
+      </div>
+    </div>
+    <div class="tblwrap" role="region" aria-labelledby="cap-kos" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-kos">Kostenzeilen 2026</caption>
+        <thead><tr><th scope="col">Leistung und BetrKV</th><th scope="col">Nachweis</th><th scope="col" class="num">Kosten</th><th scope="col" class="num">Umlagefähig</th><th scope="col">Zustand</th></tr></thead>
+        <tbody>
+          <tr><td class="row-title">Treppenhaus&shy;reinigung<span class="sub"><span class="cat">§&nbsp;2 Nr.&nbsp;9</span> Glanzwerk</span></td><td>51 von 52 belegt<span class="sub">KW&nbsp;33 ohne Nachweis</span></td><td class="num">3.120,00&nbsp;€</td><td class="num">3.120,00&nbsp;€<span class="sub">Anteil 100&nbsp;%</span></td><td><span class="state ok">geprüft</span></td></tr>
+          <tr><td class="row-title">Gartenpflege<span class="sub"><span class="cat">§&nbsp;2 Nr.&nbsp;10</span> Grünzeit</span></td><td>14 von 14 belegt</td><td class="num">1.180,00&nbsp;€</td><td class="num">1.180,00&nbsp;€<span class="sub">Anteil 100&nbsp;%</span></td><td><span class="state ok">geprüft</span></td></tr>
+          <tr class="is-sel"><td class="row-title">Hauswart<span class="sub"><span class="cat">§&nbsp;2 Nr.&nbsp;14</span> Glanzwerk, 112&nbsp;Std erfasst</span></td><td>48 von 48 belegt</td><td class="num">4.800,00&nbsp;€</td><td class="num">2.976,00&nbsp;€<span class="sub">Anteil 62&nbsp;%</span></td><td><span class="state wait" data-share-state>Vorschlag</span></td></tr>
+          <tr><td class="row-title">Winterdienst<span class="sub"><span class="cat">§&nbsp;2 Nr.&nbsp;8</span> Glanzwerk</span></td><td>41 von 41 belegt</td><td class="num">1.740,00&nbsp;€</td><td class="num">1.740,00&nbsp;€<span class="sub">Anteil 100&nbsp;%</span></td><td><span class="state ok">geprüft</span></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Summe</td><td class="num">10.840,00&nbsp;€</td><td class="num">9.016,00&nbsp;€</td><td></td></tr></tfoot>
+      </table>
+    </div>
+    <p class="hint">Reklamationen und Nacharbeit erscheinen nie als Kosten. Ein geplanter Einsatz ohne Nachweis bleibt sichtbar und wird nicht stillschweigend abgerechnet.</p>
+  </div>
+  <aside class="inspector" aria-label="Anteil prüfen">
+    <h2>Hauswart: umlagefähiger Anteil</h2>
+    <p class="src">Vorschlag aus den erfassten Zeiten der Checklisten 2026. Reinigung, Gartenpunkte und Kontrollgänge sind umlagefähig, Reparaturen und Verwaltung nicht.</p>
+    <div class="split">
+      <div class="split-bar" role="img" aria-label="62 Prozent umlagefähig, 38 Prozent nicht umlagefähig"><span class="a wa62"></span><span class="n wa38"></span></div>
+      <div class="split-legend"><span>umlagefähig <b>2.976,00&nbsp;€</b></span><span>nicht umlagefähig <b>1.824,00&nbsp;€</b></span></div>
+    </div>
+    <table class="tbl mini-tbl">
+      <caption class="sr-only">Erfasste Zeiten nach Art</caption>
+      <thead><tr><th scope="col">Art der Tätigkeit</th><th scope="col" class="num">Std</th><th scope="col">Umlage</th></tr></thead>
+      <tbody>
+        <tr><td>Kontrollgänge, Haustechnik ablesen</td><td class="num">41,0</td><td>ja</td></tr>
+        <tr><td>Reinigung Außenanlage, Mülltonnen</td><td class="num">28,5</td><td>ja</td></tr>
+        <tr><td>Kleinreparaturen</td><td class="num">32,0</td><td>nein</td></tr>
+        <tr><td>Handwerker begleiten, Verwaltung</td><td class="num">10,5</td><td>nein</td></tr>
+      </tbody>
+      <tfoot><tr><td>69,5 von 112,0&nbsp;Std umlagefähig</td><td class="num">62&nbsp;%</td><td></td></tr></tfoot>
+    </table>
+    <p class="hint">4.800,00&nbsp;€ × 62,05&nbsp;% ergäbe 2.978,40&nbsp;€. Gerechnet wird mit dem bestätigten Anteil in Basispunkten: 6.200&nbsp;bp, einmal kaufmännisch gerundet.</p>
+    <div class="actions">
+      <button class="btn sign" type="button" data-share-confirm><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Anteil 62&nbsp;% bestätigen</span></button>
+      <button class="btn" type="button">Anteil ändern</button>
+    </div>
+    <p class="hint" role="status" data-share-status></p>
+  </aside>
+</section>
+
+<!-- ============ VERWALTUNG: RECHNUNGEN ============ -->
+<section class="screen desk with-inspector" id="s-rechnungen" data-screen="rechnungen" data-title="Rechnungen" data-ctx="hv" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Hausverwaltung Beispiel GmbH</span></div>
+    <nav>
+      <a href="#strasse"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Straße <span class="n">6</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-inbox"/></svg>Eingang <span class="n">7</span></a>
+      <a href="#pflichten"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Pflichten <span class="n">2</span></a>
+      <a href="#kosten"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Betriebskosten</a>
+      <a href="#rechnungen" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Rechnungen <span class="n">1</span></a>
+      <a href="#akte"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Dienstleister <span class="n calm">4</span></a>
+    </nav>
+    <div class="rail-foot"><span>Frau Sommer</span><span>Verwaltung Pro, Testphase</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <p class="crumbs"><a href="#rechnungen">Rechnungen</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> RE-2026-1287</p>
+        <h1>Glanzwerk, Dezember 2026</h1>
+        <p>XRechnung, eingegangen am 05.01.2027. Jede Position gegen Leistungsplan, belegte Einsätze und freigegebene Extras geprüft. Gelesen wird die Rechnung nach EN 16931, nicht von einem Modell.</p>
+      </div>
+    </div>
+    <div class="tally" role="group" aria-label="Ergebnis der Prüfung">
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>2 belegt, 405,00&nbsp;€</span>
+      <span class="state wait">1 teilweise, 180,00&nbsp;€</span>
+      <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>1 ohne Freigabe, 240,00&nbsp;€</span>
+      <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>1 doppelt, 36,00&nbsp;€</span>
+    </div>
+    <div class="tblwrap" role="region" aria-labelledby="cap-re" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-re">Positionen der Rechnung RE-2026-1287</caption>
+        <thead><tr><th scope="col">Pos.</th><th scope="col">Leistung</th><th scope="col">Objekt</th><th scope="col" class="num">Betrag</th><th scope="col">Prüfung</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="row-title">Treppenhausreinigung Dezember<span class="sub">4 × 65,00&nbsp;€</span></td><td>Lindenstraße 14</td><td class="num">260,00&nbsp;€</td><td><span class="state ok">belegt, 4 von 4</span></td></tr>
+          <tr><td class="num">2</td><td class="row-title">Unterhaltsreinigung Dezember<span class="sub">4 × 45,00&nbsp;€</span></td><td>Hofweg 3</td><td class="num">180,00&nbsp;€</td><td><span class="state wait">teilweise, 3 von 4</span><span class="sub">KW&nbsp;52 ohne Nachweis</span></td></tr>
+          <tr><td class="num">3</td><td class="row-title">Winterdienst Pauschale Dezember</td><td>Lindenstraße 14</td><td class="num">145,00&nbsp;€</td><td><span class="state ok">belegt, 11 Runden</span></td></tr>
+          <tr class="is-sel"><td class="num">4</td><td class="row-title">Kellergang streichen<span class="sub">Extra</span></td><td>Lindenstraße 14</td><td class="num">240,00&nbsp;€</td><td><span class="state stop">ohne Freigabe</span></td></tr>
+          <tr><td class="num">5</td><td class="row-title">Glasreinigung Eingang Oktober</td><td>Parkstraße 8</td><td class="num">36,00&nbsp;€</td><td><span class="state stop">doppelt</span><span class="sub">schon in RE-2026-1102</span></td></tr>
+        </tbody>
+        <tfoot><tr><td></td><td colspan="2">Netto, zzgl. 19&nbsp;% USt 163,59&nbsp;€, brutto 1.024,59&nbsp;€</td><td class="num">861,00&nbsp;€</td><td></td></tr></tfoot>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="btn primary" type="button">Belegte Positionen zur Zahlung freigeben, 405,00&nbsp;€</button>
+      <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg>Rückfrage zu 3 Positionen</button>
+    </div>
+  </div>
+  <aside class="inspector" aria-label="Position im Detail">
+    <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>ohne Freigabe</span>
+    <h2>Position 4: Kellergang streichen</h2>
+    <p class="src">240,00&nbsp;€ netto. Im Leistungsplan nicht enthalten, in JobFold kein Extra mit Freigabe für diese Arbeit gefunden.</p>
+    <dl class="kv">
+      <dt>Ähnliches Extra</dt><dd>keins im Zeitraum</dd>
+      <dt>Einsätze im Kellergang</dt><dd>2, beide Reinigung</dd>
+      <dt>Freigaberahmen Q4</dt><dd>ausgeschöpft am 02.12.</dd>
+    </dl>
+    <p class="hint">JobFold bezahlt keine Rechnungen und ersetzt nicht Ihre Buchhaltung. Das Prüfergebnis geht als CSV und als Notiz an Ihre Verwaltersoftware.</p>
+    <div class="divider"></div>
+    <h2>Vor dem Versand prüfen</h2>
+    <p class="src">Dieselbe Prüfung läuft bei Glanzwerk, bevor eine Rechnung rausgeht. So wird eine Lücke zur Rückfrage, bevor sie zum Streit wird.</p>
+  </aside>
+</section>
+
+<!-- ============ DIENSTLEISTER: TEILEN ============ -->
+<section class="screen desk with-inspector" id="s-teilen" data-screen="teilen" data-title="Mit Verwaltung teilen" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <h1>Mit Verwaltung teilen</h1>
+        <p>Die Verwaltung bekommt ein kostenloses Cockpit für die gewählten Objekte. Sie sehen hier genau, was geteilt wird, bevor etwas gesendet wird.</p>
+      </div>
+    </div>
+    <div class="form-grid">
+      <section class="sheet" aria-labelledby="h-an">
+        <h2 id="h-an">An</h2>
+        <div class="field-row"><label for="f-hv">Hausverwaltung</label><input class="input" id="f-hv" value="Hausverwaltung Beispiel GmbH"></div>
+        <div class="field-row"><label for="f-mail">E-Mail der Ansprechperson</label><input class="input" id="f-mail" type="email" value="sommer@hv-beispiel.example"></div>
+      </section>
+      <section class="sheet" aria-labelledby="h-obj">
+        <h2 id="h-obj">Objekte</h2>
+        <label class="opt"><input type="checkbox" checked> Lindenstraße 14</label>
+        <label class="opt"><input type="checkbox" checked> Hofweg 3</label>
+        <label class="opt"><input type="checkbox" checked> Parkstraße 8</label>
+        <label class="opt"><input type="checkbox"> Kastanienallee 21 <span class="muted">(andere Verwaltung)</span></label>
+      </section>
+      <section class="sheet span2" aria-labelledby="h-scope">
+        <h2 id="h-scope">Was die Verwaltung sieht</h2>
+        <ul class="scope">
+          <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Einsätze, Checklisten und versiegelte Berichte</li>
+          <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Extras mit Preis und Freigabe</li>
+          <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Fotos ohne Personen</li>
+          <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Pflichten, die Ihnen zugeordnet werden</li>
+          <li><span class="state">Rollen</span>Mitarbeiternamen erscheinen als „Einsatzkraft“</li>
+          <li><span class="state"><svg class="icon s" aria-hidden="true"><use href="#i-lock"/></svg>nie</span>Ihr Preisbuch, interne Notizen, andere Kunden, Zeiten einzelner Personen</li>
+        </ul>
+      </section>
+    </div>
+    <div class="actions">
+      <button class="btn primary" type="button"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Einladung senden</button>
+      <button class="btn quiet" type="button">Als Link kopieren</button>
+    </div>
+  </div>
+  <aside class="inspector" aria-label="Vorschau der E-Mail">
+    <h2>Vorschau</h2>
+    <div class="mail">
+      <p class="mail-meta">An: sommer@hv-beispiel.example<br>Betreff: Glanzwerk teilt 3 Objekte mit Ihnen</p>
+      <p>Guten Tag Frau Sommer,</p>
+      <p>Glanzwerk Gebäudeservice teilt die Einsätze, Nachweise und Extras für Lindenstraße 14, Hofweg 3 und Parkstraße 8 mit Ihnen. Sie sehen alles in einem kostenlosen Cockpit, ohne Installation.</p>
+      <p>Mit freundlichen Grüßen<br>Mehmet Yıldız</p>
+      <p class="mail-btn">Objekte ansehen</p>
+    </div>
+    <p class="hint">Die Verwaltung kann ablehnen, ohne Folgen. Annehmen teilt nie mehr als hier gewählt. Sie können jederzeit widerrufen.</p>
+  </aside>
+</section>
+
+<!-- ============ DIENSTLEISTER: OBJEKTAKTE, ÜBERSICHT ============ -->
+<section class="screen desk with-inspector" id="s-objektakte" data-screen="objektakte" data-title="Objektakte Lindenstraße 14" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Objekte</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Lindenstraße 14</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, 12 Wohnungen, Hausverwaltung Beispiel GmbH, Umfang Version 4</p>
+      </div>
+      <div class="toolbar">
+        <button class="trigger" type="button" data-cmd-open aria-keyshortcuts="Control+K Meta+K"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg>Suchen oder Befehl<kbd aria-hidden="true">Strg K</kbd></button>
+        <button class="btn primary" type="button" data-plan-go><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span data-plan-label>Hinweis einplanen</span> <span class="count" data-plan-count>1 überfällig</span></button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte Lindenstraße 14">
+      <a href="#objektakte" aria-current="page">Übersicht</a>
+      <a href="#objektakte-verlauf">Verlauf <span class="n">186</span></a>
+      <a href="#objektakte-pflichten">Pflichten <span class="n">1</span></a>
+      <a href="#objektakte-dokumente">Dokumente <span class="n">24</span></a>
+      <a href="#objektakte-beteiligte">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <article class="tableau open wide" aria-labelledby="ob-street ob-no">
+      <div class="t-head">
+        <div><h2 class="t-street" id="ob-street">Lindenstraße</h2><p class="t-city">Musterstadt, 12 Wohnungen, verknüpft mit Hausverwaltung Beispiel</p></div>
+        <p class="t-no" id="ob-no"><span class="sr-only">Hausnummer </span>14</p>
+      </div>
+      <div class="t-rows" role="group" aria-label="Leistungen und Pflichten, die Auswahl zeigt den Nachweis" data-panes>
+        <button class="np" type="button" data-pane="ob-licht" aria-pressed="true">
+          <span class="np-plate"><b>Hinweis: Kellerlicht defekt</b><span class="np-meta">Von Frau Sommer weitergeleitet Mo 08:15, Reaktionszeit 24&nbsp;h ab Meldung, überfällig<span data-plan-meta></span></span></span>
+          <span class="led" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span>
+        </button>
+        <button class="np" type="button" data-pane="ob-extra" aria-pressed="false">
+          <span class="np-plate"><b>Extra: Sperrmüll im Keller</b><span class="np-meta"><span class="eur">67,50&nbsp;€</span> netto, an Frau Sommer gesendet Fr 15.01., wartet auf Freigabe<span data-remind-meta></span></span></span>
+          <span class="led" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        </button>
+        <button class="np" type="button" data-pane="ob-treppe" aria-pressed="false">
+          <span class="np-plate"><b>Treppenhausreinigung</b><span class="np-meta">wöchentlich montags, heute 07:52 bis 08:41, 9 Fotos, belegt</span></span>
+          <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+        </button>
+        <button class="np" type="button" data-pane="ob-winter" aria-pressed="false">
+          <span class="np-plate"><b>Pflicht: Winterdienst</b><span class="np-meta">von der Verwaltung zugeordnet, heute 06:04 bis 06:12, Runde 23, belegt</span></span>
+          <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+        </button>
+        <button class="np" type="button" data-pane="ob-grund" aria-pressed="false">
+          <span class="np-plate"><b>Grundreinigung Keller</b><span class="np-meta" data-grund-meta>im Vertrag einmal im Jahr, kein Termin, nicht geplant</span></span>
+          <span class="led" data-s="unk" aria-hidden="true" data-grund-led><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span>
+        </button>
+      </div>
+      <div class="t-foot">
+        <span>Treppenhausreinigung 2026: 11 von 12 Monaten belegt, August teilweise. <a href="#teilweise">Jahresnachweis öffnen</a></span>
+        <svg class="ring" viewBox="0 0 64 64" role="img" aria-label="Treppenhausreinigung 2026: 11 von 12 Monaten belegt, August teilweise">
+          <g transform="rotate(-90 32 32)">
+            <circle class="m-track" cx="32" cy="32" r="26"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="0"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-1"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-2"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-3"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-4"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-5"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-6"/>
+            <circle class="m-part" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.43 11.57" stroke-dashoffset="-7"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-8"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-9"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-10"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-11"/>
+          </g>
+          <text x="32" y="37" text-anchor="middle">11/12</text>
+        </svg>
+      </div>
+    </article>
+  </div>
+  <aside class="inspector" aria-label="Nachweis">
+    <div class="pane" id="ob-licht">
+      <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig seit So 17.01., 19:40</span>
+      <h2>Kellerlicht defekt</h2>
+      <p class="src">Mieterhinweis an die Hausverwaltung, Sa 16.01. 19:40, ohne Namen. Von Frau Sommer an Glanzwerk weitergeleitet, Mo 18.01. 08:15.</p>
+      <p class="quote">„Im Kellergang ist das Licht seit gestern aus, man sieht die Stufen nicht.“</p>
+      <dl class="kv">
+        <dt>Reaktionszeit laut Vertrag</dt><dd>24&nbsp;h ab Meldung</dd>
+        <dt>Fällig</dt><dd>So 17.01., 19:40</dd>
+        <dt>Eingeplant</dt><dd data-plan-when>noch nicht</dd>
+      </dl>
+      <p class="hint" role="status" data-plan-status></p>
+      <p class="hint">Das Licht bleibt rot, bis ein Einsatz mit Nachweis den Hinweis erledigt. Ein Termin allein macht es nicht grün.</p>
+    </div>
+    <div class="pane" id="ob-extra" hidden>
+      <span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg>wartet auf Freigabe</span>
+      <h2>Sperrmüll im Keller entfernen</h2>
+      <p class="src">An Frau Sommer per Link gesendet, Fr 15.01. 08:12. Seitdem keine Antwort.</p>
+      <figure class="photo"><svg class="icon l" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>vorher, Fr 15.01. 08:06</figcaption></figure>
+      <dl class="kv">
+        <dt>1,5&nbsp;Std × 38,00&nbsp;€</dt><dd class="eur">57,00&nbsp;€</dd>
+        <dt>Entsorgungspauschale</dt><dd class="eur">10,50&nbsp;€</dd>
+        <dt>Netto</dt><dd class="eur">67,50&nbsp;€</dd>
+        <dt>19&nbsp;% USt</dt><dd class="eur">12,83&nbsp;€</dd>
+        <dt><b>Brutto</b></dt><dd class="eur"><b>80,33&nbsp;€</b></dd>
+      </dl>
+      <p class="hint">Freigabegrenze von Frau Sommer für dieses Objekt: 500,00&nbsp;€. Gearbeitet wird erst nach der Freigabe.</p>
+      <div class="actions"><button class="btn" type="button" data-open="vorschau"><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg><span data-remind-label>Erinnerung senden</span></button></div>
+      <p class="hint" role="status" data-remind-status></p>
+    </div>
+    <div class="pane" id="ob-treppe" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Treppenhausreinigung</h2>
+      <p class="src">Heute, Olga S., Beginn 07:52, Ende 08:41, Umfang Version 4.</p>
+      <div class="photos"><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>EG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>2. OG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>Keller</figcaption></figure></div>
+      <p class="hint">6 von 6 Punkten, davon 1 entfallen. Bericht festgeschrieben, Prüfcode JF-7Q4M-2K.</p>
+      <a class="btn" href="#objektakte-verlauf">Im Verlauf ansehen</a>
+    </div>
+    <div class="pane" id="ob-winter" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Winterdienst, Runde 23</h2>
+      <p class="src">Pflicht der Hausverwaltung Beispiel, an Glanzwerk zugeordnet. Heute 06:04 bis 06:12, Dariusz K., 3 Flächen, 3 Fotos.</p>
+      <a class="btn" href="#objektakte-pflichten"><svg class="icon" aria-hidden="true"><use href="#i-snow"/></svg>Alle 23 Runden</a>
+    </div>
+    <div class="pane" id="ob-grund" hidden>
+      <span class="state unk" data-grund-state>nicht geplant</span>
+      <h2>Grundreinigung Keller</h2>
+      <p class="src">Im Vertrag 2026 einmal im Jahr vereinbart. Es gibt keinen Termin, deshalb kann nichts belegt werden. Das Licht bleibt unbekannt, bis ein Termin steht.</p>
+      <div class="actions"><button class="btn" type="button" data-grund-go><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Termin planen</span></button></div>
+      <p class="hint" role="status" data-grund-status></p>
+    </div>
+  </aside>
+
+  <div class="overlay" data-overlay="vorschau" data-on="objektakte" data-pane-select="ob-extra" data-title="Vorschau vor dem Senden" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="er-h" aria-describedby="er-d">
+      <div class="dialog-head">
+        <h2 id="er-h" tabindex="-1">Erinnerung an Frau Sommer senden</h2>
+        <button class="iconbtn" type="button" data-close aria-label="Schließen, nichts senden"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <p class="src" id="er-d">Extra „Sperrmüll im Keller entfernen“, Lindenstraße 14, gesendet Fr 15.01. 08:12 und seitdem ohne Antwort. So kommt die E-Mail an:</p>
+      <div class="mail">
+        <p class="mail-meta">An: sommer@hv-beispiel.example<br>Betreff: Erinnerung: Extra Sperrmüll im Keller, Lindenstraße 14</p>
+        <p>Guten Tag Frau Sommer,</p>
+        <p>am Freitag haben wir Ihnen ein Extra für die Lindenstraße 14 zur Freigabe geschickt: Sperrmüll im Keller entfernen, 67,50&nbsp;€ netto, 80,33&nbsp;€ brutto. Der Sperrmüll versperrt den Weg zum Heizungsraum.</p>
+        <p>Mit freundlichen Grüßen<br>Mehmet Yıldız, Glanzwerk Gebäudeservice</p>
+        <p class="mail-btn">Extra ansehen und entscheiden</p>
+      </div>
+      <dl class="kv">
+        <dt>Weg</dt><dd>E-Mail mit dem Freigabelink vom 15.01.</dd>
+        <dt>Link gültig bis</dt><dd>Fr 29.01.2027</dd>
+        <dt>Nächste Erinnerung frühestens</dt><dd>Sa 23.01.2027</dd>
+      </dl>
+      <p class="hint">Der Text kommt aus Ihrer Vorlage „Erinnerung Extra“, nicht von einem Modell. Höchstens eine Erinnerung je Extra in 5 Tagen.</p>
+      <div class="actions">
+        <button class="btn primary" type="button" data-remind-send><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg>Erinnerung senden</button>
+        <button class="btn" type="button" data-close>Abbrechen</button>
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- ============ DIENSTLEISTER: OBJEKTAKTE, VERLAUF ============ -->
+<section class="screen desk with-inspector" id="s-objektakte-verlauf" data-screen="objektakte-verlauf" data-title="Verlauf Lindenstraße 14" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Objekte</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Lindenstraße 14</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, 12 Wohnungen, Hausverwaltung Beispiel GmbH, Umfang Version 4</p>
+      </div>
+      <div class="toolbar">
+        <button class="trigger" type="button" data-cmd-open aria-keyshortcuts="Control+K Meta+K"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg>Suchen oder Befehl<kbd aria-hidden="true">Strg K</kbd></button>
+        <button class="btn primary" type="button" data-extract-go><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Auszug als PDF <span class="count">186 Einträge</span></button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte Lindenstraße 14">
+      <a href="#objektakte">Übersicht</a>
+      <a href="#objektakte-verlauf" aria-current="page">Verlauf <span class="n">186</span></a>
+      <a href="#objektakte-pflichten">Pflichten <span class="n">1</span></a>
+      <a href="#objektakte-dokumente">Dokumente <span class="n">24</span></a>
+      <a href="#objektakte-beteiligte">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <div class="toolbar" role="group" aria-label="Verlauf filtern" data-filter-for="vl-list">
+      <button class="chip" type="button" aria-pressed="true" data-filter="alle"><svg class="icon s" aria-hidden="true"><use href="#i-filter"/></svg>Alles</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="einsatz">Einsätze</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="extra">Extras</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="hinweis">Hinweise</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="umfang">Umfang</button>
+    </div>
+    <p class="hint" role="status" data-extract-status></p>
+    <ol class="tl" id="vl-list" aria-label="Verlauf Lindenstraße 14, neueste zuerst" data-panes>
+      <li class="tl-row" data-kind="einsatz"><span class="tl-when">heute<br>08:41</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-bericht" aria-pressed="true">Treppenhausreinigung</button><p>Olga S., 07:52 bis 08:41, 6 von 6 Punkten, 9 Fotos, belegt.</p><p class="tl-src">Quelle: <a href="#objektakte-dokumente">Bericht JF-7Q4M-2K</a></p></div></li>
+      <li class="tl-row" data-kind="hinweis"><span class="tl-when">heute<br>08:15</span><span class="tl-rail"><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-hinweis" aria-pressed="false">Hinweis: Kellerlicht defekt</button><p>Von Frau Sommer weitergeleitet. Gemeldet Sa 16.01. 19:40, Reaktionszeit 24&nbsp;h, überfällig.</p><p class="tl-src">Quelle: <a href="#objektakte">Hinweis der Verwaltung</a></p></div></li>
+      <li class="tl-row" data-kind="einsatz"><span class="tl-when">heute<br>06:12</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-runde" aria-pressed="false">Winterdienst, Runde 23</button><p>Dariusz K., 06:04 bis 06:12, 3 Flächen, 3 Fotos, belegt.</p><p class="tl-src">Quelle: <a href="#objektakte-pflichten">Runde 23 im Räumprotokoll</a></p></div></li>
+      <li class="tl-row" data-kind="extra"><span class="tl-when">Fr 15.01.<br>08:12</span><span class="tl-rail"><span class="led sm" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-extra" aria-pressed="false">Extra: Sperrmüll im Keller, 67,50&nbsp;€</button><p>An Frau Sommer per Link gesendet, wartet auf Freigabe.</p><p class="tl-src">Quelle: <a href="#freigabe">Freigabeseite</a></p></div></li>
+      <li class="tl-row" data-kind="einsatz"><span class="tl-when">Mo 11.01.<br>08:44</span><span class="tl-rail"><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-bericht2" aria-pressed="false">Treppenhausreinigung</button><p>Olga S., 07:50 bis 08:44, 5 von 5 Punkten, 8 Fotos, belegt.</p><p class="tl-src">Quelle: <a href="#objektakte-dokumente">Bericht JF-3H7P-9C</a></p></div></li>
+      <li class="tl-row" data-kind="umfang"><span class="tl-when">Do 07.01.<br>10:02</span><span class="tl-rail"><span class="led sm" data-s="sign" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></span></span><div class="tl-body"><button class="pick" type="button" data-pane="vl-umfang" aria-pressed="false">Umfang Version 4 freigegeben</button><p>Von Frau Sommer per Link, Nachweisklasse B. Neu: Kellertreppe wöchentlich. Entfällt: Fenster im 3. OG.</p><p class="tl-src">Quelle: <a href="#objektakte-dokumente">Leistungsverzeichnis Version 4</a></p></div></li>
+    </ol>
+    <p class="hint">Die 6 neuesten von 186 Einträgen. Jeder Eintrag nennt seine Quelle; nichts davon lässt sich nachträglich ändern.</p>
+  </div>
+  <aside class="inspector" aria-label="Nachweis">
+    <div class="pane" id="vl-bericht">
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Bericht JF-7Q4M-2K</h2>
+      <p class="src">Treppenhausreinigung, Mo 18.01.2027, 07:52 bis 08:41, Olga S.</p>
+      <div class="photos"><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>EG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>2. OG</figcaption></figure><figure class="photo"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>Keller</figcaption></figure></div>
+      <dl class="kv">
+        <dt>Punkte</dt><dd>6 von 6, davon 1 entfallen</dd>
+        <dt>Fotos</dt><dd>9 Originale</dd>
+        <dt>Umfang</dt><dd>Version 4</dd>
+      </dl>
+      <div class="seal"><span class="seal-mark">Siegel</span><span>Festgeschrieben Mo 18.01.2027, 08:42<br><code>JF-7Q4M-2K</code></span></div>
+    </div>
+    <div class="pane" id="vl-hinweis" hidden>
+      <span class="state stop"><svg class="icon s" aria-hidden="true"><use href="#i-alert"/></svg>überfällig</span>
+      <h2>Kellerlicht defekt</h2>
+      <p class="src">Mieterhinweis an die Hausverwaltung, Sa 16.01. 19:40, ohne Namen. Weitergeleitet Mo 18.01. 08:15.</p>
+      <p class="quote">„Im Kellergang ist das Licht seit gestern aus, man sieht die Stufen nicht.“</p>
+      <a class="btn" href="#objektakte">In der Übersicht einplanen</a>
+    </div>
+    <div class="pane" id="vl-runde" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Winterdienst, Runde 23</h2>
+      <p class="src">Mo 18.01.2027, 06:04 bis 06:12, Dariusz K.</p>
+      <dl class="kv">
+        <dt>Flächen</dt><dd>3 von 3</dd>
+        <dt>Fotos</dt><dd>3 Originale</dd>
+      </dl>
+      <a class="btn" href="#objektakte-pflichten"><svg class="icon" aria-hidden="true"><use href="#i-snow"/></svg>Räumprotokoll</a>
+    </div>
+    <div class="pane" id="vl-extra" hidden>
+      <span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg>wartet auf Freigabe</span>
+      <h2>Extra: Sperrmüll im Keller</h2>
+      <p class="src">Gemeldet von Olga S., Fr 15.01. 08:09, auf Wunsch der Mieterin aus Wohnung 3. Preis aus Ihrem Preisbuch.</p>
+      <dl class="kv">
+        <dt>Netto</dt><dd class="eur">67,50&nbsp;€</dd>
+        <dt>19&nbsp;% USt</dt><dd class="eur">12,83&nbsp;€</dd>
+        <dt>Brutto</dt><dd class="eur">80,33&nbsp;€</dd>
+      </dl>
+      <a class="btn" href="#freigabe">Freigabeseite ansehen</a>
+    </div>
+    <div class="pane" id="vl-bericht2" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span>
+      <h2>Bericht JF-3H7P-9C</h2>
+      <p class="src">Treppenhausreinigung, Mo 11.01.2027, 07:50 bis 08:44, Olga S., Umfang Version 4.</p>
+      <dl class="kv">
+        <dt>Punkte</dt><dd>5 von 5</dd>
+        <dt>Fotos</dt><dd>8 Originale</dd>
+      </dl>
+      <div class="seal"><span class="seal-mark">Siegel</span><span>Festgeschrieben Mo 11.01.2027, 08:45<br><code>JF-3H7P-9C</code></span></div>
+    </div>
+    <div class="pane" id="vl-umfang" hidden>
+      <span class="state sign"><svg class="icon s" aria-hidden="true"><use href="#i-pen"/></svg>freigegeben</span>
+      <h2>Umfang Version 4</h2>
+      <p class="src">Freigegeben von Frau Sommer, Hausverwaltung Beispiel, per Link am Do 07.01.2027 um 10:02, Nachweisklasse B.</p>
+      <dl class="kv">
+        <dt>Neu</dt><dd>Kellertreppe wöchentlich feucht wischen</dd>
+        <dt>Entfällt</dt><dd>Fenster im 3. OG</dd>
+      </dl>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ DIENSTLEISTER: OBJEKTAKTE, PFLICHTEN ============ -->
+<section class="screen desk with-inspector" id="s-objektakte-pflichten" data-screen="objektakte-pflichten" data-title="Pflichten Lindenstraße 14" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Objekte</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Lindenstraße 14</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, 12 Wohnungen, Hausverwaltung Beispiel GmbH, Umfang Version 4</p>
+      </div>
+      <div class="toolbar">
+        <button class="trigger" type="button" data-cmd-open aria-keyshortcuts="Control+K Meta+K"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg>Suchen oder Befehl<kbd aria-hidden="true">Strg K</kbd></button>
+        <button class="btn primary" type="button" data-export-go><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-export-label>Nachweis exportieren</span> <span class="count">23 Runden</span></button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte Lindenstraße 14">
+      <a href="#objektakte">Übersicht</a>
+      <a href="#objektakte-verlauf">Verlauf <span class="n">186</span></a>
+      <a href="#objektakte-pflichten" aria-current="page">Pflichten <span class="n">1</span></a>
+      <a href="#objektakte-dokumente">Dokumente <span class="n">24</span></a>
+      <a href="#objektakte-beteiligte">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <div class="np">
+      <span class="np-plate"><b>Pflicht: Winterdienst</b><span class="np-meta">von der Hausverwaltung Beispiel zugeordnet seit 01.11.2026. Saison 2026/27: 23 Runden, alle belegt</span></span>
+      <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+    </div>
+    <div class="tblwrap" role="region" aria-labelledby="cap-runden" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-runden">Runden der Saison 2026/27, neueste zuerst</caption>
+        <thead><tr><th scope="col" class="num">Runde</th><th scope="col">Datum</th><th scope="col" class="num">Beginn</th><th scope="col" class="num">Ende</th><th scope="col" class="num">Fotos</th><th scope="col">Zustand</th></tr></thead>
+        <tbody>
+          <tr><td class="num">23</td><td>Mo 18.01.2027</td><td class="num">06:04</td><td class="num">06:12</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">22</td><td>So 17.01.2027</td><td class="num">08:31</td><td class="num">08:40</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">21</td><td>Fr 15.01.2027</td><td class="num">06:02</td><td class="num">06:11</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">20</td><td>Di 12.01.2027</td><td class="num">05:58</td><td class="num">06:07</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">19</td><td>Mo 11.01.2027</td><td class="num">06:05</td><td class="num">06:13</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">18</td><td>Do 07.01.2027</td><td class="num">06:01</td><td class="num">06:10</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">17</td><td>Mi 06.01.2027</td><td class="num">06:03</td><td class="num">06:12</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">16</td><td>Sa 02.01.2027</td><td class="num">06:10</td><td class="num">06:18</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+        </tbody>
+        <tbody id="du-older" hidden>
+          <tr><td class="num">15</td><td>Fr 01.01.2027</td><td class="num">08:24</td><td class="num">08:33</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">14</td><td>Do 31.12.2026</td><td class="num">06:00</td><td class="num">06:09</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">13</td><td>Mi 30.12.2026</td><td class="num">06:06</td><td class="num">06:14</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">12</td><td>Mo 21.12.2026</td><td class="num">06:02</td><td class="num">06:10</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">11</td><td>Sa 19.12.2026</td><td class="num">06:12</td><td class="num">06:20</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">10</td><td>Fr 18.12.2026</td><td class="num">06:01</td><td class="num">06:09</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">9</td><td>Mi 09.12.2026</td><td class="num">06:04</td><td class="num">06:13</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">8</td><td>Di 08.12.2026</td><td class="num">05:59</td><td class="num">06:08</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">7</td><td>Do 03.12.2026</td><td class="num">06:03</td><td class="num">06:11</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">6</td><td>Mi 02.12.2026</td><td class="num">06:05</td><td class="num">06:14</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">5</td><td>Mo 30.11.2026</td><td class="num">06:02</td><td class="num">06:10</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">4</td><td>Sa 28.11.2026</td><td class="num">06:11</td><td class="num">06:19</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">3</td><td>Fr 27.11.2026</td><td class="num">06:00</td><td class="num">06:08</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">2</td><td>Di 17.11.2026</td><td class="num">06:03</td><td class="num">06:12</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td class="num">1</td><td>Mo 16.11.2026</td><td class="num">06:06</td><td class="num">06:15</td><td class="num">3</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+        </tbody>
+        <tfoot><tr><td></td><td>Saison 2026/27</td><td></td><td></td><td class="num">69</td><td>23 von 23 belegt</td></tr></tfoot>
+      </table>
+    </div>
+    <button class="btn quiet" type="button" aria-expanded="false" aria-controls="du-older" data-toggle data-label-closed="15 ältere Runden zeigen" data-label-open="Ältere Runden ausblenden">15 ältere Runden zeigen</button>
+  </div>
+  <aside class="inspector" aria-label="Pflicht und Nachweis">
+    <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt, 23 von 23</span>
+    <h2><svg class="icon" aria-hidden="true"><use href="#i-snow"/></svg> Winterdienst</h2>
+    <dl class="kv left">
+      <dt>Wann</dt><dd>bei Schnee und Glätte, werktags ab 07:00, sonn- und feiertags ab 09:00, bis 20:00</dd>
+      <dt>Flächen</dt><dd>Gehweg vor dem Haus, 18&nbsp;m; Zugang zur Haustür; Weg zu den Mülltonnen</dd>
+      <dt>Je Runde</dt><dd>Beginn, Ende und ein Foto je Fläche</dd>
+      <dt>Regel</dt><dd>Satzung der Stadt Musterstadt, von der Verwaltung hinterlegt</dd>
+    </dl>
+    <div class="divider"></div>
+    <h2>Räumprotokoll als Nachweis</h2>
+    <p class="src">Ein versiegeltes Protokoll für einen Zeitraum, zum Beispiel für eine Versicherung oder ein Gericht. Es zeigt jede Runde so, wie sie erfasst wurde.</p>
+    <dl class="kv">
+      <dt>Zeitraum</dt><dd>01.11.2026 bis 18.01.2027</dd>
+      <dt>Runden</dt><dd>23</dd>
+      <dt>Im Protokoll</dt><dd>Datum, Beginn, Ende, Flächen, Fotos</dd>
+      <dt>Fotos</dt><dd>69 Originale</dd>
+      <dt>Personen</dt><dd>als Rolle „Einsatzkraft“</dd>
+    </dl>
+    <p class="hint">Das Protokoll belegt Zeit und Fotos jeder Runde. Ob an einem Tag ohne Runde Glätte war, zeigt es nicht.</p>
+    <div class="seal" data-export-seal hidden><span class="seal-mark">Siegel</span><span>Festgeschrieben Mo 18.01.2027, 09:20<br><code>JF-W7R2-5T</code></span></div>
+    <p class="hint" role="status" data-export-status></p>
+  </aside>
+</section>
+
+<!-- ============ DIENSTLEISTER: OBJEKTAKTE, DOKUMENTE ============ -->
+<section class="screen desk with-inspector" id="s-objektakte-dokumente" data-screen="objektakte-dokumente" data-title="Dokumente Lindenstraße 14" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Objekte</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Lindenstraße 14</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, 12 Wohnungen, Hausverwaltung Beispiel GmbH, Umfang Version 4</p>
+      </div>
+      <div class="toolbar">
+        <button class="trigger" type="button" data-cmd-open aria-keyshortcuts="Control+K Meta+K"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg>Suchen oder Befehl<kbd aria-hidden="true">Strg K</kbd></button>
+        <a class="btn primary" href="#konflikt"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>Fassungen klären <span class="count">1 Notiz</span></a>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte Lindenstraße 14">
+      <a href="#objektakte">Übersicht</a>
+      <a href="#objektakte-verlauf">Verlauf <span class="n">186</span></a>
+      <a href="#objektakte-pflichten">Pflichten <span class="n">1</span></a>
+      <a href="#objektakte-dokumente" aria-current="page">Dokumente <span class="n">24</span></a>
+      <a href="#objektakte-beteiligte">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <div class="tblwrap" role="region" aria-labelledby="cap-dok" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-dok">Dokumente zu Lindenstraße 14, neueste zuerst; die Auswahl zeigt das Dokument rechts</caption>
+        <thead><tr><th scope="col">Dokument</th><th scope="col">Art</th><th scope="col" class="num">Stand</th><th scope="col">Zustand</th></tr></thead>
+        <tbody data-panes>
+          <tr class="is-sel"><td><button class="pick" type="button" data-pane="dk-mappe" aria-pressed="true">Objektmappe</button><span class="sub">Zugang, Wasser, Müll, Ansprechperson</span></td><td>Notizen</td><td class="num">18.01.2027</td><td><span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg>wartet auf Entscheidung</span></td></tr>
+          <tr><td><button class="pick" type="button" data-pane="dk-lv4" aria-pressed="false">Leistungs&shy;verzeichnis, Version 4</button><span class="sub">Treppenhaus&shy;reinigung</span></td><td>Umfang</td><td class="num">07.01.2027</td><td><span class="state sign"><svg class="icon s" aria-hidden="true"><use href="#i-pen"/></svg>freigegeben</span></td></tr>
+          <tr><td><button class="pick" type="button" data-pane="dk-dez" aria-pressed="false">Monatsbericht Dezember 2026</button><span class="sub">Prüfcode JF-2D8K-4M</span></td><td>Bericht</td><td class="num">04.01.2027</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt, 4 von 4</span></td></tr>
+          <tr><td><button class="pick" type="button" data-pane="dk-aug" aria-pressed="false">Monatsbericht August 2026</button><span class="sub">KW&nbsp;33 ohne Nachweis</span></td><td>Bericht</td><td class="num">01.09.2026</td><td><span class="state wait">teilweise, 4 von 5</span></td></tr>
+          <tr><td><button class="pick" type="button" data-pane="dk-raeum" aria-pressed="false">Räumprotokoll Saison 2025/26</button><span class="sub">38 Runden</span></td><td>Pflicht</td><td class="num">15.04.2026</td><td><span class="state">festgeschrieben</span></td></tr>
+          <tr><td><button class="pick" type="button" data-pane="dk-lv3" aria-pressed="false">Leistungs&shy;verzeichnis, Version 3</button><span class="sub">ersetzt durch Version 4</span></td><td>Umfang</td><td class="num">01.03.2026</td><td><span class="state">festgeschrieben</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="btn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Dokument hinzufügen</button>
+      <span class="hint">6 von 24 Dokumenten, die neuesten zuerst. Originale bleiben unverändert; eine Korrektur wird eine neue Version.</span>
+    </div>
+  </div>
+  <aside class="inspector" aria-label="Dokument">
+    <div class="pane" id="dk-mappe">
+      <span class="state wait"><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg>wartet auf Entscheidung</span>
+      <h2>Objektmappe</h2>
+      <p class="src">Die Notiz „Zugang“ hat zwei Fassungen, eine vom Telefon und eine vom Büro. Beide sind gespeichert; bis jemand entscheidet, zeigt das Telefon beide.</p>
+      <a class="btn" href="#konflikt">Fassungen vergleichen</a>
+    </div>
+    <div class="pane" id="dk-lv4" hidden>
+      <span class="state sign"><svg class="icon s" aria-hidden="true"><use href="#i-pen"/></svg>freigegeben</span>
+      <h2>Leistungsverzeichnis, Version 4</h2>
+      <p class="src">Treppenhausreinigung Lindenstraße 14, gültig ab 07.01.2027.</p>
+      <dl class="kv">
+        <dt>Freigegeben von</dt><dd>Frau Sommer, Hausverwaltung Beispiel</dd>
+        <dt>Zeit</dt><dd>Do 07.01.2027, 10:02</dd>
+        <dt>Weg</dt><dd>Freigabelink, Nachweisklasse B</dd>
+        <dt>Neu</dt><dd>Kellertreppe wöchentlich</dd>
+        <dt>Entfällt</dt><dd>Fenster im 3. OG</dd>
+      </dl>
+      <div class="seal"><span class="seal-mark">Siegel</span><span>Festgeschrieben 07.01.2027, Version 4<br><code>JF-LV4K-81</code></span></div>
+      <div class="tech">
+        <button class="tech-toggle" type="button" aria-expanded="false" aria-controls="dk-tech" data-toggle><svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg>Technische Angaben</button>
+        <dl class="kv" id="dk-tech" hidden>
+          <dt>Datei</dt><dd>LV-Treppenhaus-v4.pdf, 184&nbsp;KB</dd>
+          <dt>Prüfsumme</dt><dd class="mono">SHA-256 9f2c…e41a (Muster)</dd>
+          <dt>Gespeichert</dt><dd>07.01.2027, 10:02:11</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="pane" id="dk-dez" hidden>
+      <span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt, 4 von 4</span>
+      <h2>Monatsbericht Dezember 2026</h2>
+      <p class="src">4 Einsätze, jeder mit festgeschriebenem Bericht. Geteilt mit der Hausverwaltung Beispiel.</p>
+      <div class="seal"><span class="seal-mark">Siegel</span><span>Festgeschrieben 04.01.2027<br><code>JF-2D8K-4M</code></span></div>
+    </div>
+    <div class="pane" id="dk-aug" hidden>
+      <span class="state wait">teilweise, 4 von 5</span>
+      <h2>Monatsbericht August 2026</h2>
+      <p class="src">5 Einsätze geplant, 4 mit Bericht. KW&nbsp;33 steht im Bericht als „kein Nachweis“.</p>
+      <a class="btn" href="#teilweise">Jahresnachweis öffnen</a>
+    </div>
+    <div class="pane" id="dk-raeum" hidden>
+      <span class="state">festgeschrieben</span>
+      <h2>Räumprotokoll Saison 2025/26</h2>
+      <p class="src">38 Runden vom 03.11.2025 bis 09.03.2026, je Runde Beginn, Ende und Fotos.</p>
+      <div class="seal"><span class="seal-mark">Siegel</span><span>Festgeschrieben 15.04.2026<br><code>JF-R526-3W</code></span></div>
+    </div>
+    <div class="pane" id="dk-lv3" hidden>
+      <span class="state">festgeschrieben</span>
+      <h2>Leistungsverzeichnis, Version 3</h2>
+      <p class="src">Gültig vom 01.03.2026 bis 06.01.2027, ersetzt durch Version 4. Bleibt unverändert lesbar.</p>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ DIENSTLEISTER: OBJEKTAKTE, BETEILIGTE ============ -->
+<section class="screen desk with-inspector" id="s-objektakte-beteiligte" data-screen="objektakte-beteiligte" data-title="Beteiligte Lindenstraße 14" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="akte-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Objekte</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Lindenstraße 14</p>
+        <h1 class="akte-title">Lindenstraße <span>14</span></h1>
+        <p class="muted">Musterstadt, 12 Wohnungen, Hausverwaltung Beispiel GmbH, Umfang Version 4</p>
+      </div>
+      <div class="toolbar">
+        <button class="trigger" type="button" data-cmd-open aria-keyshortcuts="Control+K Meta+K"><svg class="icon s" aria-hidden="true"><use href="#i-search"/></svg>Suchen oder Befehl<kbd aria-hidden="true">Strg K</kbd></button>
+        <a class="btn primary" href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Freigabe ändern <span class="count">4 Bereiche geteilt</span></a>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Objektakte Lindenstraße 14">
+      <a href="#objektakte">Übersicht</a>
+      <a href="#objektakte-verlauf">Verlauf <span class="n">186</span></a>
+      <a href="#objektakte-pflichten">Pflichten <span class="n">1</span></a>
+      <a href="#objektakte-dokumente">Dokumente <span class="n">24</span></a>
+      <a href="#objektakte-beteiligte" aria-current="page">Beteiligte <span class="n">4</span></a>
+    </nav>
+    <section class="sheet" aria-labelledby="bt-hv">
+      <div class="check-head"><h2 id="bt-hv">Hausverwaltung Beispiel GmbH</h2><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>verknüpft</span></div>
+      <dl class="kv left">
+        <dt>Ansprechperson</dt><dd>Frau Sommer, sommer@hv-beispiel.example</dd>
+        <dt>Verknüpft seit</dt><dd>14.09.2026, Einladung von Glanzwerk angenommen</dd>
+        <dt>Freigabegrenze</dt><dd>500,00&nbsp;€ je Extra und Objekt</dd>
+      </dl>
+      <h3 class="section-title"><svg class="icon s" aria-hidden="true"><use href="#i-eye"/></svg> Was die Verwaltung sieht</h3>
+      <ul class="scope">
+        <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Einsätze, Checklisten und festgeschriebene Berichte</li>
+        <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Extras mit Preis und Freigabe</li>
+        <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Fotos ohne Personen</li>
+        <li><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>geteilt</span>Pflichten, die die Verwaltung Ihnen zugeordnet hat</li>
+        <li><span class="state">Rollen</span>Namen Ihrer Einsatzkräfte erscheinen als „Einsatzkraft“</li>
+        <li><span class="state"><svg class="icon s" aria-hidden="true"><use href="#i-lock"/></svg>nie</span>Preisbuch, interne Notizen, andere Kunden, Zeiten einzelner Personen</li>
+      </ul>
+    </section>
+    <p class="hint">Andere Dienstleister dieses Objekts sehen Sie nicht, und sie sehen nichts von Ihnen. Die Verwaltung führt jeden Dienstleister getrennt.</p>
+  </div>
+  <aside class="inspector" aria-label="Team und Freigabe">
+    <h2 id="bt-team">Ihr Team an diesem Objekt</h2>
+    <ul class="parties" aria-labelledby="bt-team">
+      <li><b>Olga S.</b><span>Treppenhausreinigung, montags. Sieht Checkliste, Objektmappe und Extras dieses Objekts.</span></li>
+      <li><b>Dariusz K.</b><span>Winterdienst, Runde Nord. Sieht die Flächen und die Runden.</span></li>
+      <li><b>Herr Yıldız</b><span>Büro, Ansprechperson für die Verwaltung.</span></li>
+    </ul>
+    <div class="divider"></div>
+    <h2>Freigabe für die Verwaltung</h2>
+    <p class="src">Sie haben Lindenstraße 14 am 10.09.2026 mit der Hausverwaltung Beispiel geteilt. Die Verwaltung liest und gibt frei; ändern kann sie nichts, was Sie erfasst haben.</p>
+    <ol class="tl compact" aria-label="Verlauf der Freigabe">
+      <li>10.09.2026, Einladung gesendet von Herrn Yıldız</li>
+      <li>14.09.2026, von Frau Sommer angenommen</li>
+      <li>07.01.2027, Umfang Version 4 von Frau Sommer freigegeben</li>
+    </ol>
+    <div class="divider"></div>
+    <p class="hint">Beenden Sie die Freigabe, sieht die Verwaltung ab dann nichts Neues mehr. Was sie bis dahin gesehen hat, bleibt für beide lesbar. Auch das Beenden zeigt vorher eine Vorschau.</p>
+  </aside>
+</section>
+
+<!-- ============ OHNE KONTO: FREIGABE ============ -->
+<section class="screen public" id="s-freigabe" data-screen="freigabe" data-title="Freigabe" hidden>
+  <article class="pubpage" data-approve>
+    <header class="pub-head">
+      <p class="from">Glanzwerk Gebäudeservice bittet um Freigabe</p>
+      <h1>Lindenstraße 14</h1>
+    </header>
+    <div class="pub-body">
+      <section aria-labelledby="h-pub-extra" class="stack">
+        <h2 id="h-pub-extra">Sperrmüll im Keller entfernen</h2>
+        <p>Auf Wunsch der Mieterin aus Wohnung 3. Der Sperrmüll steht vor dem Heizungsraum und versperrt den Weg.</p>
+        <figure class="photo"><svg class="icon l" aria-hidden="true"><use href="#i-camera"/></svg><figcaption>vorher, Fr 15.01. 08:06</figcaption></figure>
+      </section>
+      <dl class="kv">
+        <dt>1,5&nbsp;Std × 38,00&nbsp;€</dt><dd class="eur">57,00&nbsp;€</dd>
+        <dt>Entsorgungspauschale</dt><dd class="eur">10,50&nbsp;€</dd>
+        <dt>Netto</dt><dd class="eur">67,50&nbsp;€</dd>
+        <dt>19&nbsp;% USt</dt><dd class="eur">12,83&nbsp;€</dd>
+        <dt><b>Brutto</b></dt><dd class="eur"><b>80,33&nbsp;€</b></dd>
+      </dl>
+      <p class="hint">Ihre Freigabegrenze für dieses Objekt: 500,00&nbsp;€. Dieser Betrag liegt darunter.</p>
+      <div class="actions col" data-approve-actions>
+        <button class="btn sign block" type="button" data-approve-go><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>Für 67,50&nbsp;€ netto freigeben</button>
+        <button class="btn block" type="button"><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg>Rückfrage stellen</button>
+        <button class="btn quiet block" type="button">Ablehnen</button>
+      </div>
+      <div role="status" data-approve-done></div>
+      <p class="hint">Mit dem Freigeben beauftragen Sie diese Leistung zum genannten Preis. Gespeichert werden Ihr Name, die Zeit und dieser Link.</p>
+    </div>
+    <footer class="pub-foot">
+      <span>Prüfcode JF-4RX2-8D. Jeder kann prüfen, dass dieses Dokument unverändert ist.</span>
+      <span>Kostenlos für Hausverwaltungen, kein Konto nötig.</span>
+    </footer>
+  </article>
+  <p class="screen-note"><b>Freigabe ohne Konto.</b> Blau ist allein der Unterschrift einer Person vorbehalten. Erst nach dem Klick wird aus dem Bernstein-Licht ein blaues: freigegeben, mit Name, Zeit und Nachweisklasse.</p>
+</section>
+
+<!-- ============ OHNE KONTO: TREPPENHAUS ============ -->
+<section class="screen public" id="s-treppenhaus" data-screen="treppenhaus" data-title="Treppenhaus" hidden>
+  <article class="pubpage">
+    <header class="pub-head">
+      <p class="from">Hausinfo, verwaltet von Hausverwaltung Beispiel GmbH</p>
+      <h1>Lindenstraße 14</h1>
+    </header>
+    <div class="pub-body">
+      <section aria-labelledby="h-th-now" class="stack">
+        <h2 id="h-th-now">Was hier passiert</h2>
+        <ul class="visits">
+          <li><span><b>Winterdienst</b><br><span class="muted">geräumt und gestreut</span></span><span class="mono">heute 06:12</span></li>
+          <li><span><b>Treppenhausreinigung</b><br><span class="muted">EG bis 3. OG und Kellertreppe</span></span><span class="mono">heute 08:41</span></li>
+          <li><span><b>Treppenhausreinigung</b><br><span class="muted">nächster Termin</span></span><span class="mono">Mo 25.01.</span></li>
+          <li><span><b>Gartenpflege</b><br><span class="muted">Winterpause</span></span><span class="mono">ab 01.03.</span></li>
+        </ul>
+      </section>
+      <form class="stack" aria-labelledby="h-th-report" data-report>
+        <h2 id="h-th-report">Problem melden</h2>
+        <div class="field-row"><label for="f-prob">Was ist los?</label><textarea class="input" id="f-prob" required placeholder="Zum Beispiel: Licht im Kellergang ist aus"></textarea></div>
+        <button class="cap" type="button"><svg class="icon s" aria-hidden="true"><use href="#i-camera"/></svg>Foto hinzufügen, ohne Personen</button>
+        <div class="field-row"><label for="f-th-mail">E-Mail für Rückmeldungen <span class="muted">(freiwillig)</span></label><input class="input" id="f-th-mail" type="email" autocomplete="email"></div>
+        <button class="btn primary block" type="submit">An die Hausverwaltung senden</button>
+        <p class="hint" role="status" data-report-done></p>
+      </form>
+    </div>
+    <footer class="pub-foot">
+      <span>Notdienst der Hausverwaltung: 0000 000 000 (Muster)</span>
+      <span>Diese Seite zeigt keine Namen und keine Fotos von Personen.</span>
+    </footer>
+  </article>
+  <p class="screen-note"><b>Treppenhaus.</b> Der QR-Code im Treppenhaus öffnet diese Seite. Mieterinnen und Mieter sehen, dass gearbeitet wurde, und melden ein Problem ohne Anruf. Der Hinweis geht immer zuerst an die Verwaltung.</p>
+</section>
+
+<!-- ============ OHNE KONTO: BELEGEINSICHT ============ -->
+<section class="screen public" id="s-belegeinsicht" data-screen="belegeinsicht" data-title="Belegeinsicht" hidden>
+  <article class="pubpage">
+    <header class="pub-head">
+      <p class="from">Belegeinsicht, gültig bis 28.02.2027</p>
+      <h1>Betriebskosten 2026</h1>
+    </header>
+    <div class="pub-body">
+      <p>Lindenstraße 14, Wohnung 3. Hier sehen Sie die Nachweise hinter den Dienstleistungskosten Ihrer Abrechnung, so wie die Hausverwaltung sie festgeschrieben hat.</p>
+      <ul class="visits">
+        <li><span><b>Gebäudereinigung</b><br><span class="muted">51 von 52 Einsätzen belegt</span></span><span class="mono">3.120,00&nbsp;€</span></li>
+        <li><span><b>Gartenpflege</b><br><span class="muted">14 von 14 belegt</span></span><span class="mono">1.180,00&nbsp;€</span></li>
+        <li><span><b>Hauswart, umlagefähiger Teil</b><br><span class="muted">62&nbsp;% von 4.800,00&nbsp;€</span></span><span class="mono">2.976,00&nbsp;€</span></li>
+        <li><span><b>Winterdienst</b><br><span class="muted">41 Runden mit Wetterdaten</span></span><span class="mono">1.740,00&nbsp;€</span></li>
+      </ul>
+      <div class="seal">
+        <span class="seal-mark">Siegel</span>
+        <span>Festgeschrieben am 22.01.2027, Version 1<br><code>JF-9KD2-QX7L</code></span>
+      </div>
+      <a class="btn block" href="#belegeinsicht"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Nachweise als PDF</a>
+      <p class="hint">Statt Namen von Beschäftigten zeigen die Nachweise Rollen. Jedes Öffnen dieses Links wird für die Hausverwaltung protokolliert. Ihren Anteil berechnet die Abrechnung der Hausverwaltung.</p>
+    </div>
+    <footer class="pub-foot">
+      <span>Elektronische Belegeinsicht nach §&nbsp;556 BGB, bereitgestellt von der Hausverwaltung Beispiel GmbH.</span>
+    </footer>
+  </article>
+  <p class="screen-note"><b>Belegeinsicht.</b> Statt eines Termins im Büro bekommt die Mieterin einen Link mit Ablaufdatum. Er zeigt nur die festgeschriebenen Zeilen und ihre Nachweise, mit Rollen statt Namen.</p>
+</section>
+
+<!-- ============ ZUSTÄNDE: LADEN ============ -->
+<section class="screen field" id="s-laden" data-screen="laden" data-title="Tableau lädt" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>10:05</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#heute" aria-label="Zurück zu Heute"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Objekt<span class="sub">Nicht auf deiner Route heute</span></h1>
+    </header>
+    <div class="scroll">
+      <article class="tableau" aria-labelledby="ld-street ld-no" aria-describedby="ld-status" aria-busy="true">
+        <div class="t-head">
+          <div><h2 class="t-street" id="ld-street">Bahnhofstraße</h2><p class="t-city">Musterstadt</p></div>
+          <p class="t-no" id="ld-no"><span class="sr-only">Hausnummer </span>40</p>
+        </div>
+        <div class="slot">
+          <span class="slot-bar" aria-hidden="true"></span>
+          <b>Namensschilder werden geladen</b>
+          <span>Leistungen, Pflichten und ihre Lichter erscheinen, sobald die Daten da sind. Bis dahin zeigt das Tableau kein Licht.</span>
+        </div>
+        <div class="t-foot"><span>Jahresnachweis wird geladen</span></div>
+      </article>
+      <p class="hint" role="status" id="ld-status" data-load-status>Lädt seit 10:05 über mobiles Netz.</p>
+      <p class="hint">Du kannst schon ein Extra melden oder eine Notiz sprechen. Was du erfasst, bleibt auf dem Telefon.</p>
+    </div>
+    <a class="talk" href="#extra"><span class="grille" aria-hidden="true"></span>Extra melden</a>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#objekt" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">1</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Laden.</b> Das Tableau steht schon da, mit Straße und Hausnummer aus der Objektliste. Namensschilder und Lichter erscheinen erst mit den Daten: kein Platzhalter sieht aus wie ein Zustand. Der Balken läuft dreimal durch; danach sagt der Text, wie lange es schon dauert.</p>
+</section>
+
+<!-- ============ ZUSTÄNDE: LEER ============ -->
+<section class="screen desk" id="s-leer" data-screen="leer" data-title="Erstes Objekt" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#leer" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte</a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras</a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, Testphase</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <h1>Objekte</h1>
+        <p>Jede Adresse, an der Glanzwerk arbeitet, bekommt hier ihr eigenes Tableau.</p>
+      </div>
+    </div>
+    <div class="empty">
+      <section class="tableau blank" aria-labelledby="em-h">
+        <div class="t-head">
+          <div><h2 class="t-street" id="em-h">Noch kein Objekt</h2><p class="t-city">Ihr erstes Tableau</p></div>
+          <span class="t-no slot-no" aria-hidden="true"></span>
+        </div>
+        <div class="t-rows" aria-hidden="true"><span class="slot-empty"></span><span class="slot-empty"></span><span class="slot-empty"></span></div>
+        <div class="blank-copy">
+          <p>Legen Sie ein Objekt an: die Adresse und was Sie dort leisten. Jede Leistung und jede Pflicht bekommt ein Namensschild, jeder Zustand ein Licht.</p>
+        </div>
+        <div class="t-foot"><a class="btn primary" href="#objektakte"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Erstes Objekt anlegen</a></div>
+      </section>
+      <figure class="sample">
+        <div class="tableau">
+          <div class="t-head">
+            <div><p class="t-street">Musterweg</p><p class="t-city">Beispielstadt, 8 Wohnungen</p></div>
+            <p class="t-no">1</p>
+          </div>
+          <div class="t-rows">
+            <div class="np"><span class="np-plate"><b>Treppenhausreinigung</b><span class="np-meta">wöchentlich montags, geplant</span></span><span class="led" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span></div>
+            <div class="np"><span class="np-plate"><b>Winterdienst</b><span class="np-meta">Runde 06:04 bis 06:12, belegt</span></span><span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></div>
+            <div class="np"><span class="np-plate"><b>Extra: Kellerfenster</b><span class="np-meta"><span class="eur">50,00&nbsp;€</span> netto, wartet auf Freigabe</span></span><span class="led" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span></div>
+            <div class="np"><span class="np-plate"><b>Grundreinigung</b><span class="np-meta">im Vertrag, nicht geplant</span></span><span class="led" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span></div>
+          </div>
+        </div>
+        <figcaption><span class="state">Beispiel</span>Musterdaten, nicht Ihr Objekt. So liest sich ein Tableau nach den ersten Einsätzen.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZUSTÄNDE: FEHLER ============ -->
+<section class="screen field" id="s-fehler" data-screen="fehler" data-title="Senden fehlgeschlagen" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>08:43</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-signal"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#heute" aria-label="Zurück zu Heute"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Treppenhausreinigung<span class="sub">Lindenstraße 14, abgeschlossen 08:41</span></h1>
+    </header>
+    <div class="scroll">
+      <section class="notice" aria-labelledby="fe-h" data-retry-box>
+        <h2 id="fe-h"><svg class="icon" aria-hidden="true"><use href="#i-cloud-off"/></svg><span data-retry-title>Bericht noch nicht gesendet</span></h2>
+        <p data-retry-text>Der Server hat um 08:42 nicht geantwortet. Dein Einsatz ist abgeschlossen und auf diesem Telefon gespeichert.</p>
+        <ul class="kept" aria-label="Auf diesem Telefon gespeichert">
+          <li><span>Checkliste</span><span class="mono">6 von 6 Punkten</span></li>
+          <li><span>Fotos</span><span class="mono">9, 14,2&nbsp;MB</span></li>
+          <li><span>Sprachnotiz</span><span class="mono">0:14</span></li>
+        </ul>
+        <p data-retry-next>Das Telefon versucht es alle 5 Minuten wieder, auch wenn du schon zum nächsten Objekt fährst.</p>
+      </section>
+      <button class="btn primary block" type="button" data-retry><svg class="icon" aria-hidden="true"><use href="#i-retry"/></svg><span data-retry-label>Jetzt erneut senden</span></button>
+      <p class="hint" role="status" data-retry-status></p>
+      <div class="tech">
+        <button class="tech-toggle" type="button" aria-expanded="false" aria-controls="fe-tech" data-toggle><svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg>Technische Angaben für das Büro</button>
+        <dl class="kv" id="fe-tech" hidden>
+          <dt>Fehler</dt><dd>Zeitüberschreitung, 504</dd>
+          <dt>Vorgang</dt><dd class="mono">7F3C-21A9</dd>
+          <dt>Nächster Versuch</dt><dd>08:47</dd>
+        </dl>
+      </div>
+      <section class="stack" aria-labelledby="fe-next">
+        <h2 class="section-title" id="fe-next">Nächster Halt</h2>
+        <a class="np" href="#objekt"><span class="np-plate"><b>Hofweg 3, 09:30</b><span class="np-meta">Unterhaltsreinigung, Nichts offen</span></span><span class="led" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span></a>
+      </section>
+    </div>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#objekt"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#offline"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">1</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Fehler.</b> Ein technischer Fehler bekommt kein rotes Licht: Rot heißt „fehlt“ und gehört zum Objekt, nicht zur App. Die Meldung sagt, was passiert ist, was auf dem Telefon bleibt und was als Nächstes kommt. Technische Angaben stehen eingeklappt darunter. Die Zustände zeigen je einen möglichen Verlauf desselben Morgens; sie folgen nicht aufeinander.</p>
+</section>
+
+<!-- ============ ZUSTÄNDE: OFFLINE ============ -->
+<section class="screen field" id="s-offline" data-screen="offline" data-title="Ohne Netz" hidden>
+  <div class="phone">
+    <div class="statusbar"><span>08:52</span><span class="sys"><svg class="icon s" aria-hidden="true"><use href="#i-cloud-off"/></svg><svg class="icon s" aria-hidden="true"><use href="#i-battery"/></svg></span></div>
+    <header class="appbar">
+      <a class="iconbtn" href="#heute" aria-label="Zurück zu Heute"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <h1>Objekt<span class="sub">Hausverwaltung Beispiel GmbH</span></h1>
+    </header>
+    <div class="scroll">
+      <div class="sync" role="group" aria-label="Stand der Daten">
+        <span class="state"><svg class="icon s" aria-hidden="true"><use href="#i-cloud-off"/></svg>Ohne Netz seit 08:40</span>
+        <span class="state"><svg class="icon s" aria-hidden="true"><use href="#i-cloud"/></svg>3 Einträge warten auf Netz</span>
+      </div>
+      <article class="tableau" aria-labelledby="of-street of-no">
+        <div class="t-head">
+          <div><h2 class="t-street" id="of-street">Lindenstraße</h2><p class="t-city">Musterstadt, 12 Wohnungen</p><p class="t-stand"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Stand vom 18.01., 08:39</p></div>
+          <p class="t-no" id="of-no"><span class="sr-only">Hausnummer </span>14</p>
+        </div>
+        <div class="t-rows">
+          <a class="np" href="#einsatz">
+            <span class="np-plate"><b>Treppenhausreinigung</b><span class="np-meta">geplant, heute fällig. Auf dem Telefon abgeschlossen 08:41, wartet auf Netz</span></span>
+            <span class="led" data-s="none" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>
+          </a>
+          <a class="np" href="#winter">
+            <span class="np-plate"><b>Winterdienst</b><span class="np-meta">06:12 geräumt und gestreut, belegt</span></span>
+            <span class="led" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+          </a>
+          <a class="np" href="#extra">
+            <span class="np-plate"><b>Extra: Sperrmüll im Keller</b><span class="np-meta"><span class="eur">67,50&nbsp;€</span> netto, wartet seit Freitag auf Freigabe</span></span>
+            <span class="led" data-s="wait" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+          </a>
+          <a class="np" href="#objekt">
+            <span class="np-plate"><b>Hinweis: Kellerlicht defekt</b><span class="np-meta">Von der Verwaltung an euch, seit 16.01. offen, überfällig</span></span>
+            <span class="led" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span>
+          </a>
+          <a class="np" href="#objekt">
+            <span class="np-plate"><b>Feuerlöscher Keller</b><span class="np-meta">Kein Nachweis hinterlegt, Zuständigkeit unbekannt</span></span>
+            <span class="led" data-s="unk" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-question"/></svg></span>
+          </a>
+        </div>
+      </article>
+      <section class="sheet" aria-labelledby="of-out">
+        <div class="check-head"><h2 id="of-out">Wartet auf Netz</h2><span class="mono">3</span></div>
+        <ul class="outbox">
+          <li><svg class="icon s" aria-hidden="true"><use href="#i-cloud"/></svg><span><b>Bericht Treppenhausreinigung</b><span class="np-meta">abgeschlossen, 6 von 6 Punkten</span></span><span class="mono">08:41</span></li>
+          <li><svg class="icon s" aria-hidden="true"><use href="#i-cloud"/></svg><span><b>9 Fotos</b><span class="np-meta">14,2&nbsp;MB, Originale</span></span><span class="mono">08:21 bis 08:40</span></li>
+          <li><svg class="icon s" aria-hidden="true"><use href="#i-cloud"/></svg><span><b>Notiz zum Kellerlicht</b><span class="np-meta">„Licht im Kellergang weiterhin aus.“</span></span><span class="mono">08:30</span></li>
+        </ul>
+        <p class="hint">Alles bleibt auf diesem Telefon, bis es gesendet ist. Sobald Netz da ist, sendet das Telefon von selbst. Erst dann wird aus „abgeschlossen“ ein belegter Einsatz.</p>
+      </section>
+    </div>
+    <a class="talk" href="#extra"><span class="grille" aria-hidden="true"></span>Extra melden</a>
+    <nav class="navbar" aria-label="Hauptnavigation">
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>Heute</a>
+      <a href="#offline" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Objekte</a>
+      <a href="#offline"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>Gesendet <span class="badge">3</span></a>
+      <a href="#heute"><span class="pill"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg></span>Ich</a>
+    </nav>
+  </div>
+  <p class="screen-note"><b>Offline.</b> Das Tableau zeigt den Stand vom letzten Netz, mit Uhrzeit. Was auf dem Telefon erfasst ist, steht als Fakt mit Zeit in der Liste „Wartet auf Netz“, nie als grüner Haken: belegt ist ein Einsatz erst, wenn sein Bericht festgeschrieben ist. Ein anderer möglicher Verlauf desselben Morgens als auf dem Bildschirm Fehler.</p>
+</section>
+
+<!-- ============ ZUSTÄNDE: TEILWEISE ============ -->
+<section class="screen desk with-inspector" id="s-teilweise" data-screen="teilweise" data-title="Jahresnachweis" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Lindenstraße 14</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Jahresnachweis</p>
+        <h1>Jahresnachweis 2026</h1>
+        <p>Treppenhausreinigung, wöchentlich montags. Ein Monat zählt als belegt, wenn jeder geplante Einsatz einen festgeschriebenen Bericht hat.</p>
+      </div>
+    </div>
+    <section class="year-view" aria-label="Treppenhausreinigung 2026 als Ring">
+      <svg class="ring xl" viewBox="0 0 64 64" role="img" aria-label="Treppenhausreinigung 2026: 11 von 12 Monaten belegt, August teilweise">
+        <g transform="rotate(-90 32 32)">
+          <circle class="m-track" cx="32" cy="32" r="26"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="0"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-1"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-2"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-3"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-4"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-5"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-6"/>
+          <circle class="m-part" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.43 11.57" stroke-dashoffset="-7"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-8"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-9"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-10"/>
+          <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-11"/>
+        </g>
+        <text x="32" y="37" text-anchor="middle">11/12</text>
+      </svg>
+      <ul class="legend" aria-label="So liest sich der Ring">
+        <li><svg viewBox="0 0 30 10" aria-hidden="true"><path class="m-track" d="M1 5h28"/><path class="m-ok" d="M1 5h28"/></svg>voller Bogen: belegt</li>
+        <li><svg viewBox="0 0 30 10" aria-hidden="true"><path class="m-track" d="M1 5h28"/><path class="m-part" d="M1 5h14"/></svg>halber Bogen: teilweise belegt</li>
+        <li><svg viewBox="0 0 30 10" aria-hidden="true"><path class="m-track" d="M1 5h28"/><path class="m-miss" d="M1 5h28" stroke-dasharray="7 3.5"/></svg>unterbrochen: fehlt</li>
+        <li><svg viewBox="0 0 30 10" aria-hidden="true"><path class="m-track" d="M1 5h28"/><path class="m-unk" d="M1 5h28" stroke-dasharray="1 2.5"/></svg>fein schraffiert: unbekannt</li>
+        <li><svg viewBox="0 0 30 10" aria-hidden="true"><path class="m-track" d="M1 5h28"/></svg>nur die Spur: noch nicht erreicht</li>
+      </ul>
+    </section>
+    <div class="tblwrap" role="region" aria-labelledby="cap-jahr" tabindex="0">
+      <table class="tbl">
+        <caption class="sr-only" id="cap-jahr">Treppenhausreinigung 2026 nach Monaten</caption>
+        <thead><tr><th scope="col">Monat</th><th scope="col" class="num">Geplant</th><th scope="col" class="num">Mit Bericht</th><th scope="col">Zustand</th></tr></thead>
+        <tbody>
+          <tr><td>Januar</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Februar</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>März</td><td class="num">5</td><td class="num">5</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>April</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Mai</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Juni</td><td class="num">5</td><td class="num">5</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Juli</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr class="is-sel"><td class="row-title">August</td><td class="num">5</td><td class="num">4</td><td><span class="state wait">teilweise</span><span class="sub">KW&nbsp;33 ohne Bericht</span></td></tr>
+          <tr><td>September</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Oktober</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>November</td><td class="num">5</td><td class="num">5</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+          <tr><td>Dezember</td><td class="num">4</td><td class="num">4</td><td><span class="state ok"><svg class="icon s" aria-hidden="true"><use href="#i-check"/></svg>belegt</span></td></tr>
+        </tbody>
+        <tfoot><tr><td>Jahr 2026</td><td class="num">52</td><td class="num">51</td><td>11 von 12 Monaten belegt</td></tr></tfoot>
+      </table>
+    </div>
+    <section aria-labelledby="yv-more">
+      <h2 class="section-title" id="yv-more">Weitere Ringe dieses Objekts</h2>
+      <div class="ringrow">
+        <svg class="ring" viewBox="0 0 64 64" role="img" aria-label="Glasreinigung Eingang 2026: 9 von 12 Monaten belegt, Juni fehlt, Januar und Februar unbekannt">
+          <g transform="rotate(-90 32 32)">
+            <circle class="m-track" cx="32" cy="32" r="26"/>
+            <circle class="m-unk" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.06 0.1 0.06 0.1 0.06 0.1 0.06 0.1 0.06 0.1 0.06 11.14" stroke-dashoffset="0"/>
+            <circle class="m-unk" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.06 0.1 0.06 0.1 0.06 0.1 0.06 0.1 0.06 0.1 0.06 11.14" stroke-dashoffset="-1"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-2"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-3"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-4"/>
+            <circle class="m-miss" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.2 0.13 0.2 0.13 0.2 11.14" stroke-dashoffset="-5"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-6"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-7"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-8"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-9"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-10"/>
+            <circle class="m-ok" cx="32" cy="32" r="26" pathLength="12" stroke-dasharray="0.86 11.14" stroke-dashoffset="-11"/>
+          </g>
+          <text x="32" y="37" text-anchor="middle">9/12</text>
+        </svg>
+        <div><b>Glasreinigung Eingang 2026</b><span class="np-meta">monatlich. 9 von 12 Monaten belegt, Juni fehlt. Januar und Februar unbekannt: vor dem Start in JobFold gibt es keine Daten.</span></div>
+      </div>
+      <div class="ringrow">
+        <svg class="ring" viewBox="0 0 64 64" role="img" aria-label="Treppenhausreinigung 2027: noch kein Monat abgeschlossen, Januar läuft">
+          <g transform="rotate(-90 32 32)">
+            <circle class="m-track" cx="32" cy="32" r="26"/>
+          </g>
+          <text x="32" y="36" text-anchor="middle">läuft</text>
+        </svg>
+        <div><b>Treppenhausreinigung 2027</b><span class="np-meta">Januar läuft: 3 von 4 Einsätzen haben einen Bericht. Ein Monat zählt erst, wenn er vorbei ist.</span></div>
+      </div>
+    </section>
+  </div>
+  <aside class="inspector" aria-label="August 2026">
+    <span class="state wait">teilweise, 4 von 5</span>
+    <h2>August 2026</h2>
+    <p class="src">5 Einsätze geplant, 4 mit festgeschriebenem Bericht.</p>
+    <ul class="visitlist">
+      <li><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Mo 03.08., KW&nbsp;32</b>Olga S., 07:49 bis 08:36, 8 Fotos, belegt</span></li>
+      <li><span class="led sm" data-s="stop" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><span><b>Mo 10.08., KW&nbsp;33</b>geplant, kein festgeschriebener Bericht, fehlt</span></li>
+      <li><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Mo 17.08., KW&nbsp;34</b>Olga S., 07:51 bis 08:40, 8 Fotos, belegt</span></li>
+      <li><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Mo 24.08., KW&nbsp;35</b>Olga S., 07:48 bis 08:35, 9 Fotos, belegt</span></li>
+      <li><span class="led sm" data-s="ok" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span><b>Mo 31.08., KW&nbsp;36</b>Aushilfe, 08:02 bis 08:55, 8 Fotos, belegt</span></li>
+    </ul>
+    <p class="hint">Ein Bericht lässt sich nicht nachträglich erzeugen. In der Abrechnung der Verwaltung steht KW&nbsp;33 als ohne Nachweis, und der Monat zählt nicht zu den 11.</p>
+    <a class="btn primary" href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg>Bericht August öffnen <span class="count">4 von 5</span></a>
+  </aside>
+</section>
+
+<!-- ============ ZUSTÄNDE: KONFLIKT ============ -->
+<section class="screen desk with-inspector" id="s-konflikt" data-screen="konflikt" data-title="Zwei Fassungen" data-ctx="dl" hidden>
+  <aside class="rail" aria-label="Bereiche">
+    <div class="rail-brand"><b>JobFold</b><span>Glanzwerk Gebäudeservice</span></div>
+    <nav>
+      <a href="#heute"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Heute</a>
+      <a href="#objektakte" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>Objekte <span class="n">2</span></a>
+      <a href="#eingang"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Extras <span class="n">4</span></a>
+      <a href="#objektakte-dokumente"><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Berichte</a>
+      <a href="#teilen"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Verwaltungen</a>
+    </nav>
+    <div class="rail-foot"><span>Herr Yıldız, Büro</span><span>Team, 3 Einsatzkräfte</span></div>
+  </aside>
+  <div class="main">
+    <div class="main-head">
+      <div>
+        <p class="crumbs"><a href="#objektakte">Lindenstraße 14</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> <a href="#objektakte-dokumente">Dokumente</a> <svg class="icon s" aria-hidden="true"><use href="#i-chev"/></svg> Objektmappe</p>
+        <h1>Objektmappe</h1>
+        <p>Was Ihre Einsatzkräfte vor Ort lesen: Zugang, Wasser, Müll und Ansprechperson.</p>
+      </div>
+    </div>
+    <section class="conflict" aria-labelledby="cf-h">
+      <div class="conflict-head">
+        <span class="state wait" data-cf-state><svg class="icon s" aria-hidden="true"><use href="#i-bell"/></svg><span>wartet auf Entscheidung</span></span>
+        <h2 id="cf-h">Zwei Fassungen der Notiz „Zugang“</h2>
+        <p>Olga S. hat die Notiz ohne Netz geändert, während das Büro sie ebenfalls geändert hat. Beide Fassungen sind gespeichert, keine wurde überschrieben. Welche gilt ab jetzt?</p>
+      </div>
+      <div class="route versions" role="radiogroup" aria-labelledby="cf-h" data-route data-versions>
+        <div class="route-opt" role="radio" aria-checked="false" tabindex="0" aria-labelledby="cf-a" aria-describedby="cf-a-m cf-a-t" data-version="Fassung vom Telefon">
+          <span class="radio" aria-hidden="true"></span>
+          <span><b id="cf-a">Fassung vom Telefon</b><span id="cf-a-m">Olga S., Mo 18.01. 07:55, ohne Netz erfasst, übertragen 08:12</span><span class="version-text" id="cf-a-t">„Schlüsseltresor klemmt und lässt sich nur mit Kraft öffnen. Bitte Ersatz bestellen.“</span></span>
+        </div>
+        <div class="route-opt" role="radio" aria-checked="false" tabindex="-1" aria-labelledby="cf-b" aria-describedby="cf-b-m cf-b-t" data-version="Fassung vom Büro">
+          <span class="radio" aria-hidden="true"></span>
+          <span><b id="cf-b">Fassung vom Büro</b><span id="cf-b-m">Herr Yıldız, Mo 18.01. 08:10</span><span class="version-text" id="cf-b-t">„Schlüsseltresor links neben der Haustür. Neuer Code seit 18.01., er erscheint in der App nach der Ankunft.“</span></span>
+        </div>
+        <div class="route-opt both" role="radio" aria-checked="false" tabindex="-1" aria-labelledby="cf-c" aria-describedby="cf-c-m" data-version="Beide Fassungen">
+          <span class="radio" aria-hidden="true"></span>
+          <span><b id="cf-c">Beide behalten</b><span id="cf-c-m">Beide Texte stehen untereinander, die Fassung vom Büro zuerst. Nichts geht verloren.</span></span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="button" data-version-go aria-disabled="true"><span data-version-label>Fassung wählen</span></button>
+      </div>
+      <p class="hint" role="status" data-version-status></p>
+    </section>
+  </div>
+  <aside class="inspector" aria-label="Was bis zur Entscheidung gilt">
+    <h2>Bis jemand entscheidet</h2>
+    <p class="src">Das Telefon zeigt beide Fassungen untereinander, mit dem Hinweis „zwei Fassungen“. Nichts wird still überschrieben, auch nicht die ältere.</p>
+    <div class="divider"></div>
+    <h2>Verlauf der Notiz</h2>
+    <ol class="tl compact" aria-label="Verlauf der Notiz Zugang">
+      <li>12.01. 16:20, Fassung 3 vom Büro, Herr Yıldız</li>
+      <li>18.01. 07:55, Telefon ohne Netz, Olga S.</li>
+      <li>18.01. 08:10, Büro, Herr Yıldız</li>
+      <li>18.01. 08:12, beim Übertragen erkannt: zwei Fassungen</li>
+    </ol>
+  </aside>
+</section>
+
+</main>
+
+<!-- ============ BEFEHLSLEISTE (Strg K auf dem Schreibtisch) ============ -->
+<div class="overlay top" data-overlay="befehle" data-on="objektakte" data-title="Befehlsleiste" hidden>
+  <section class="cmdbar" role="dialog" aria-modal="true" aria-label="Suchen oder Befehl">
+    <div class="cmd-input">
+      <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      <input class="cmd-field" type="text" role="combobox" aria-expanded="true" aria-controls="cmd-list" aria-autocomplete="list" aria-label="Suchen oder Befehl" aria-describedby="cmd-help" placeholder="Objekt, Bereich oder Befehl" autocomplete="off" spellcheck="false" data-cmd-input>
+      <button class="iconbtn" type="button" data-close aria-label="Befehlsleiste schließen"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="cmd-body">
+      <div class="cmd-list">
+        <div role="listbox" id="cmd-list" aria-label="Ergebnisse">
+          <div role="group" aria-labelledby="cg-obj">
+            <div class="cmd-group" id="cg-obj" role="presentation">Objekte</div>
+            <div class="cmd-opt" role="option" id="co-dl-1" aria-selected="false" data-ctx="dl" data-go="objektakte" data-k="lindenstraße 14 musterstadt objektakte übersicht" data-pv-title="Objektakte Lindenstraße 14 öffnen" data-pv-text="2 Lichter klingeln: Kellerlicht überfällig, Extra wartet auf Freigabe." data-pv-note="Öffnet nur. Nichts wird geändert oder gesendet."><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg><span>Lindenstraße 14<span class="sub">Musterstadt, Hausverwaltung Beispiel</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-hv-1" aria-selected="false" data-ctx="hv" data-go="strasse" data-k="lindenstraße 14 weg straße tableau" data-pv-title="Lindenstraße 14 auf der Straße öffnen" data-pv-text="2 Lichter klingeln: Extra wartet auf Ihre Freigabe, Kellerlicht überfällig." data-pv-note="Öffnet nur. Freigegeben wird dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg><span>Lindenstraße 14<span class="sub">WEG Lindenstraße 14, 2 Dienstleister</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-hv-2" aria-selected="false" data-ctx="hv" data-go="akte" data-k="objektakte lindenstraße 14 verlauf beteiligte" data-pv-title="Objektakte Lindenstraße 14 öffnen" data-pv-text="Verlauf, Pflichten, Kosten, Dokumente und Beteiligte." data-pv-note="Öffnet nur."><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Objektakte Lindenstraße 14<span class="sub">Verlauf mit 214 Einträgen</span></span><span></span></div>
+          </div>
+          <div role="group" aria-labelledby="cg-act">
+            <div class="cmd-group" id="cg-act" role="presentation">Aktionen</div>
+            <div class="cmd-opt" role="option" id="co-dl-2" aria-selected="false" data-ctx="dl" data-go="vorschau" data-k="erinnerung frau sommer extra sperrmüll lindenstraße senden" data-pv-title="Vorschau der Erinnerung öffnen" data-pv-text="An sommer@hv-beispiel.example, mit dem Freigabelink vom 15.01., Extra 67,50&nbsp;€ netto." data-pv-note="Gesendet wird erst in der Vorschau, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-msg"/></svg><span>Erinnerung an Frau Sommer<span class="sub">Extra Sperrmüll im Keller, Lindenstraße 14</span></span><span class="cmd-tag">Vorschau</span></div>
+            <div class="cmd-opt" role="option" id="co-dl-3" aria-selected="false" data-ctx="dl" data-go="objektakte-pflichten" data-k="räumprotokoll winterdienst nachweis exportieren lindenstraße pflichten" data-pv-title="Pflichten mit der Vorschau des Protokolls öffnen" data-pv-text="Lindenstraße 14, Saison 2026/27: 23 Runden mit Zeit und Fotos." data-pv-note="Exportiert wird erst dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-snow"/></svg><span>Räumprotokoll exportieren<span class="sub">Lindenstraße 14, 23 Runden</span></span><span class="cmd-tag">Vorschau</span></div>
+            <div class="cmd-opt" role="option" id="co-dl-4" aria-selected="false" data-ctx="dl" data-go="teilen" data-k="mit verwaltung teilen einladen objekte hofweg parkstraße" data-pv-title="„Mit Verwaltung teilen“ öffnen" data-pv-text="Sie wählen Objekte und Umfang und sehen die E-Mail, bevor etwas gesendet wird." data-pv-note="Eingeladen wird erst dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg><span>Mit einer Verwaltung teilen<span class="sub">Objekte und Umfang wählen</span></span><span class="cmd-tag">Vorschau</span></div>
+            <div class="cmd-opt" role="option" id="co-hv-3" aria-selected="false" data-ctx="hv" data-go="eingang" data-k="extras glanzwerk freigeben eingang prüfen" data-pv-title="Eingang mit den Extras von Glanzwerk öffnen" data-pv-text="3 Extras, zusammen 186,40&nbsp;€ netto, jedes mit Preis aus dem Preisbuch." data-pv-note="Freigegeben wird erst dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-stack"/></svg><span>Extras von Glanzwerk prüfen<span class="sub">3 Extras, 186,40&nbsp;€</span></span><span class="cmd-tag">öffnet</span></div>
+          </div>
+          <div role="group" aria-labelledby="cg-area">
+            <div class="cmd-group" id="cg-area" role="presentation">Bereiche</div>
+            <div class="cmd-opt" role="option" id="co-dl-5" aria-selected="false" data-ctx="dl" data-go="objektakte-verlauf" data-k="verlauf lindenstraße 14 einsätze berichte" data-pv-title="Verlauf Lindenstraße 14 öffnen" data-pv-text="186 Einträge, die neuesten zuerst, jeder mit Quelle." data-pv-note="Öffnet nur."><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Verlauf Lindenstraße 14<span class="sub">186 Einträge</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-dl-6" aria-selected="false" data-ctx="dl" data-go="konflikt" data-k="objektmappe zugang zwei fassungen konflikt notiz" data-pv-title="Objektmappe Lindenstraße 14 öffnen" data-pv-text="Die Notiz „Zugang“ hat zwei Fassungen und wartet auf Ihre Entscheidung." data-pv-note="Öffnet nur. Entschieden wird dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Objektmappe Lindenstraße 14<span class="sub">zwei Fassungen, wartet auf Entscheidung</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-dl-7" aria-selected="false" data-ctx="dl" data-go="teilweise" data-k="jahresnachweis 2026 ring monate august teilweise" data-pv-title="Jahresnachweis 2026 öffnen" data-pv-text="Treppenhausreinigung: 11 von 12 Monaten belegt, August teilweise." data-pv-note="Öffnet nur."><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Jahresnachweis 2026<span class="sub">Lindenstraße 14</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-hv-4" aria-selected="false" data-ctx="hv" data-go="pflichten" data-k="pflichten verkehrssicherung spielplatz überfällig" data-pv-title="Pflichten öffnen" data-pv-text="31 Pflichten, 7 brauchen Sie, 2 sind überfällig." data-pv-note="Öffnet nur."><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>Pflichten<span class="sub">2 überfällig</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-hv-5" aria-selected="false" data-ctx="hv" data-go="kosten" data-k="betriebskosten abrechnung 2026 lindenstraße" data-pv-title="Abrechnung 2026 öffnen" data-pv-text="Lindenstraße 14: 3 von 4 Zeilen geprüft, 1 Anteil wartet auf Bestätigung." data-pv-note="Öffnet nur. Festgeschrieben wird dort, mit Ihrem Klick."><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg><span>Abrechnung 2026<span class="sub">Lindenstraße 14, 1 Zeile ungeprüft</span></span><span></span></div>
+            <div class="cmd-opt" role="option" id="co-hv-6" aria-selected="false" data-ctx="hv" data-go="rechnungen" data-k="rechnung re-2026-1287 glanzwerk dezember" data-pv-title="Rechnung RE-2026-1287 öffnen" data-pv-text="Glanzwerk, Dezember 2026: 2 Positionen belegt, 3 mit Rückfrage." data-pv-note="Öffnet nur."><svg class="icon" aria-hidden="true"><use href="#i-invoice"/></svg><span>Rechnung RE-2026-1287<span class="sub">Glanzwerk, Dezember 2026</span></span><span></span></div>
+          </div>
+        </div>
+        <p class="cmd-none" data-cmd-none hidden>Kein Treffer. Versuchen Sie eine Adresse, einen Bereich oder ein Wort wie „Extra“.</p>
+      </div>
+      <div class="cmd-preview">
+        <p class="section-title">Vorschau</p>
+        <b data-pv="title"></b>
+        <p data-pv="text"></p>
+        <p class="hint" data-pv="note"></p>
+      </div>
+    </div>
+    <p class="cmd-foot" id="cmd-help"><span><kbd>↑</kbd><kbd>↓</kbd> wählen</span><span><kbd>Enter</kbd> öffnen</span><span><kbd>Esc</kbd> schließen</span><span>Die Befehlsleiste öffnet und zeigt vorher, was passiert. Sie sendet nichts.</span></p>
+  </section>
+</div>
+</body>
+</html>
